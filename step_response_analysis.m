@@ -12,7 +12,7 @@ load('dataMass');
 
 %ultimate gain
 
-gain_x = (0.0706/16000);
+gain_x = (0.0706/16000); %encoders??!
 
 gain_v = 5.250;
 

@@ -3,13 +3,11 @@
 
 %try to impement the lsqnonlin within the simulation for the output!!!
 
-
 load('workspace_load_compulsory');
 
 rng default 
 
 rg = (1:length(t));
-
 
 %data processing and homologation, and choice of range in samples
 
