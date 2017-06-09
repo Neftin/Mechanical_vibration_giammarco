@@ -32,5 +32,5 @@ end
 
 clear i;
 
-Measured_coeff_means = mean(Measured_coeff)
+Measured_coeff_means = mean(Measured_coeff);
 
