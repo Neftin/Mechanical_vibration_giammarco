@@ -36,7 +36,7 @@ M = [m1 0 0;
       -c12  +c2+c12+c23   -c23
         0       -c23      +c3+c23]; %called C but it isn't a problem in order of assignments
  
- b = [g_v_est 0 0].'
+ b = [g_v_est 0 0].';
  
  A = [Z I; -M\K -M\C];    %left divide for the inverse
  B = [Z(:,1); M\b]; %single input

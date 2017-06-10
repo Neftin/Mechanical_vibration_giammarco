@@ -1,9 +1,7 @@
-%NEW HOPE
-%PLEASE LOAD FIRST PIECE OF THE MAIN_2
 
 %try to impement the lsqnonlin within the simulation for the output!!!
 
-load('workspace_load_compulsory');
+load('dataMass');
 
 rng default 
 
@@ -49,7 +47,7 @@ Parameters = lsqnonlin(@errors_direct,P,lb,ub, options) %the core of estimation
 
 %%
 
-sys_guess = tf({B;C;D},{A;A;A});
+sys_guess = ss(A,B,C,D);
 
 figure(1);
 compare(comparison_data,sys_guess)
