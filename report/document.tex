@@ -66,7 +66,6 @@ In the classical matrix form:
 	\label{eq:eqm:tot}
 \end{equation}
 where:\\
-
 	\begin{tabularx}{\linewidth}{@{}XXX@{}}
 	\begin{equation}
 \bm K = \left[ \begin{array}{ccc}
@@ -86,7 +85,7 @@ where:\\
 \end{equation} \\
 	\begin{equation}
 \bm b = \left[ \begin{array}{ccc}
-K_v \\ 0 \\  0
+g_v \\ 0 \\  0
 \end{array}  \right]
 \label{eq:eqm:b}
 \end{equation} &
@@ -135,8 +134,12 @@ K_v \\ 0 \\  0
 \end{subequations}
 where $\bm I$ is the identity matrix and $\bm Z$ is a matrix with all the entries equal to zero.
 \subsection{experimental setup}
-
-\subsection{parameters and data available}
+\subsubsection{data processing}
+Few operations on data must be performed in order to use them. At first, the data on diplacements is provided in \textit{encoder counts}. They are converted in meters with the following convertion factor ($g_x$):
+\begin{equation}
+	g_x = \dfrac{\Delta x}{\Delta \texttt{counts}} = 2 \pi r_e \cdot \dfrac{\Delta \texttt{counts}}{16000\dfrac{\texttt{counts}}{\texttt{encoder revolution}}}
+\end{equation}
+	\subsection{parameters and data available}
 
 \subsection{initial hypothesis and approximations}
 \begin{itemize}
@@ -150,6 +153,7 @@ where $\bm I$ is the identity matrix and $\bm Z$ is a matrix with all the entrie
 	\end{sistema}
 	\end{equation}
 	where $r$ is the radius of the gear-rack coupling (gear wheel), $J_{motor}\vert_{zz}$ is the inertia of the motor , $c_{motor}$ the rotational damping and ''block'' quantities are the ones stricly related to the physical first mass.
+	\item The term $c_3$ contains the viscous friction with the ground and the one due to the spring. In the model those two contributions cannot be quantified separately.
 \end{itemize}
 \section{System identification}
 	
@@ -165,32 +169,75 @@ The coefficient to be estimated is the \textcolor{Plum}{\textit{voltage-to-force
 \end{equation}.
 In order to estimate the parameters the static gain vector $g_{dc}$ of the system has to be computed. The standard procedure is to apply the ''CAB'' formula from the state space formulation:
 \begin{equation}
-	g_{dc} =	\bm{CA^{-1}B}
+	\bm{g_{dc}} =	\bm{CA^{-1}B}
 \end{equation}
-which is the transfer function at $s = 0$. Since this computation implies the inverse of the $6 \times 6$ matrix $\bm A$, another computation is performed. Using the formulation in Equation \ref{eq:Mtot}, we can take the following limits:
+which is the transfer function at $s = 0$. Since this computation implies the inverse of the $6 \times 6$ matrix $\bm A$, another computation is performed. Using the formulation in Equation \ref{eq:Mtot}, we can perform the following limits:
 \begin{equation}
 	\begin{sistema}
 	\lim_{t \to + \infty}{\dot{x}}  = 0  \\
 	\lim_{t \to + \infty}{\ddot{x}} = 0
 	\end{sistema}
 	\label{eq:dot_limits}
-\end{equation}.
+\end{equation}
 The substitution \ref{eq:dot_limits} in \ref{eq:eqm:tot} yields:
 \begin{equation}
 \bm K x = \bm b
 \label{eq:dot0}
-\end{equation}. The static gain is then:
+\end{equation} The static gain is then:
 \begin{equation}
-	g_{dc} = \bm{K^{-1}}b
+	\bm{g_{dc}} = \bm{K^{-1}}\bm{b}
 \end{equation}
-
+Note that it is equivalent to apply the Laplace tranform to the equation \ref{eq:eqm:tot} and apply the final value theorem to it.
 \begin{equation}
-	g_{dc} = \left [ \begin{array}{ccc}
-	\dfrac{k_1k_2 + k_3k_2 + k_3k_1}{k_1k_2k_3}  & \dfrac{k_2+k_3}{k_2k_3} & \dfrac{1}{k_3}
+	\bm{g_{dc}} =
+	\left [ \begin{array}{ccc}
+	g_v\dfrac{k_1k_2 + k_3k_2 + k_3k_1}{k_1k_2k_3}  & g_v\dfrac{k_2+k_3}{k_2k_3} & g_v\dfrac{1}{k_3}
 	\end{array} \right ]\tr
 	\label{eq:g_dc}
 \end{equation}
-Note that in \ref{eq:g_dc} is evident from the expression the parallele between the stiffnesses (at steady state inertia and damping are iinvisible).
+Note that in equation \ref{eq:g_dc} is evident from the expression the parallel between the stiffnesses (at steady state inertia and damping are invisible).
+The steady state value of the three output are available. Some other computations has to be made to make equation \ref{eq:g_dc} suitable for the check on the stiffnesses ratios and the new estimation of $g_v$. The equation for the steady state values is:
+\begin{equation}
+	\bm{C}\bm{x}_\infty = \bm{g_{dc}}u_\infty  
+	\label{eq:stst1}
+\end{equation}
+Where the $\infty$ denotes the steady state value of the quantity. The Equation \ref{eq:stst1} is now expressed in terms of stiffnesses ratio: $k_3$ is fixed to the nominal value and two ratio are defined:\begin{itemize}
+	\item fix $k_3$ on nominal value
+	\item multiplied both sides times $k_3$
+	\item replace $R_{32} = \dfrac{k_3}{k_2}$
+	\item replace $R_{31} = \dfrac{k_3}{k_1}$
+\end{itemize}
+This operations are made in order to make the system easy to solve, and uncoupling the nonlinear factor $g_v$. This allow to make to solve the system in a cascade fashion from $g_v$ to $R_{13}$. The equation \ref{eq:stst1} is now expressed in the following form:
+\begin{equation}
+	\label{eq:stst2} 
+	k_3 \left [\begin{array}{c}
+	x_1(\infty) \\ 
+	x_2(\infty) \\ 
+	x_3(\infty) \end{array}  \right ] 
+	=
+	u(\infty)\left [\begin{array}{c}
+	g_v + g_v R_{13} + g_v R_{23} \\ 
+	g_v R_{23} \\ 
+	g_v \end{array}  \right ] 
+\end{equation}
+Now the next step is to use the measured value of steady state response (input and output), take $g_v$ as new estimated value and verify that $R_{12}$ and $R_{32}$ matches the nominal values. As set before $u(\infty) = 0.5$.
+Results on the ratios are shown in Table \ref{tab:ratios}
+%TODO< write the mambo jambo
+\begin{table}
+\centering
+
+\begin{tabular}{|c|c|c|c|}
+	\hline 
+	 & data & nominal & error \% \\ 
+	\hline 
+	$k_3/k_2$ & \input{result/R32_exp.txt}& \input{result/R32_nom.txt} & \input{result/R32_per.txt}\%  \\ 
+	\hline 
+	$k_3/k_1$ & \input{result/R31_exp.txt}& \input{result/R31_nom.txt} & \input{result/R31_per.txt}\% \\
+	\hline 
+	\label{tab:ratios}
+\end{tabular} 
+\caption{Stiffnesses ratios results}
+\end{table}
 \subsection{Parameters estimation}
 
 \begin{subequations}

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  9 JUN 2017 19:46
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  10 JUN 2017 23:48
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -882,61 +882,62 @@ File: img/theplant1.pdf Graphic file (type pdf)
 Package pdftex.def Info: img/theplant1.pdf used on input line 50.
 (pdftex.def)             Requested size: 512.14963pt x 205.57138pt.
 
-Underfull \hbox (badness 10000) in paragraph at lines 67--69
-
- []
-
-
-Overfull \hbox (15.0pt too wide) in paragraph at lines 101--104
-[][]
- []
-
 [1
 
 {c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map} <./img/theplant1
 .pdf>]
-LaTeX Font Info:    Try loading font information for TS1+cmss on input line 143
-.
- (c:/texlive/2016/texmf-dist/tex/latex/base/ts1cmss.fd
-File: ts1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 140.
+
+ (c:/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
+File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
+LaTeX Font Info:    Try loading font information for TS1+cmss on input line 146
+.
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 190.
+(c:/texlive/2016/texmf-dist/tex/latex/base/ts1cmss.fd
+File: ts1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+) [2]
 
-[2] [3] (./document.aux) ) 
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 195.
+
+(./result/R32_exp.txt) (./result/R32_nom.txt) (./result/R32_per.txt)
+(./result/R31_exp.txt) (./result/R31_nom.txt) (./result/R31_per.txt) [3]
+(./document.aux) ) 
 Here is how much of TeX's memory you used:
- 6274 strings out of 493013
- 82243 string characters out of 6136993
- 161587 words of memory out of 5000000
- 9671 multiletter control sequences out of 15000+600000
- 22817 words of font info for 68 fonts, out of 8000000 for 9000
+ 6325 strings out of 493013
+ 83249 string characters out of 6136993
+ 161615 words of memory out of 5000000
+ 9695 multiletter control sequences out of 15000+600000
+ 25288 words of font info for 73 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,35p,322b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
-{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/
-cm-super-t1.enc}{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t
-s1.enc}<c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><
-c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><c:/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/20
-16/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2016/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-dist/fonts
-/type1/public/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/pu
-blic/amsfonts/cm/cmmi5.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfo
-nts/cm/cmmi7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmm
-ib10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7
-.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/t
-exlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2016
-/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2016/texmf-dist
-/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public
-/cm-super/sfsi1000.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/
-sfss1000.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfss1200.p
-fb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb><c:/tex
-live/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2016/
-texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb>
-Output written on document.pdf (3 pages, 223368 bytes).
+{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super
+-ts1.enc}{c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<
+c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texli
+ve/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><c:/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2016/texmf
+-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2016/texmf-dist/font
+s/type1/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/p
+ublic/amsfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/ams
+fonts/cm/cmmi5.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
+mmi7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb
+><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><c:
+/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2
+016/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2016/texmf-d
+ist/fonts/type1/public/amsfonts/cm/cmr7.pfb><c:/texlive/2016/texmf-dist/fonts/t
+ype1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publ
+ic/amsfonts/cm/cmsy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-supe
+r/sfsi1000.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfss1000
+.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb><c:/t
+exlive/2016/texmf-dist/fonts/type1/public/cm-super/sfss1728.pfb><c:/texlive/201
+6/texmf-dist/fonts/type1/public/cm-super/sfsx1000.pfb><c:/texlive/2016/texmf-di
+st/fonts/type1/public/cm-super/sfsx1200.pfb><c:/texlive/2016/texmf-dist/fonts/t
+ype1/public/cm-super/sfsx1440.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publi
+c/cm-super/sftt1000.pfb>
+Output written on document.pdf (3 pages, 269461 bytes).
 PDF statistics:
- 109 PDF objects out of 1000 (max. 8388607)
- 81 compressed objects within 1 object stream
+ 117 PDF objects out of 1000 (max. 8388607)
+ 87 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
