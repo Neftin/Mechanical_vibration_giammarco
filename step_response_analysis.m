@@ -80,5 +80,7 @@ R31_nom = k3/k1;
 R31_per = abs((R31_exp - R31_nom)*100 / (R31_exp));
 R32_per = abs((R32_exp - R31_exp)*100 / (R31_exp));
 
+g_v_per = abs(100*(g_v - gain_v)/(gain_v));
+
 pp_step
 

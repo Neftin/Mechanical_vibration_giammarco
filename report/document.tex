@@ -154,6 +154,7 @@ Few operations on data must be performed in order to use them. At first, the dat
 	\end{equation}
 	where $r$ is the radius of the gear-rack coupling (gear wheel), $J_{motor}\vert_{zz}$ is the inertia of the motor , $c_{motor}$ the rotational damping and ''block'' quantities are the ones stricly related to the physical first mass.
 	\item The term $c_3$ contains the viscous friction with the ground and the one due to the spring. In the model those two contributions cannot be quantified separately.
+	
 \end{itemize}
 \section{System identification}
 	
@@ -223,21 +224,25 @@ This operations are made in order to make the system easy to solve, and uncoupli
 Now the next step is to use the measured value of steady state response (input and output), take $g_v$ as new estimated value and verify that $R_{12}$ and $R_{32}$ matches the nominal values. As set before $u(\infty) = 0.5$.
 Results on the ratios are shown in Table \ref{tab:ratios}
 %TODO< write the mambo jambo
-\begin{table}
-\centering
-
-\begin{tabular}{|c|c|c|c|}
-	\hline 
-	 & data & nominal & error \% \\ 
-	\hline 
-	$k_3/k_2$ & \input{result/R32_exp.txt}& \input{result/R32_nom.txt} & \input{result/R32_per.txt}\%  \\ 
-	\hline 
-	$k_3/k_1$ & \input{result/R31_exp.txt}& \input{result/R31_nom.txt} & \input{result/R31_per.txt}\% \\
-	\hline 
+\begin{table}[H]
+	\centering
+	\begin{tabular}{|c|c|c|c|}
+		\hline 
+		 & from data & nominal & error \% \\ 
+		\hline 
+		$k_3/k_2$ & \input{result/R32_exp.txt}& \input{result/R32_nom.txt} & \input{result/R32_per.txt}\%  \\ 
+		\hline 
+		$k_3/k_1$ & \input{result/R31_exp.txt}& \input{result/R31_nom.txt} & \input{result/R31_per.txt}\% \\
+		\hline \hline
+		      & from data              & initial & error 
+		      \%\\
+		\hline
+		$g_v$ & \input{result/g_v.txt} & \input{result/gain_v.txt} & \input{result/g_v_per.txt}\% \\\hline
+	\end{tabular} 
 	\label{tab:ratios}
-\end{tabular} 
-\caption{Stiffnesses ratios results}
+	\caption{Stiffnesses ratios and voltage-to-force coefficients results}
 \end{table}
+The $voltage-to-force$ estimation is shown in table \ref{tab:ratios}.
 \subsection{Parameters estimation}
 
 \begin{subequations}

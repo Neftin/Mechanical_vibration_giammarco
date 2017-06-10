@@ -51,7 +51,7 @@ for i = 1:6
         if (i > 4)
             fprintf(fileID,'%3.1f\n',results(i));
         else
-            fprintf(fileID,'%3.3f\n',results(i));
+            fprintf(fileID,'%3.1f\n',results(i));
         end
     fclose(fileID);
 end
@@ -61,6 +61,8 @@ end
 %     fprintf(fileID,'%3.4f\n',results(i));
 % fclose
 
-print2file(g_v,'report\result\','%d3.4')
+print2file(g_v,'report\result\','%3.4f')
+print2file(gain_v,'report\result\','%3.4f')
+print2file(g_v_per,'report\result\','%2.1f')
 
 
