@@ -33,8 +33,8 @@ M = [m1 0 0;
       0    -k2     k2+k3];
   
  C = [+c1+c12   -c12        0
-      -c12  +c2+c12+c23   -c23
-        0       -c23      +c3+c23]; %called C but it isn't a problem in order of assignments
+      -c12  +c2+c12+c23     -c23
+        0        -c23      +c3+c23]; %called C but it isn't a problem in order of assignments
  
  b = [g_v_est 0 0].';
  
@@ -60,7 +60,8 @@ y = lsim(sys, v, t, X0);
 
 %aggiungi una ponderazione dell'errore tutta sulla parte non piatta!
 
-F = [ ( y(:,1) - x1*gain_x ).*W, (y(:,2) - x2*gain_x).*W, (y(:,3) - x3*gain_x).*W ];
+%F = [ ( y(:,1) - x1*gain_x ).*W; (y(:,2) - x2*gain_x).*W; (y(:,3) - x3*gain_x).*W ];
 
+F = [ ( y(:,1) - x1*gain_x ); (y(:,2) - x2*gain_x); (y(:,3) - x3*gain_x) ];
 end
 

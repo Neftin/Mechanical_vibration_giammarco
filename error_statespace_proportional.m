@@ -1,4 +1,4 @@
-function [ F ] = errors_statespace_proportional( P )
+function [ F ] = error_statespace_proportional( P )
 %lo spazio di stato è l'ABC dei controlli... usare solo nello script
 
 global v t x1 x2 x3 gain_x;
@@ -60,7 +60,7 @@ y = lsim(sys, v, t, X0);
 
 %aggiungi una ponderazione dell'errore tutta sulla parte non piatta!
 
-F = [ ( y(:,1) - x1*gain_x ).*W (y(:,2) - x2*gain_x).*W (y(:,3) - x3*gain_x).*W ];
+F = [ ( y(:,1) - x1*gain_x ).*W; (y(:,2) - x2*gain_x).*W; (y(:,3) - x3*gain_x).*W ];
 
 end
 
