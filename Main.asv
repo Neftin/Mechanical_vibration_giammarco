@@ -232,18 +232,17 @@ pp_raileight
 
     %initialization and frst guess
 uMIM      = [1 1 1].';
-D_0       = K\M;
+D         = K\M;
 U_MIM     = zeros(3);
+
+
 
 eig_D_MIM = zeros(3,1);
 
-D = D_0;
 for i=1:3
+    merdone(:,i) = eig(D)
 %Iterate for the 3 modes
-    for j=1:15
-        if (j==1)
-            uMIM = ones(3,1); %first guess again
-        end
+    for j=1:30
         uMIM = D*uMIM;
         uMIM = uMIM./uMIM(1);
     end
@@ -252,11 +251,15 @@ for i=1:3
     U_MIM(:,i)   = uMIM; 
     %Matrix deflation:
         normalizator = uMIM.' * M * uMIM;     % compute the normalization factor
-        uMIM = uMIM./( (normalizator)^(1/2) ); % use the normalizaed-to-mass uMIM vector to deflate the matrix D
-    D = D - eig_D_MIM(i)*uMIM*uMIM.'*M;
+        uMIM = uMIM./( (normalizator)^(1/2) ) % use the normalizaed-to-mass uMIM vector to deflate the matrix D
+    D = D - eig_D_MIM(i)*uMIM.'*uMIM*M;
+    
+
 end
 
-[U_MIM,U_Rail,U_Eig]
+
+
+[U_MIM,U_Eig]
 
 %% MODAL ANALYSIS - Laplace
 
