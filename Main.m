@@ -62,7 +62,7 @@ c1      = param(6);
 c2      = param(7);
 c3      = param(8);
 
-g_v_est = param(9);
+g_v_est_full = param(9);
 
 I = eye(3);
 
@@ -84,7 +84,7 @@ M = [m1 0 0;
       -c12  +c2+c12+c23     -c23
         0        -c23      +c3+c23] %called C but it isn't a problem in order of assignments
  
- b = [g_v_est 0 0].';
+ b = [g_v_est_full 0 0].';
  
  A = [Z I; -M\K -M\Cc];    %left divide for the inverse
  B = [Z(:,1); M\b]; %single input
@@ -93,10 +93,10 @@ M = [m1 0 0;
 
 %%
 
-sys_guess = ss(A,B,C,D);
+sys_guess_full = ss(A,B,C,D);
 
 figure(1);
-compare(comparison_data,sys_guess)
+compare(comparison_data,sys_guess_full)
 
 %% lsq non lin proportional damping
 
@@ -117,7 +117,7 @@ m3      = P(3);
 ca      = P(4);
 cb      = P(5);
 
-g_v_est = P(6);
+g_v_est_prop = P(6);
 
 
 
@@ -143,7 +143,7 @@ M = [m1 0 0;
     
  
  
- b = [g_v_est 0 0].';
+ b = [g_v_est_prop 0 0].';
  
  A = [Z I; -M\K -M\C];    %left divide for the inverse
  B = [Z(:,1); M\b]; %single input
@@ -151,10 +151,10 @@ M = [m1 0 0;
  D = Z(:,1);
 %% comparison
 
-sys_guess = ss(A,B,C,D);
+sys_guess_prop = ss(A,B,C,D);
 
 figure(2);
-compare(comparison_data,sys_guess)
+compare(comparison_data,sys_guess_prop)
 
 pp_impulse
 
@@ -259,4 +259,21 @@ end
 [U_MIM,U_Rail,U_Eig]
 
 %% MODAL ANALYSIS - Laplace
+
+%tranfer function with force (voltage-to-force coefficient compensation)
+LaPlace_full = (1/g_v_est_full)*tf(sys_guess_full);
+
+figure(3)
+bode(LaPlace_full(1))
+grid minor;
+
+%tranfer function with force (voltage-to-force coefficient compensation)
+LaPlace_prop = (1/g_v_est_prop)*tf(sys_guess_prop);
+
+figure(4)
+bode(LaPlace_prop(1))
+grid minor;
+
+%aggiungi post_proc
+
 
