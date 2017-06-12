@@ -240,19 +240,24 @@ U_MIM     = zeros(3);
 eig_D_MIM = zeros(3,1);
 
 for i=1:3
+    merdone(:,i) = eig(D)
 %Iterate for the 3 modes
     for j=1:11
         uMIM = D*uMIM;
         uMIM = uMIM./uMIM(1);
     end
     %compute i-th eigenvalue (SEE PAGE STANDARD EIGENVALUE PROBLEM ON YOUR NOTEBOOK TO PUT COMPUTATIONS ON REPORT)
-    eig_D_MIM(i) = (uMIM.' * D * uMIM) / (uMIM.'*uMIM)
+    eig_D_MIM(i) = (uMIM.' * D * uMIM) / (uMIM.'*uMIM);
     U_MIM(:,i)   = uMIM; 
     %Matrix approximate Deflation 
-    D = D - eig_D_MIM(i)*eye(3)
+    D = D - eig_D_MIM(i)*eye(3);
+    
 
 end
 
 
 
 [U_MIM,U_Rail,U_Eig]
+
+%% MODAL ANALYSIS - Laplace
+
