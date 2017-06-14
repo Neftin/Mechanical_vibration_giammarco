@@ -33,10 +33,6 @@ comparison_data      = iddata([x1(rg)*gain_x , x2(rg)*gain_x , x3(rg)*gain_x], v
 
 P = [1.5 1.5 1.5 1 1 1 1 1 5];
 
-
-
-
-
 %P = [m1,m2,m3,c1,c2,c3,c12,c23,g_v]; %MANAGE LOWERBOUNDs AND UPPERBOUNDS, k
 %given
 % 
@@ -53,49 +49,49 @@ param = lsqnonlin(@error_statespace_full,P,lb,ub,options)
 
 %% sys reconstruction
 
-m1      = param(1);
-m2      = param(2);
-m3      = param(3);
+m1_f      = param(1);
+m2_f      = param(2);
+m3_f      = param(3);
 
-c12     = param(4);
-c23     = param(5);
+c12_f     = param(4);
+c23_f     = param(5);
 
-c1      = param(6);
-c2      = param(7);
-c3      = param(8);
+c1_f      = param(6);
+c2_f      = param(7);
+c3_f      = param(8);
 
-g_v_est_full = param(9);
+g_v_est_f = param(9);
 
 I = eye(3);
 
 Z = zeros(3);
 
-M = [m1 0 0;  
-     0 m2 0; 
-     0 0 m3];
+M_f = [m1_f 0 0;  
+     0 m2_f 0; 
+     0 0 m3_f];
  
  %K definition fixed
  
  k1=774;k2=770;k3=396;
  
- K = [k1   -k1        0;  
+ K_f = [k1   -k1        0;  
      -k1 k1+k2      -k2; 
       0    -k2     k2+k3];
   
- Cc = [+c1+c12   -c12        0
-      -c12  +c2+c12+c23     -c23
-        0        -c23      +c3+c23] %called C but it isn't a problem in order of assignments
+ Cc_f = [+c1_f+c12_f   -c12_f        0
+      -c12_f  +c2_f+c12_f+c23_f     -c23_f
+        0        -c23_f      +c3+c23_f] %called C but it isn't a problem in order of assignments
  
- b = [g_v_est_full 0 0].';
+ b_f = [g_v_est_f 0 0].';
  
- A = [Z I; -M\K -M\Cc];    %left divide for the inverse
- B = [Z(:,1); M\b]; %single input
- C = [I Z];               %multiple output
- D = Z(:,1);
+ A_f = [Z I; -M_f\K_f -M_f\Cc_f];    %left divide for the inverse
+ B_f = [Z(:,1); M_f\b_f]; %single input
+ C_f = [I Z];             %multiple output
+ D_f = Z(:,1);
 
 %%
 
-sys_guess_full = ss(A,B,C,D);
+sys_guess_full = ss(A_f,B_f,C_f,D_f);
 
 figure(1);
 compare(comparison_data,sys_guess_full)
@@ -112,9 +108,9 @@ P = lsqnonlin(@error_statespace_proportional,P,lb,ub,options)
 
 %% sys reconstruction
 
-m1      = P(1);
-m2      = P(2);
-m3      = P(3);
+m1_f      = P(1);
+m2_f      = P(2);
+m3_f      = P(3);
 
 ca      = P(4);
 cb      = P(5);
@@ -129,31 +125,31 @@ I = eye(3);
 
 Z = zeros(3);
 
-M = [m1 0 0;  
-     0 m2 0; 
-     0 0 m3];
+M_f = [m1_f 0 0;  
+     0 m2_f 0; 
+     0 0 m3_f];
  
  %K definition fixed
  
  k1=774;k2=770;k3=396;
  
- K = [k1   -k1        0;  
+ K_f = [k1   -k1        0;  
      -k1 k1+k2      -k2; 
       0    -k2     k2+k3];
   
- C = ca*M + cb*K; %called C but it isn't a problem in order of assignments
+ C_f = ca*M_f + cb*K_f; %called C but it isn't a problem in order of assignments
     
  
  
- b = [g_v_est_prop 0 0].';
+ b_f = [g_v_est_prop 0 0].';
  
- A = [Z I; -M\K -M\C];    %left divide for the inverse
- B = [Z(:,1); M\b]; %single input
- C = [I Z];               %multiple output
- D = Z(:,1);
+ A_f = [Z I; -M_f\K_f -M_f\C_f];    %left divide for the inverse
+ B_f = [Z(:,1); M_f\b_f]; %single input
+ C_f = [I Z];               %multiple output
+ D_f = Z(:,1);
 %% comparison
 
-sys_guess_prop = ss(A,B,C,D);
+sys_guess_prop = ss(A_f,B_f,C_f,D_f);
 
 figure(2);
 compare(comparison_data,sys_guess_prop)
@@ -164,7 +160,7 @@ pp_impulse
 
 %find eigenvalues as diagonal matrix and eigenvectors
 
-[ U_eig omega2_Eig_matrix ] = eig(K,M);
+[ U_eig omega2_Eig_matrix ] = eig(K_f,M_f);
 
     for i=1:3
         U_Eig(1:3,i) = U_eig(1:3,i)./U_eig(1,i);
@@ -183,7 +179,7 @@ clear omega2_Eig_matrix
 %space, so we can plot the surface if we want.
 
 %Raileight quotient
-R_q = @(u) ( [1; u(1); u(2)].' * K * [1; u(1); u(2)] )  /  ( [1; u(1); u(2)].' * M * [1; u(1); u(2)] ) ;
+R_q = @(u) ( [1; u(1); u(2)].' * K_f * [1; u(1); u(2)] )  /  ( [1; u(1); u(2)].' * M_f * [1; u(1); u(2)] ) ;
 
 R_q([1;1])
 
@@ -203,8 +199,8 @@ u_R1 = [1 uu_R1].'; %first mode
 
 B_Ker_u1 = null([1 uu_R1]);
 
-R_q2 = @(uu) ( ( ( [1; uu].'*B_Ker_u1.' ) * K * ( [1; uu].'*B_Ker_u1.' ).' )...
-         /     ( ( [1; uu].'*B_Ker_u1.' ) * M * ( [1; uu].'*B_Ker_u1.' ).' ) ) ;
+R_q2 = @(uu) ( ( ( [1; uu].'*B_Ker_u1.' ) * K_f * ( [1; uu].'*B_Ker_u1.' ).' )...
+         /     ( ( [1; uu].'*B_Ker_u1.' ) * M_f * ( [1; uu].'*B_Ker_u1.' ).' ) ) ;
 
 % [ 1 uu has to be multiplied times B_Ker_u
 uu0_R = 1;
@@ -234,28 +230,28 @@ pp_raileight
 
     %initialization and frst guess
 uMIM      = [1 1 1].';
-D_0       = K\M;
+D_0       = K_f\M_f;
 U_MIM     = zeros(3);
 
 eig_D_MIM = zeros(3,1);
 
-D = D_0;
+D_f = D_0;
 for i=1:3
 %Iterate for the 3 modes
     for j=1:15
         if (j==1)
             uMIM = ones(3,1); %first guess again
         end
-        uMIM = D*uMIM;
+        uMIM = D_f*uMIM;
         uMIM = uMIM./uMIM(1);
     end
     %compute i-th eigenvalue (SEE PAGE STANDARD EIGENVALUE PROBLEM ON YOUR NOTEBOOK TO PUT COMPUTATIONS ON REPORT)
-    eig_D_MIM(i) = (uMIM.' * D * uMIM) / (uMIM.'*uMIM);
+    eig_D_MIM(i) = (uMIM.' * D_f * uMIM) / (uMIM.'*uMIM);
     U_MIM(:,i)   = uMIM; 
     %Matrix deflation:
-        normalizator = uMIM.' * M * uMIM;     % compute the normalization factor
+        normalizator = uMIM.' * M_f * uMIM;     % compute the normalization factor
         uMIM = uMIM./( (normalizator)^(1/2) ); % use the normalizaed-to-mass uMIM vector to deflate the matrix D
-    D = D - eig_D_MIM(i)*uMIM*uMIM.'*M;
+    D_f = D_f - eig_D_MIM(i)*uMIM*uMIM.'*M_f;
 end
 
 [U_MIM,U_Rail,U_Eig]
@@ -263,7 +259,7 @@ end
 %% MODAL ANALYSIS - Laplace
 
 %tranfer function with force (voltage-to-force coefficient compensation)
-LaPlace_full = (1/g_v_est_full)*tf(sys_guess_full);
+LaPlace_full = (1/g_v_est_f)*tf(sys_guess_full);
 
 figure(3)
 bode(LaPlace_full(1))
