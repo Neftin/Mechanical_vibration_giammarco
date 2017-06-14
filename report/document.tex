@@ -250,6 +250,8 @@ To estimate the parameters the impulse reponse is used. The \textit{voltage-to-f
 The first estimation is performed using the model in Equations \ref{eq:ss}.
 %TODO explain and add a block cheme with the steps!
 \section{modal analysis}
+\subsection{Eigenvalue problem}
+\label{sec:eigenvalueproblem}
 \subsection{Undamped case}
 \subsubsection{Raileight quotient}
 	The Rayleight quotient is 
@@ -277,6 +279,19 @@ The first estimation is performed using the model in Equations \ref{eq:ss}.
 		\end{equation}
 	\end{itemize}
 The results are shown in Table \ref{tab:modalResults} and the contour plot of the Raileight coefficient is shown in Figure \ref{fig:Rcontour}
+\subsection{Proportional damping case}
+The mode shapes of the system remains the same but the frequencies will be different and complex (BIBLIO RAO PAG 914).
+
+given the modal shape vectors matrix $U$ obtained from the eigenvalue problem \ref{sec:eigenvalueproblem} with the masses from the proportional damping estimation, the modal coordinates w.r.t the previous coordinates are the following:
+
+\begin{equation}
+	\tilde{x} = U\tr x 
+\end{equation}
+ Which is basically a projection of the coordinate on the modal shapes vector (scalar products).
+ The matrices $M$, $K$ and $C$ becomes... %TODO input files
+%\input{result/M_s_matrix_tex.txt}
 
 
+
+%TODO tabella al 
 \end{document}
