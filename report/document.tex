@@ -42,9 +42,36 @@
 	\maketitle
 	
 \section{Dynamical system}
+\subsection{The system and the experimental setup}
+The system consists of three different bodies on three carriers. The carriers are aligned and the bodies are constrained to slide along the common axis. Between the bodies two springs are located, and a third spring connects the frame and the last body. The first body is rigidly connected trough a rack-pinion gearing with a motor which is controlled in voltage with a PC interface. The position of each body is provided by an encoder. The zeroes of the positions are at the springs rest position. The scheme of the model is depicted in Figure \ref{fig:theplant1}.
+The displacement of the masses in meters is available from the encoder with the following resolution:
+\begin{equation}
+	\Delta x = \dfrac{2 \pi r_e}{16000}.
+	\label{eq:enc_res}
+\end{equation}
+\subsection{The dynamical model}
+\subsubsection{Assumptions}
+\label{sec:ass}
+To define a model of the system, some assumptions were made:
+\begin{description}
+	\item[Rectilinear motion] All the bodies (masses), and the rack of the rack-pinion gearing are supposed to move and exert forces along the same axis, which is the motion axis. Consequently, all the quantities are meant to be projected on this axis.
+	\item[Viscous friction] Only viscous frictions are present
+	\item[Instantaneous electrical dynamics] The model of the electrical dynamics of the motor is only as a gain from voltage to force, expressed by the voltage-to-force factor, which is exploited in Section \ref{sec:step}.
+	\item [Motor mechanics merged] Inertia and damping of the motor are merged respectively into $m_1$ and $c_1$ (refer to Figure \ref{fig:theplant1})
+	\begin{equation}
+	\begin{sistema}
+	m_1 = m_{block} + \frac{J_{motor}\vert_{zz}}{r^2}\\
+	c_2 = c_{block} + \frac{c_{motor}}{r^2}
+	\end{sistema}
+	\end{equation}
+	where $r$ is the radius of the gear-rack coupling (gear wheel), $J_{motor}\vert_{zz}$ is the inertia of the motor , $c_{motor}$ the rotational damping and ''block'' quantities are the ones stricly related to the physical first mass.
+	\item [Last viscosities merged] The term $c_3$ (refer to Figure \ref{fig:theplant1}) contains the viscous friction with the ground and the one due to the spring. In the model those two contributions cannot be quantified separately.
+\end{description}
+\subsubsection{The linear model}
 
-\subsection{The linear model}
-The chosen model is a linear plant consisting of 3 masses, 3 springs between them, and 3 dampers between each mass and the ground. The model is shown in Figure \ref{fig:theplant1}.
+
+
+The chosen model is a linear plant consisting of 3 lumped masses, 3 lumped springs between them (the last to the frame), and 3 dampers between each mass and the ground. The model is shown in Figure \ref{fig:theplant1}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/theplant1}
@@ -146,20 +173,13 @@ Few operations on data must be performed in order to use them. At first, the dat
 \begin{itemize}
 	\item neglected motor electrical dynamics (instantaneous transmission of torque)
 	\item rectilinear motion (all perfect aligned)
-	\item inertia and damping of the motor are merged respectively into $m_1$ and $c_1$.
-	\begin{equation}
-	\begin{sistema}
-		m_1 = m_{block} + \frac{J_{motor}\vert_{zz}}{r^2}\\
-		c_2 = c_{block} + \frac{c_{motor}}{r^2}
-	\end{sistema}
-	\end{equation}
-	where $r$ is the radius of the gear-rack coupling (gear wheel), $J_{motor}\vert_{zz}$ is the inertia of the motor , $c_{motor}$ the rotational damping and ''block'' quantities are the ones stricly related to the physical first mass.
-	\item The term $c_3$ contains the viscous friction with the ground and the one due to the spring. In the model those two contributions cannot be quantified separately.
+
 	
 \end{itemize}
 \section{System identification}
 	
 \subsection{step response analysis}
+\label{sec:step}
 First of all, the step response analysis can be performed. In this analysis the ''static'' coefficients can be estimated, they are:
 \begin{itemize}
 	\item voltage to force $g_v$

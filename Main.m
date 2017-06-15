@@ -300,8 +300,6 @@ U_Rail_p = double([ [1 pocheBriciole.ur1(1) pocheBriciole.ur2(1) ].' ...
                     [1 pocheBriciole.ur1(2) pocheBriciole.ur2(2) ].' ...
                     [1 pocheBriciole.ur1(3) pocheBriciole.ur2(3) ].'])
 
-                
-
 %% MODAL ANALYSIS - Matrix iteration method - full
 
 %Essentially it is a way to find the largest eigen value and the
