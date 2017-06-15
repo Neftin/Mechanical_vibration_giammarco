@@ -464,18 +464,24 @@ Ts_sss         = tsss(1000) - tsss(999);
 
 resp_data21 = fft(iddata([ x1ssf, x2ssf, x3ssf ],vssf, Ts_ssf))
 
-rispensaFast = tfest(resp_data21,[ 6 ].', [4 2 0].')
+rispensaFast = tfest(resp_data21,[ 6 ].', [4 3 2].')
 
 resp_data22 = fft(iddata([ x1sss, x2sss, x3sss ],vsss, Ts_sss))
 
-rispensaSlow = tfest(resp_data22,[ 6 ].', [4 2 0].')
+rispensaSlow = tfest(resp_data22,[ 6 ].', [4 3 2].')
 
 
 % %fai due considerazioni in croce sulle FFT
 
+%% EXTRAS
 
+% frequency response identification with impulse
 
+resp_dataPulse = fft(iddata([ x1, x2, x3 ],v, Ts))
 
+rispensaPulse = tfest(resp_dataPulse,[ 6 6 6 ].', [4 3 2].')
+
+%Friction estimation
 
 
 

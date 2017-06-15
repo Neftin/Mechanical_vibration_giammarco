@@ -434,10 +434,8 @@ pp_MA_proportionaldamping
 %% SINE SWEEP DATA - slow
 
 
-Ts_sss         = tsss(1000) - tsss(999);
-[fr_resp_slow, fr_axis_slow] = tfestimate(vsss, [ x1sss, x2sss, x3sss ] ,[],[],[],1/Ts_sss);
 
-
+%fast
 Ts_ssf         = tssf(1000) - tssf(999);
 [fr_resp, fr_axis] = tfestimate(vssf, [ x1ssf, x2ssf, x3ssf ] ,[],[],[],1/Ts_ssf);
 
@@ -456,23 +454,32 @@ resp_data1 = frd(fr_resp(:,1), fr_axis, 'FrequencyUnit', 'Hz');
 frosta   = tfest(resp_data1,6,4)
 
 
+% sine sweep slow
+Ts_sss         = tsss(1000) - tsss(999);
+[fr_resp_slow, fr_axis_slow] = tfestimate(vsss, [ x1sss, x2sss, x3sss ] ,[],[],[],1/Ts_sss);
+
+
 
 % approccio fft iddata (rispensa)
 
 resp_data21 = fft(iddata([ x1ssf, x2ssf, x3ssf ],vssf, Ts_ssf))
 
-rispensaFast = tfest(resp_data21,[ 6 6 6].', [4 2 0].')
+rispensaFast = tfest(resp_data21,[ 6 ].', [4 3 2].')
 
 resp_data22 = fft(iddata([ x1sss, x2sss, x3sss ],vsss, Ts_sss))
 
-rispensaSlow = tfest(resp_data22,[ 6 6 6].', [4 2 0].')
+rispensaSlow = tfest(resp_data22,[ 6 ].', [4 3 2].')
 
 
 % %fai due considerazioni in croce sulle FFT
 
+%% EXTRAS
 
+% frequency response identification with impulse
 
+resp_data21 = fft(iddata([ x1, x2ssf, x3ssf ],vssf, Ts_ssf))
 
+rispensaFast = tfest(resp_data21,[ 6 ].', [4 3 2].')
 
 
 
