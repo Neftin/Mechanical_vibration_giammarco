@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  17 JUN 2017 20:07
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  18 JUN 2017 00:00
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -579,6 +579,7 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \TX@ftn=\toks26
 )
 \c@comment=\count109
+\c@box=\count110
 
 (c:/texlive/2016/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2017/02/22 v2.0g Standard LaTeX package
@@ -766,23 +767,23 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ))
 (c:/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count110
+\lst@mode=\count111
 \lst@gtempboxa=\box30
 \lst@token=\toks27
-\lst@length=\count111
+\lst@length=\count112
 \lst@currlwidth=\dimen131
-\lst@column=\count112
-\lst@pos=\count113
+\lst@column=\count113
+\lst@pos=\count114
 \lst@lostspace=\dimen132
 \lst@width=\dimen133
-\lst@newlines=\count114
-\lst@lineno=\count115
+\lst@newlines=\count115
+\lst@lineno=\count116
 \lst@maxwidth=\dimen134
 
 (c:/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count116
-\lst@skipnumbers=\count117
+\c@lstnumber=\count117
+\lst@skipnumbers=\count118
 \lst@framebox=\box31
 )
 (c:/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
@@ -797,25 +798,25 @@ LaTeX Warning: Unused global option(s):
 (./document.aux)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 47.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 58.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 58.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 58.
  (c:/texlive/2016/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 47.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 47.
+LaTeX Font Info:    ... okay on input line 58.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 58.
 
 (c:/texlive/2016/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -856,24 +857,24 @@ File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 
 (c:/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count118
+\scratchcounter=\count119
 \scratchdimen=\dimen135
 \scratchbox=\box32
-\nofMPsegments=\count119
-\nofMParguments=\count120
+\nofMPsegments=\count120
+\nofMParguments=\count121
 \everyMPshowfont=\toks28
-\MPscratchCnt=\count121
+\MPscratchCnt=\count122
 \MPscratchDim=\dimen136
-\MPnumerator=\count122
-\makeMPintoPDFobject=\count123
+\MPnumerator=\count123
+\makeMPintoPDFobject=\count124
 \everyMPtoPDFconversion=\toks29
 )
-\c@lstlisting=\count124
-LaTeX Font Info:    Try loading font information for U+msa on input line 51.
+\c@lstlisting=\count125
+LaTeX Font Info:    Try loading font information for U+msa on input line 62.
  (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 51.
+LaTeX Font Info:    Try loading font information for U+msb on input line 62.
 
 (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -881,110 +882,108 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <img/theplant1.pdf, id=1, 722.7pt x 290.08376pt>
 File: img/theplant1.pdf Graphic file (type pdf)
  <use img/theplant1.pdf>
-Package pdftex.def Info: img/theplant1.pdf used on input line 87.
+Package pdftex.def Info: img/theplant1.pdf used on input line 98.
 (pdftex.def)             Requested size: 512.14963pt x 205.57138pt.
 
 [1
 
 {c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 200.
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 178.
-
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 186.
 
 (c:/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 ) [2 <./img/theplant1.pdf>] (./result/k1.txt) (./result/k2.txt) (./result/k3.tx
 t)
-LaTeX Font Info:    Try loading font information for TS1+cmss on input line 233
+LaTeX Font Info:    Try loading font information for TS1+cmss on input line 247
 .
 
 (c:/texlive/2016/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 265.
-
-[3]
+) [3]
 Package epstopdf Info: Source file: <img/stst1.eps>
-(epstopdf)                    date: 2017-06-17 19:00:34
-(epstopdf)                    size: 438392 bytes
+(epstopdf)                    date: 2017-06-17 23:11:15
+(epstopdf)                    size: 439280 bytes
 (epstopdf)             Output file: <img/stst1-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-17 20:04:22
-(epstopdf)                    size: 108873 bytes
+(epstopdf)                    date: 2017-06-17 23:11:21
+(epstopdf)                    size: 109337 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/stst1-eps-converted-to
 .pdf img/stst1.eps>
-(epstopdf)             \includegraphics on input line 310.
+(epstopdf)             \includegraphics on input line 324.
 Package epstopdf Info: Output file is already uptodate.
- <img/stst1-eps-converted-to.pdf, id=45, 447.6725pt x 258.9675pt>
+
+<img/stst1-eps-converted-to.pdf, id=45, 447.6725pt x 255.95625pt>
 File: img/stst1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/stst1-eps-converted-to.pdf>
-Package pdftex.def Info: img/stst1-eps-converted-to.pdf used on input line 310.
+Package pdftex.def Info: img/stst1-eps-converted-to.pdf used on input line 324.
 
-(pdftex.def)             Requested size: 512.14963pt x 296.2929pt.
- (./result/R32_exp.txt)
-(./result/R32_nom.txt) (./result/R32_per.txt) (./result/R31_exp.txt)
-(./result/R31_nom.txt) (./result/R31_per.txt) (./result/g_v.txt)
-(./result/gain_v.txt) (./result/g_v_per.txt) [4 <./img/stst1-eps-converted-to.p
-df>]
+(pdftex.def)             Requested size: 512.14963pt x 292.84764pt.
+Package epstopdf Info: Source file: <img/step_input.eps>
+(epstopdf)                    date: 2017-06-17 23:11:16
+(epstopdf)                    size: 136434 bytes
+(epstopdf)             Output file: <img/step_input-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-06-17 23:11:23
+(epstopdf)                    size: 40137 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/step_input-eps-convert
+ed-to.pdf img/step_input.eps>
+(epstopdf)             \includegraphics on input line 330.
+Package epstopdf Info: Output file is already uptodate.
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 351.
+<img/step_input-eps-converted-to.pdf, id=46, 431.6125pt x 146.5475pt>
+File: img/step_input-eps-converted-to.pdf Graphic file (type pdf)
+
+<use img/step_input-eps-converted-to.pdf>
+Package pdftex.def Info: img/step_input-eps-converted-to.pdf used on input line
+ 330.
+(pdftex.def)             Requested size: 512.14963pt x 173.91066pt.
+ [4 <./img/stst1-eps-converted-to.pdf>] (./result/R32_exp.txt) (./result/R32_no
+m.txt) (./result/R32_per.txt)
+(./result/R31_exp.txt) (./result/R31_nom.txt) (./result/R31_per.txt)
+(./result/g_v.txt) (./result/gain_v.txt) (./result/g_v_per.txt)
+Overfull \hbox (12.79999pt too wide) in paragraph at lines 362--372
+ [] 
+ []
+
+<img/est_strategy.pdf, id=58, 722.7pt x 362.35374pt>
+File: img/est_strategy.pdf Graphic file (type pdf)
+
+<use img/est_strategy.pdf>
+Package pdftex.def Info: img/est_strategy.pdf used on input line 376.
+(pdftex.def)             Requested size: 512.14963pt x 256.78639pt.
+ [5 <./img/step_input-eps-converted-to.pdf>]
+Underfull \hbox (badness 10000) in paragraph at lines 381--382
+
+ []
+
+LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
+(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 383.
+
+Underfull \hbox (badness 10000) in paragraph at lines 386--387
+
+ []
+
+[6 <./img/est_strategy.pdf>]
+
+LaTeX Warning: Reference `tab:modalResults' on page 7 undefined on input line 4
+20.
 
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 351.
+LaTeX Warning: Reference `fig:Rcontour' on page 7 undefined on input line 420.
 
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 355.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 356.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 358.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 361.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 361.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 361.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 361.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 364.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 370.
-
-
-LaTeX Warning: Reference `tab:modalResults' on page 5 undefined on input line 3
-73.
-
-
-LaTeX Warning: Reference `fig:Rcontour' on page 5 undefined on input line 373.
-
-[5]
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 380.
-
-[6] (./document.aux)
+[7] (./document.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6400 strings out of 493013
- 84086 string characters out of 6136993
- 162790 words of memory out of 5000000
- 9731 multiletter control sequences out of 15000+600000
+ 6420 strings out of 493013
+ 84473 string characters out of 6136993
+ 162915 words of memory out of 5000000
+ 9749 multiletter control sequences out of 15000+600000
  28523 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 42i,21n,35p,598b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 42i,21n,35p,598b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
 live/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2016/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texlive/2016/texmf-di
@@ -1009,10 +1008,10 @@ blic/cm-super/sfss1728.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-su
 per/sfsx1000.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx12
 00.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:
 /texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on document.pdf (6 pages, 412906 bytes).
+Output written on document.pdf (7 pages, 505601 bytes).
 PDF statistics:
- 144 PDF objects out of 1000 (max. 8388607)
- 105 compressed objects within 2 object streams
+ 159 PDF objects out of 1000 (max. 8388607)
+ 116 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 11 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 21 words of extra memory for PDF output out of 10000 (max. 10000000)
 

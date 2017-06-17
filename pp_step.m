@@ -32,10 +32,10 @@ h = plot(t,x1s*(gain_x),ttemp1,temp1,'x',...
     set(h(4),'MarkerSize',0.5*PD);
     set(h(6),'MarkerSize',0.5*PD);
     xlabel('time [s]','interpreter','latex');
-    ylabel('positions $x_1$ [m]','interpreter','latex')
+    ylabel('positions $x_i$ [m]','interpreter','latex')
     h = legend('x_1(t)','x_1 steady state','x_2(t)','x_2 steady state','x_3(t)','x_3 steady state')
     set(h,'fontsize',5,'fontweight','b') ;
-    set(h,'position',[.8,.83,.1,.15])
+    set(h,'position',[.8,.81,.1,.14])
     set(h,'box','on')
  figure(1)   
 
@@ -43,9 +43,22 @@ h = plot(t,x1s*(gain_x),ttemp1,temp1,'x',...
     set(gcf,'PaperUnits','centimeters');
     set(gcf,'PaperPosition',[0 0 PD PD/2]);
     print('report\img\stst1','-depsc','-cmyk');
-   
+
+ figure(2)
+    h = plot(t,vstep)
+    grid on; 
+    set(gca,'FontSize',PD/2);
+    set(h,'linewidth',1);
+    set(h,'color','black')
+    xlabel('time [s]','interpreter','latex');
+    ylabel('voltage (input) $v$ [V]','interpreter','latex')
+    axis([-inf inf -0.3 0.6 ]);
+
     
-%legenda: _per è l'errore percentuale!
+         %   printing parameters (last!)
+    set(gcf,'PaperUnits','centimeters');
+    set(gcf,'PaperPosition',[0 0 PD PD/3.3]);
+    print('report\img\step_input','-depsc','-cmyk');%legenda: _per è l'errore percentuale!
  
 results = [R31_exp R31_nom R32_exp R32_nom R31_per R32_per]
 names    = {'R31_exp' 'R31_nom' 'R32_exp' 'R32_nom' 'R31_per' 'R32_per'};
@@ -60,11 +73,6 @@ for i = 1:6
         end
     fclose(fileID);
 end
-
-%create the file for the g_v
-% fileID = fopen( ['report\result\' names{i} '.txt'],'wt');
-%     fprintf(fileID,'%3.4f\n',results(i));
-% fclose
 
 print2file(g_v,'report\result\','%3.4f')
 print2file(gain_v,'report\result\','%3.4f')

@@ -24,7 +24,18 @@
 \newenvironment{comment}[1][]{\refstepcounter{comment}\par\medskip
 	\noindent \textbf{Comment~\thecomment. #1} }{\par}
 
-
+\newcounter{box}
+\newenvironment{scatola}[1]
+{\refstepcounter{box}
+\begin{center}
+		\begin{tabular}{|p{\linewidth}|}
+			\hline \textbf{Box~\thebox} #1  \\
+		}
+		{ 
+			 \\ \hline
+		\end{tabular} 
+	\end{center}
+ }
 
 
 %\usepackage{hyperref}
@@ -38,7 +49,7 @@
 
 \usepackage{listings} 
 
-\newcommand{\tr}{^{\tiny{\bm \top}}}
+\newcommand{\tr}{^{{\bm \top}}}
 
 \newenvironment{sistema}%
 {\left\lbrace\begin{array}{@{}l@{}}}%
@@ -142,7 +153,10 @@ g_v \\ 0 \\  0
 \begin{subequations}
 \begin{tabularx}{\linewidth}{@{}XXX@{}}
 	\begin{equation}
-		\dot{x} = \bm{A}x + \bm{B}v
+	\begin{sistema}
+		\dot{x} = \bm{A}x + \bm{B}v\\
+		      y = \bm{C}x + \bm{D}v
+	\end{sistema}
 	\end{equation}&
 	\begin{equation}
 		x = \left [ \begin{array}{cccccc}
@@ -304,15 +318,21 @@ This operations are made in order to make the system easy to solve, and uncoupli
 \end{equation}
 \subsubsection{Steady state value picking}
 Now the next step is to use the measured value of steady state response (input and output), take $g_v$ as new estimated value and verify that $R_{12}$ and $R_{32}$ matches the nominal values. The input is set on $u(\infty) = 0.5$.\\
-The value of steady state response are picked from the data directly, as shown in Figure \ref{fig:stst1}.
+The value of steady state response are picked from the data directly, as shown in Figure \ref{fig:stst1}. The input is shown in Figure \ref{fig:step_input}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/stst1}
 	\caption[steady state value picking]{Steady state value picking}
 	\label{fig:stst1}
 \end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/step_input}
+	\caption{Step input}
+	\label{fig:step_input}
+\end{figure}
 \noindent
-The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R31$,$R32$) is estimated by the \textbf{arithmetic average}. Given ($ \bm x_{\infty}$) averaged from the data, Equation \ref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data value}{nominal}$
+The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R31$,$R32$) is estimated by the \textbf{arithmetic average}. Given ($ \bm x_{\infty}$) averaged from the data, Equation \ref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data \ value}{nominal}$
 %TODO< write the mambo jambo
 \begin{table}[H]
 	\centering
@@ -335,9 +355,36 @@ The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value o
 The \textit{voltage-to-force} estimation is shown in table \ref{tab:ratios}.
 \subsection{Parameters estimation}
 To estimate the parameters the impulse response is used. The \textit{voltage-to-force} coefficient $g_v$ is one of the parameters to be estimate in order to include the possibility to cross-check the result with the step response result.
-The parameters to estimate are shown in table \ref{tab:parameters}. The strategy to estimate the parameters consist in using a minimization algorithm implemented in MATLAB\textregistered \ to find a system with the same structure which shows the minimum difference with the measured impulse response.
+The parameters to estimate are shown in table \ref{tab:parameters}.
+\subsubsection{Estimation strategy}
+	\label{sec:est_strat}
+ The strategy to estimate the parameters consists in use the \textbf{linear model} described in \ref{sec:linear_sys}, use the same input as the real model, and compare the output with the real output tuning the parameters to minimize the difference.
+\begin{scatola}{Estimation strategy keypoints}
+	\label{box:est_stra}
+ \begin{enumerate}
+	 \item Choose the linear model
+	 \item Provide the same input as the real system (an impulse-like signal)
+	 \item Simulate the output (time domain)
+	 \item Compare the outputs with the real one.
+	 \item Computing the sum of squares of the residuals
+	 \item Tune the parameters iterativly to minimize this quantity
+ \end{enumerate}
+\end{scatola}
+The implementation of the strategy in Box \ref{box:est_stra} is possible creating a MATLAB function which presents in input the parameters and in output the sum of the squares of the residuals. This is performed with a simulation of the system executed inside the function, the data of the real system are available as a global variable, and the only output is the sum of square to minimize. The strategy and the function to minimize (orange box) is shown in Figure \ref{fig:eststrategy}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/est_strategy}
+	\caption{estimation strategy scheme, Function to minimize in \textcolor{orange}{orange}}
+	\label{fig:eststrategy}
+\end{figure}
+\begin{comment}
+	A single evaluation of the function corresponds to a simulation of the linear system, the parameters are updated by the algorithm after the evaluation of the function\\
+\end{comment}
+\noindent The implementaion of the strategy is performed with MATLAB, the function \texttt{\textbf{lsqnonlin}} is used.
+
 \subsubsection{Free damping case}
-The first estimation is performed using the model in Equations \ref{eq:ss}.
+The first estimation is performed using the model in Equations \ref{eq:ss}.\\
+
 
 %TODO explain and add a block cheme with the steps!
 
