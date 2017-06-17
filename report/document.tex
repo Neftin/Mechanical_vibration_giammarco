@@ -18,6 +18,15 @@
 
 \usepackage{tabularx}
 
+%create new environment with enumeration
+                    
+\newcounter{comment}[section]
+\newenvironment{comment}[1][]{\refstepcounter{comment}\par\medskip
+	\noindent \textbf{Comment~\thecomment. #1} }{\par}
+
+
+
+
 %\usepackage{hyperref}
 
 %\usepackage{subfloat}
@@ -56,7 +65,7 @@ To define a model of the system, some assumptions were made:
 \begin{description}
 	\item[Rectilinear motion] All the bodies (masses), and the rack of the rack-pinion gearing are supposed to move and exert forces along the same axis, which is the motion axis. Consequently, all the quantities are meant to be projected on this axis.
 	\item[Viscous friction] Only viscous frictions are present
-	\item[Instantaneous electrical dynamics] The model of the electrical dynamics of the motor is only as a gain from voltage to force, expressed by the voltage-to-force factor, which is exploited in Section \ref{sec:step}.
+	\item[Instantaneous electrical dynamics] The model of the electrical dynamics of the motor is only a gain from voltage to force, expressed by the voltage-to-force factor, which is exploited in Section \ref{sec:step}.
 	\item [Motor mechanics merged] Inertia and damping of the motor are merged respectively into $m_1$ and $c_1$ (refer to Figure \ref{fig:theplant1})
 	\begin{equation}
 	\begin{sistema}
@@ -68,6 +77,7 @@ To define a model of the system, some assumptions were made:
 	\item [Last viscosities merged] The term $c_3$ (refer to Figure \ref{fig:theplant1}) contains the viscous friction with the ground and the one due to the spring. In the model those two contributions cannot be quantified separately.
 \end{description}
 \subsubsection{The linear model}
+\label{sec:linear_sys}
 
 
 
@@ -81,7 +91,7 @@ The chosen model is a linear plant consisting of 3 lumped masses, 3 lumped sprin
 \subsection{equation of motion}
 \begin{equation}
 	\begin{sistema}
-	m_1 \ddot{x}_1 = + k_1 \left (x_2 - x_1 \right )                                 + c_{12} \left ( \dot{x}_2 - \dot{x}_1 \right )                                                  - c_1\dot{x}_1 + g_v v\\
+	m_1 \ddot{x}_1 = + k_1 \left (x_2 - x_1 \right )                                 + c_{12} \left ( \dot{x}_2 - \dot{x}_1 \right )                                                  - c_1\dot{x}_1 + g_v v(t)\\
 	m_2 \ddot{x}_2 = + k_1 \left (x_1 - x_2 \right ) + k_2 \left (x_3 - x_2 \right ) + c_{12} \left ( \dot{x}_1 - \dot{x}_2 \right ) +  c_{23} \left ( \dot{x}_3 - \dot{x}_2 \right ) - c_2\dot{x}_2\\
 	m_3 \ddot{x}_3 =                                 + k_2 \left (x_2 - x_3 \right )                                                 +  c_{23} \left ( \dot{x}_2 - \dot{x}_3 \right ) - c_3\dot{x}_3 - k_3 x_3
 	\end{sistema}
@@ -132,6 +142,14 @@ g_v \\ 0 \\  0
 \begin{subequations}
 \begin{tabularx}{\linewidth}{@{}XXX@{}}
 	\begin{equation}
+		\dot{x} = \bm{A}x + \bm{B}v
+	\end{equation}&
+	\begin{equation}
+		x = \left [ \begin{array}{cccccc}
+		x_1 & x_2 & x_3 & \dot{x}_1  & \dot{x}_2 & \dot{x}_3 
+		\end{array}  \right ]\tr
+	\end{equation}\\
+	\begin{equation}
 		A = \left [ \begin{array}{cc}
 		\bm Z_{3 \times 3} & \bm I_{3 \times 3} \\ 
 		\bm{-M^{-1}K} & \bm{-M^{-1}C}
@@ -165,35 +183,64 @@ where $\bm I$ is the identity matrix and $\bm Z$ is a matrix with all the entrie
 \subsubsection{data processing}
 Few operations on data must be performed in order to use them. At first, the data on diplacements is provided in \textit{encoder counts}. They are converted in meters with the following convertion factor ($g_x$):
 \begin{equation}
-	g_x = \dfrac{\Delta x}{\Delta \texttt{counts}} = 2 \pi r_e \cdot \dfrac{\Delta \texttt{counts}}{16000\dfrac{\texttt{counts}}{\texttt{encoder revolution}}}
+	g_x = \dfrac{\Delta x}{\Delta \texttt{counts}} = 2 \pi r_e \cdot \dfrac{\Delta \texttt{counts}}{16000\dfrac{\texttt{counts}}{\texttt{encoder revolution}}}.
 \end{equation}
 	\subsection{parameters and data available}
+The linear system in Section \ref{sec:linear_sys} is fully represented by parameters, they are shown in Table \ref{tab:parameters}. Only the stiffnesses of the springs ($k_i$) are known.
+\begin{table}[H]
+	\centering
+	\label{tab:parameters}
+	\begin{tabular}{|l||l||l|l|l||l|l|l||l|l|l|l|l||}
+		\hline
+		Name & $g_v$ & $k_1$ & $k_2$ & $k_3$ &  $m_1$ & $m_2$ & $m_3$  &  $c_1$ & $c_2$ & $c_3$  & $c_{12}$ & $c_{23}$ \\
+		\hline
+		Value & - & \input{result/k1.txt} & \input{result/k2.txt} & \input{result/k3.txt} & - & - & - & - & - & - & - & - \\ 
+		\hline
+		Units& N/V & \multicolumn{3}{l||}{$N/m$} & \multicolumn{3}{l||}{$K_g$} & \multicolumn{5}{l||}{$Ns \ m^{-1}$} \\ \hline
+		Notes &       &       &       &       &       &    &   & \multicolumn{5}{l||}{\small{$c_a$ and $c_b$ if proportional damping}} \\ \hline
+	\end{tabular}
+\caption{Parameters  ( ''-'' stands for unavailable parameter)}
+\end{table}
+The meaning of each parameter is depicted in Figure \ref{fig:theplant1}, except for the  \textit{voltage-to-force} coefficient. Such coefficient $g_v$ is the factor which converts the voltage of the signal sent to the motor in the force exerted on the rack. It is the product of several physical gains as shown in Equation \ref{eq:g_v}.
+\begin{equation}
+f = (k_a\cdot k_t \cdot k_{mp})v(t) = g_v v(t).
+\label{eq:g_v}
+\end{equation}
+Where the physical meanings are:\\
+\begin{subequations}
+	\begin{tabularx}{\linewidth}{ X | X | X }
+		\centering
+		\begin{equation}
+			k_a = \dfrac{1}{R_{motor}} \approx 2 \ AV^{-1}
+		\end{equation} Electrical conductance of the motor &
+		\centering
+		\begin{equation}
+			k_t \approx 0.1 \ NmA^{-1}
+		\end{equation} Motor torque constant&
+		\centering
+		\begin{equation}
+			k_{mp} = \dfrac{1}{r_{pinion}} \approx 26.25 \  m^{-1}
+		\end{equation} Trasmission ratio of the gearing
+	\end{tabularx}
+\end{subequations}
 
-\subsection{initial hypothesis and approximations}
-\begin{itemize}
-	\item neglected motor electrical dynamics (instantaneous transmission of torque)
-	\item rectilinear motion (all perfect aligned)
-
-	
-\end{itemize}
 \section{System identification}
 	
-\subsection{step response analysis}
+\subsection{steady state analysis}
 \label{sec:step}
-First of all, the step response analysis can be performed. In this analysis the ''static'' coefficients can be estimated, they are:
+From the \textit{step response analysis} the steady state values of input and output are considered. In this analysis the ''static'' coefficients can be studied, they are:
 \begin{itemize}
 	\item voltage to force $g_v$
 	\item springs' stiffness $k_i$ with $i \in 1,2,3$
 \end{itemize} 
-The coefficient to be estimated is the \textcolor{Plum}{\textit{voltage-to-force}} coefficient %TODO SYMBOL 
+The goal of this section is to estimate $g_v$ and to verify the ratios between the stiffnesses $k_i$, w.r.t the nomina values. It is not possible to verify directly the $k_i$ values because the steady state values are $3$ as many as the equations of the generated system (linear) while the variables would be $4$.
+\subsubsection{Calculations}
+In order to generate the system of equations, the static gain vector $g_{dc}$ of the system is computed. A procedure may be to apply the ''CAB'' formula from the state space formulation:
 \begin{equation}
-	f = \textcolor{Plum}{\bm{(k_a\cdot k_t \cdot k_{mp})}}v = \textcolor{Plum}{g_v} v
-\end{equation}.
-In order to estimate the parameters the static gain vector $g_{dc}$ of the system has to be computed. The standard procedure is to apply the ''CAB'' formula from the state space formulation:
-\begin{equation}
-	\bm{g_{dc}} =	\bm{CA^{-1}B}
+\label{eq:cab}
+	\bm{g_{dc}} =	\bm{CA^{-1}B}.
 \end{equation}
-which is the transfer function at $s = 0$. Since this computation implies the inverse of the $6 \times 6$ matrix $\bm A$, another computation is performed. Using the formulation in Equation \ref{eq:Mtot}, we can perform the following limits:
+which is the transfer function at $s = 0$. Since equation \ref{eq:cab} implies the inverse of the $6 \times 6$ matrix $\bm A$, another computation is performed. Using the formulation in Equation \ref{eq:Mtot}, the following limits are performed:
 \begin{equation}
 	\begin{sistema}
 	\lim_{t \to + \infty}{\dot{x}}  = 0  \\
@@ -209,7 +256,8 @@ The substitution \ref{eq:dot_limits} in \ref{eq:eqm:tot} yields:
 \begin{equation}
 	\bm{g_{dc}} = \bm{K^{-1}}\bm{b}
 \end{equation}
-Note that it is equivalent to apply the Laplace tranform to the equation \ref{eq:eqm:tot} and apply the final value theorem to it.
+
+
 \begin{equation}
 	\bm{g_{dc}} =
 	\left [ \begin{array}{ccc}
@@ -217,19 +265,31 @@ Note that it is equivalent to apply the Laplace tranform to the equation \ref{eq
 	\end{array} \right ]\tr
 	\label{eq:g_dc}
 \end{equation}
-Note that in equation \ref{eq:g_dc} is evident from the expression the parallel between the stiffnesses (at steady state inertia and damping are invisible).
-The steady state value of the three output are available. Some other computations has to be made to make equation \ref{eq:g_dc} suitable for the check on the stiffnesses ratios and the new estimation of $g_v$. The equation for the steady state values is:
+\begin{comment}
+Apply \ref{eq:dot_limits} to equation \ref{eq:eqm:tot} is equivalent to apply the Laplace tranform to the equation
+\ref{eq:eqm:tot} and apply the final value theorem to it
+\end{comment}
+\begin{comment}
+Looking at the Equation \ref{eq:g_dc} is evident the series connection of the springs.
+\end{comment}\vspace{0.2 cm}
+\noindent The steady state value of the three output are available. Some other computations has to be made to make equation \ref{eq:g_dc} suitable for the check on the stiffnesses ratios and the new estimation of $g_v$. The equation for the steady state values is:
 \begin{equation}
-	\bm{C}\bm{x}_\infty = \bm{g_{dc}}u_\infty  
+	\bm{C}\bm{x}_\infty = \bm{g_{dc}}v_\infty  
 	\label{eq:stst1}
 \end{equation}
-Where the $\infty$ denotes the steady state value of the quantity. The Equation \ref{eq:stst1} is now expressed in terms of stiffnesses ratio: $k_3$ is fixed to the nominal value and two ratio are defined:\begin{itemize}
-	\item fix $k_3$ on nominal value
-	\item multiplied both sides times $k_3$
-	\item replace $R_{32} = \dfrac{k_3}{k_2}$
-	\item replace $R_{31} = \dfrac{k_3}{k_1}$
-\end{itemize}
-This operations are made in order to make the system easy to solve, and uncoupling the nonlinear factor $g_v$. This allow to make to solve the system in a cascade fashion from $g_v$ to $R_{13}$. The equation \ref{eq:stst1} is now expressed in the following form:
+Where the $\infty$ denotes the steady state value of the quantity ($\lim_{t \to \infty}{f(t)}$). The Equation \ref{eq:stst1} is now expressed in terms of stiffnesses ratio: $k_3$ is fixed to the nominal value and two ratio are defined as following.\\
+\begin{subequations}
+	\centering
+	\begin{tabularx}{\linewidth}{X X}
+		\begin{equation}
+			R_{31} = \dfrac{k_3}{k_1}
+		\end{equation} &
+		\begin{equation}
+			R_{32} = \dfrac{k_3}{k_2}
+		\end{equation}
+	\end{tabularx}
+\end{subequations}
+This operations are made in order to make the system easy to solve, and uncoupling the nonlinear factor $g_v$. This allows to solve the system in a cascade fashion from $g_v$ to $R_{13}$. The equation \ref{eq:stst1} is now expressed in the following form:
 \begin{equation}
 	\label{eq:stst2} 
 	k_3 \left [\begin{array}{c}
@@ -242,8 +302,17 @@ This operations are made in order to make the system easy to solve, and uncoupli
 	g_v R_{23} \\ 
 	g_v \end{array}  \right ] 
 \end{equation}
-Now the next step is to use the measured value of steady state response (input and output), take $g_v$ as new estimated value and verify that $R_{12}$ and $R_{32}$ matches the nominal values. As set before $u(\infty) = 0.5$.
-Results on the ratios are shown in Table \ref{tab:ratios}
+\subsubsection{Steady state value picking}
+Now the next step is to use the measured value of steady state response (input and output), take $g_v$ as new estimated value and verify that $R_{12}$ and $R_{32}$ matches the nominal values. The input is set on $u(\infty) = 0.5$.\\
+The value of steady state response are picked from the data directly, as shown in Figure \ref{fig:stst1}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/stst1}
+	\caption[steady state value picking]{Steady state value picking}
+	\label{fig:stst1}
+\end{figure}
+\noindent
+The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R31$,$R32$) is estimated by the \textbf{arithmetic average}. Given ($ \bm x_{\infty}$) averaged from the data, Equation \ref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data value}{nominal}$
 %TODO< write the mambo jambo
 \begin{table}[H]
 	\centering
@@ -261,14 +330,17 @@ Results on the ratios are shown in Table \ref{tab:ratios}
 		$g_v$ & \input{result/g_v.txt} & \input{result/gain_v.txt} & \input{result/g_v_per.txt}\% \\\hline
 	\end{tabular} 
 	\label{tab:ratios}
-	\caption{Stiffnesses ratios and voltage-to-force coefficients results}
+	\caption{Stiffnesses ratios and voltage-to-force coefficients results from steady state analysis}
 \end{table}
-The $voltage-to-force$ estimation is shown in table \ref{tab:ratios}.
+The \textit{voltage-to-force} estimation is shown in table \ref{tab:ratios}.
 \subsection{Parameters estimation}
-To estimate the parameters the impulse reponse is used. The \textit{voltage-to-force} coefficient $g_v$ is one of the parameters to be estimate in order to have the possibility to cross-check the result with the step response result.
+To estimate the parameters the impulse response is used. The \textit{voltage-to-force} coefficient $g_v$ is one of the parameters to be estimate in order to include the possibility to cross-check the result with the step response result.
+The parameters to estimate are shown in table \ref{tab:parameters}. The strategy to estimate the parameters consist in using a minimization algorithm implemented in MATLAB\textregistered \ to find a system with the same structure which shows the minimum difference with the measured impulse response.
 \subsubsection{Free damping case}
 The first estimation is performed using the model in Equations \ref{eq:ss}.
+
 %TODO explain and add a block cheme with the steps!
+
 \section{modal analysis}
 \subsection{Eigenvalue problem}
 \label{sec:eigenvalueproblem}
@@ -300,7 +372,7 @@ The first estimation is performed using the model in Equations \ref{eq:ss}.
 	\end{itemize}
 The results are shown in Table \ref{tab:modalResults} and the contour plot of the Raileight coefficient is shown in Figure \ref{fig:Rcontour}
 \subsection{Proportional damping case}
-The mode shapes of the system remains the same but the frequencies will be different and complex (BIBLIO RAO PAG 914).
+ (BIBLIO RAO PAG 914).
 
 given the modal shape vectors matrix $U$ obtained from the eigenvalue problem \ref{sec:eigenvalueproblem} with the masses from the proportional damping estimation, the modal coordinates w.r.t the previous coordinates are the following:
 
@@ -314,4 +386,6 @@ given the modal shape vectors matrix $U$ obtained from the eigenvalue problem \r
 
 
 %TODO tabella al 
+%TODO AGGIUNGI (t) alle variabili e lista dei simboli!
+%TODO experimental set up
 \end{document}

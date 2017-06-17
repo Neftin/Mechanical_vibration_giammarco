@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  15 JUN 2017 18:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  17 JUN 2017 20:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -578,6 +578,8 @@ Package: array 2016/10/06 v2.4d Tabular extension package (FMi)
 \TX@cols=\count108
 \TX@ftn=\toks26
 )
+\c@comment=\count109
+
 (c:/texlive/2016/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2017/02/22 v2.0g Standard LaTeX package
 Package textcomp Info: Sub-encoding information:
@@ -764,23 +766,23 @@ Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ))
 (c:/texlive/2016/texmf-dist/tex/latex/listings/listings.sty
-\lst@mode=\count109
+\lst@mode=\count110
 \lst@gtempboxa=\box30
 \lst@token=\toks27
-\lst@length=\count110
+\lst@length=\count111
 \lst@currlwidth=\dimen131
-\lst@column=\count111
-\lst@pos=\count112
+\lst@column=\count112
+\lst@pos=\count113
 \lst@lostspace=\dimen132
 \lst@width=\dimen133
-\lst@newlines=\count113
-\lst@lineno=\count114
+\lst@newlines=\count114
+\lst@lineno=\count115
 \lst@maxwidth=\dimen134
 
 (c:/texlive/2016/texmf-dist/tex/latex/listings/lstmisc.sty
 File: lstmisc.sty 2015/06/04 1.6 (Carsten Heinz)
-\c@lstnumber=\count115
-\lst@skipnumbers=\count116
+\c@lstnumber=\count116
+\lst@skipnumbers=\count117
 \lst@framebox=\box31
 )
 (c:/texlive/2016/texmf-dist/tex/latex/listings/listings.cfg
@@ -795,25 +797,25 @@ LaTeX Warning: Unused global option(s):
 (./document.aux)
 \openout1 = `document.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 38.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 38.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 47.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 47.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 47.
  (c:/texlive/2016/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 38.
-LaTeX Font Info:    Try loading font information for T1+cmss on input line 38.
+LaTeX Font Info:    ... okay on input line 47.
+LaTeX Font Info:    Try loading font information for T1+cmss on input line 47.
 
 (c:/texlive/2016/texmf-dist/tex/latex/base/t1cmss.fd
 File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
@@ -854,24 +856,24 @@ File: t1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 
 (c:/texlive/2016/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count117
+\scratchcounter=\count118
 \scratchdimen=\dimen135
 \scratchbox=\box32
-\nofMPsegments=\count118
-\nofMParguments=\count119
+\nofMPsegments=\count119
+\nofMParguments=\count120
 \everyMPshowfont=\toks28
-\MPscratchCnt=\count120
+\MPscratchCnt=\count121
 \MPscratchDim=\dimen136
-\MPnumerator=\count121
-\makeMPintoPDFobject=\count122
+\MPnumerator=\count122
+\makeMPintoPDFobject=\count123
 \everyMPtoPDFconversion=\toks29
 )
-\c@lstlisting=\count123
-LaTeX Font Info:    Try loading font information for U+msa on input line 42.
+\c@lstlisting=\count124
+LaTeX Font Info:    Try loading font information for U+msa on input line 51.
  (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 42.
+LaTeX Font Info:    Try loading font information for U+msb on input line 51.
 
 (c:/texlive/2016/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
@@ -879,113 +881,138 @@ File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 <img/theplant1.pdf, id=1, 722.7pt x 290.08376pt>
 File: img/theplant1.pdf Graphic file (type pdf)
  <use img/theplant1.pdf>
-Package pdftex.def Info: img/theplant1.pdf used on input line 77.
+Package pdftex.def Info: img/theplant1.pdf used on input line 87.
 (pdftex.def)             Requested size: 512.14963pt x 205.57138pt.
 
 [1
 
 {c:/texlive/2016/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 168.
 
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 178.
+
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 186.
 
 (c:/texlive/2016/texmf-dist/tex/latex/base/t1cmtt.fd
 File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-) [2 <./img/theplant1.pdf>]
-LaTeX Font Info:    Try loading font information for TS1+cmss on input line 174
+) [2 <./img/theplant1.pdf>] (./result/k1.txt) (./result/k2.txt) (./result/k3.tx
+t)
+LaTeX Font Info:    Try loading font information for TS1+cmss on input line 233
 .
+
 (c:/texlive/2016/texmf-dist/tex/latex/base/ts1cmss.fd
 File: ts1cmss.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 217.
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 265.
 
-[3] (./result/R32_exp.txt) (./result/R32_nom.txt) (./result/R32_per.txt)
-(./result/R31_exp.txt) (./result/R31_nom.txt) (./result/R31_per.txt)
-(./result/g_v.txt) (./result/gain_v.txt) (./result/g_v_per.txt)
+[3]
+Package epstopdf Info: Source file: <img/stst1.eps>
+(epstopdf)                    date: 2017-06-17 19:00:34
+(epstopdf)                    size: 438392 bytes
+(epstopdf)             Output file: <img/stst1-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-06-17 20:04:22
+(epstopdf)                    size: 108873 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/stst1-eps-converted-to
+.pdf img/stst1.eps>
+(epstopdf)             \includegraphics on input line 310.
+Package epstopdf Info: Output file is already uptodate.
+ <img/stst1-eps-converted-to.pdf, id=45, 447.6725pt x 258.9675pt>
+File: img/stst1-eps-converted-to.pdf Graphic file (type pdf)
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 279.
+<use img/stst1-eps-converted-to.pdf>
+Package pdftex.def Info: img/stst1-eps-converted-to.pdf used on input line 310.
 
+(pdftex.def)             Requested size: 512.14963pt x 296.2929pt.
+ (./result/R32_exp.txt)
+(./result/R32_nom.txt) (./result/R32_per.txt) (./result/R31_exp.txt)
+(./result/R31_nom.txt) (./result/R31_per.txt) (./result/g_v.txt)
+(./result/gain_v.txt) (./result/g_v_per.txt) [4 <./img/stst1-eps-converted-to.p
+df>]
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 279.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 283.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 284.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 286.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 289.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 289.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 289.
-
-
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 289.
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 351.
 
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 292.
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 351.
 
-[4]
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 298.
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 355.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 356.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 358.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 361.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 361.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 361.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 361.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 364.
+
+
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 370.
 
 
 LaTeX Warning: Reference `tab:modalResults' on page 5 undefined on input line 3
-01.
+73.
 
 
-LaTeX Warning: Reference `fig:Rcontour' on page 5 undefined on input line 301.
+LaTeX Warning: Reference `fig:Rcontour' on page 5 undefined on input line 373.
 
+[5]
 
-LaTeX Font Warning: Command \tiny invalid in math mode on input line 308.
+LaTeX Font Warning: Command \tiny invalid in math mode on input line 380.
 
-[5] (./document.aux)
+[6] (./document.aux)
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 6343 strings out of 493013
- 83479 string characters out of 6136993
- 160673 words of memory out of 5000000
- 9704 multiletter control sequences out of 15000+600000
- 25288 words of font info for 73 fonts, out of 8000000 for 9000
+ 6400 strings out of 493013
+ 84086 string characters out of 6136993
+ 162790 words of memory out of 5000000
+ 9731 multiletter control sequences out of 15000+600000
+ 28523 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,35p,598b,350s stack positions out of 5000i,500n,10000p,200000b,80000s
 {c:/texlive/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{c:/tex
 live/2016/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}<c:/texlive/2016/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmbsy10.pfb><c:/texlive/2016/texmf-di
 st/fonts/type1/public/amsfonts/cmextra/cmbsy7.pfb><c:/texlive/2016/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmbx10.pfb><c:/texlive/2016/texmf-dist/fonts/type
-1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/a
-msfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
-m/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.p
-fb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/tex
-live/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/201
-6/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><c:/texlive/2016/te
-xmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/f
-onts/type1/public/amsfonts/cm/cmr5.pfb><c:/texlive/2016/texmf-dist/fonts/type1/
-public/amsfonts/cm/cmr7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/c
-msy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsi1000.pfb><
-c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfss1000.pfb><c:/texlive
-/2016/texmf-dist/fonts/type1/public/cm-super/sfss1200.pfb><c:/texlive/2016/texm
-f-dist/fonts/type1/public/cm-super/sfss1728.pfb><c:/texlive/2016/texmf-dist/fon
-ts/type1/public/cm-super/sfsx1000.pfb><c:/texlive/2016/texmf-dist/fonts/type1/p
-ublic/cm-super/sfsx1200.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-s
-uper/sfsx1440.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1
-000.pfb>
-Output written on document.pdf (5 pages, 288260 bytes).
+onts/type1/public/amsfonts/cm/cmbx7.pfb><c:/texlive/2016/texmf-dist/fonts/type1
+/public/amsfonts/cm/cmex10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/a
+msfonts/cm/cmmi10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/c
+m/cmmi5.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pf
+b><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb><c:/texl
+ive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb><c:/texlive/2016/t
+exmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb><c:/texlive/2016/texmf-dis
+t/fonts/type1/public/amsfonts/cmextra/cmmib7.pfb><c:/texlive/2016/texmf-dist/fo
+nts/type1/public/amsfonts/cm/cmr10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/
+public/amsfonts/cm/cmr5.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsf
+onts/cm/cmr7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cms
+y10.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb><c
+:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsi1000.pfb><c:/texlive/
+2016/texmf-dist/fonts/type1/public/cm-super/sfss0900.pfb><c:/texlive/2016/texmf
+-dist/fonts/type1/public/cm-super/sfss1000.pfb><c:/texlive/2016/texmf-dist/font
+s/type1/public/cm-super/sfss1200.pfb><c:/texlive/2016/texmf-dist/fonts/type1/pu
+blic/cm-super/sfss1728.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-su
+per/sfsx1000.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx12
+00.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:
+/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
+Output written on document.pdf (6 pages, 412906 bytes).
 PDF statistics:
- 123 PDF objects out of 1000 (max. 8388607)
- 91 compressed objects within 1 object stream
+ 144 PDF objects out of 1000 (max. 8388607)
+ 105 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 6 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 11 words of extra memory for PDF output out of 10000 (max. 10000000)
 

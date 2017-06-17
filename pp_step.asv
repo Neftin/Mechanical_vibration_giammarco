@@ -28,15 +28,14 @@ h = plot(t,x1s*(gain_x),ttemp1,temp1,'x',...
     grid on; 
     set(gca,'FontSize',PD/2);
     set(h,'linewidth',1);
-    set(h(2),'MarkerSize',0.5*PD);
-    set(h(4),'MarkerSize',0.5*PD);
-    set(h(6),'MarkerSize',0.5*PD);
+    set(h(2),'MarkerSize',1*PD);
+    set(h(4),'MarkerSize',1*PD);
+    set(h(6),'MarkerSize',1*PD);
     xlabel('time [s]','interpreter','latex');
     ylabel('positions $x_1$ [m]','interpreter','latex')
     h = legend('x_1(t)','x_1 steady state','x_2(t)','x_2 steady state','x_3(t)','x_3 steady state')
-    set(h,'fontsize',5,'fontweight','b') ;
-    set(h,'position',[.8,.83,.1,.15])
-    set(h,'box','on')
+    set(h,'fontsize',7,'fontweight','b') ;
+    set(h,'position',[.8,.8,0,0])
  figure(1)   
 
      %   printing parameters (last!)
