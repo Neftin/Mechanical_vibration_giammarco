@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  18 JUN 2017 03:19
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  18 JUN 2017 03:31
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -795,7 +795,11 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 LaTeX Warning: Unused global option(s):
     [twosided].
 
-(./document.aux)
+(./document.aux
+
+LaTeX Warning: Label `tab:est_full_results' multiply defined.
+
+)
 \openout1 = `document.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 58.
@@ -959,11 +963,11 @@ Underfull \hbox (badness 10000) in paragraph at lines 381--382
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 383.
 Package epstopdf Info: Source file: <img/pulse_input.eps>
-(epstopdf)                    date: 2017-06-18 03:16:15
+(epstopdf)                    date: 2017-06-18 03:30:41
 (epstopdf)                    size: 177795 bytes
 (epstopdf)             Output file: <img/pulse_input-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-18 03:17:27
-(epstopdf)                    size: 40533 bytes
+(epstopdf)                    date: 2017-06-18 03:30:48
+(epstopdf)                    size: 40543 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/pulse_input-eps-conver
 ted-to.pdf img/pulse_input.eps>
 (epstopdf)             \includegraphics on input line 387.
@@ -980,10 +984,10 @@ e 387.
 (./result/c2_f.txt) (./result/c3_f.txt) (./result/c12_f.txt)
 (./result/c23_f.txt)
 Package epstopdf Info: Source file: <img/compare_f.eps>
-(epstopdf)                    date: 2017-06-18 03:16:18
+(epstopdf)                    date: 2017-06-18 03:30:43
 (epstopdf)                    size: 1257783 bytes
 (epstopdf)             Output file: <img/compare_f-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-18 03:17:29
+(epstopdf)                    date: 2017-06-18 03:30:51
 (epstopdf)                    size: 375214 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/compare_f-eps-converte
 d-to.pdf img/compare_f.eps>
@@ -1001,16 +1005,18 @@ Package pdftex.def Info: img/compare_f-eps-converted-to.pdf used on input line
 Overfull \vbox (13.1306pt too high) has occurred while \output is active []
 
 
-[7 <./img/compare_f-eps-converted-to.pdf>]
+[7 <./img/compare_f-eps-converted-to.pdf>] (./result/g_v_est_f.txt)
+(./result/m1_f.txt) (./result/m2_f.txt) (./result/m3_f.txt) (./result/ca_p.txt)
+(./result/cb_p.txt)
 Package epstopdf Info: Source file: <img/compare_p.eps>
-(epstopdf)                    date: 2017-06-18 03:16:21
+(epstopdf)                    date: 2017-06-18 03:30:46
 (epstopdf)                    size: 1257848 bytes
 (epstopdf)             Output file: <img/compare_p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-18 03:17:32
+(epstopdf)                    date: 2017-06-18 03:30:53
 (epstopdf)                    size: 377242 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/compare_p-eps-converte
 d-to.pdf img/compare_p.eps>
-(epstopdf)             \includegraphics on input line 425.
+(epstopdf)             \includegraphics on input line 443.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/compare_p-eps-converted-to.pdf, id=89, 444.66125pt x 618.31pt>
@@ -1018,36 +1024,40 @@ File: img/compare_p-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/compare_p-eps-converted-to.pdf>
 Package pdftex.def Info: img/compare_p-eps-converted-to.pdf used on input line 
-425.
+443.
 (pdftex.def)             Requested size: 512.14963pt x 712.20201pt.
+ [8]
+Overfull \vbox (13.1306pt too high) has occurred while \output is active []
 
-Overfull \vbox (43.1284pt too high) has occurred while \output is active []
 
-
-[8 <./img/compare_p-eps-converted-to.pdf>]
+[9 <./img/compare_p-eps-converted-to.pdf>]
 
 LaTeX Warning: No positions in optional float specifier.
-               Default added (so using `tbp') on input line 429.
+               Default added (so using `tbp') on input line 448.
 
 (./result/fit_f1.txt) (./result/fit_p1.txt) (./result/fit_f2.txt)
 (./result/fit_p2.txt) (./result/fit_f3.txt) (./result/fit_p3.txt)
 
-LaTeX Warning: Reference `tab:modalResults' on page 9 undefined on input line 4
-71.
+LaTeX Warning: Reference `tab:modalResults' on page 10 undefined on input line 
+490.
 
 
-LaTeX Warning: Reference `fig:Rcontour' on page 9 undefined on input line 471.
+LaTeX Warning: Reference `fig:Rcontour' on page 10 undefined on input line 490.
 
-[9] (./document.aux)
+
+[10] (./document.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 6485 strings out of 493013
- 85666 string characters out of 6136993
- 162959 words of memory out of 5000000
- 9766 multiletter control sequences out of 15000+600000
+ 6500 strings out of 493013
+ 85887 string characters out of 6136993
+ 163008 words of memory out of 5000000
+ 9767 multiletter control sequences out of 15000+600000
  28523 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,35p,598b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1075,10 +1085,10 @@ blic/cm-super/sfss1728.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-su
 per/sfsx1000.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx12
 00.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:
 /texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on document.pdf (9 pages, 1298133 bytes).
+Output written on document.pdf (10 pages, 1299281 bytes).
 PDF statistics:
- 183 PDF objects out of 1000 (max. 8388607)
- 132 compressed objects within 2 object streams
+ 186 PDF objects out of 1000 (max. 8388607)
+ 134 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
  36 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -418,13 +418,32 @@ A plot with the comparison of the models is provided in Figure \ref{fig:compare_
 	\label{fig:compare_f}
 \end{figure}
 \subsection{Proportinal damping case}
-
+The procedure is exactly the same as the case of the free damping. The parameters to estimate now are 6 instead of 9. The damping now is represented by only 2 parameters, as shown in Equation \ref{eq:prop_C}.
+\begin{equation}
+	\label{eq:prop_C}
+	\bm{C} = c_a\bm{M} + c_b\bm{K}
+\end{equation}
+\begin{table}[H]
+	\centering
+	\label{tab:est_full_results}
+	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
+		\hline
+		Name & $g_v$ &  $m_1$ & $m_2$ & $m_3$  &  $c_a$ & $c_b$  \\
+		\hline
+		Value & \input{result/g_v_est_f.txt} & \input{result/m1_f.txt} & \input{result/m2_f.txt} & \input{result/m3_f.txt} & \input{result/ca_p.txt} & \input{result/cb_p.txt} \\ 
+		\hline
+		Unit & $N/V$ &  \multicolumn{3}{l|}{$K_g$}  &  \multicolumn{2}{l|}{$Ns \ m_{-1}$} \\
+		\hline
+	\end{tabular}
+	\caption{Estimation results (model with proportional damping)}
+\end{table}
 \begin{figure}[H]
 	\centering
 	\caption{Comparison between the response of the model and the response of the system - proportional damping case}
 	\includegraphics[width=\linewidth]{img/compare_p}
 	\label{fig:compare_p}
 \end{figure}
+
 \subsection{Conclusion}
 \begin{table}[]
 	\centering
@@ -481,6 +500,7 @@ given the modal shape vectors matrix $U$ obtained from the eigenvalue problem \r
  The matrices $M$, $K$ and $C$ becomes... %TODO input files
 %\input{result/M_s_matrix_tex.txt}
 
+%TODO scrivi che c'è un offset a steady state e lo si vede anche in g_v ogni volta diverso. Colpa attrito secco
 
 %TODO metti in simulink lo state space con attrito (chiudi loop ed aggiungi a B la possibilità di attrito)
 

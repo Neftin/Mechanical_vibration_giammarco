@@ -88,7 +88,7 @@ print2file(m2_p,'report\result\','%3.3f')
 print2file(m3_p,'report\result\','%3.3f')
 
 print2file(ca_p,'report\result\','%3.3f')
-print2file(cb_p,'report\result\','%3.3f')
+print2file(cb_p,'report\result\','%1.3d')
 
 print2file(g_v_est_p,'report\result\','%3.3f')
 
