@@ -17,6 +17,10 @@
 \usepackage{subfigure}
 
 \usepackage{tabularx}
+\usepackage{multirow}
+
+%rapid file input
+\newcommand{\rs}[1]{\input{result/#1.txt}}
 
 %create new environment with enumeration
                     
@@ -149,7 +153,7 @@ g_v \\ 0 \\  0
 \label{eq:Mtot}
 \end{subequations}
 \subsection{state-space model}
-	The linear model of the plant, expressed by the equation \ref{eq:Mtot}, is a SIMO model. A state-space form was chosen to represent this model. The matrices are the follwing:\\
+	The linear model of the plant, expressed by the equation \eqref{eq:Mtot}, is a SIMO model. A state-space form was chosen to represent this model. The matrices are the follwing:\\
 \begin{subequations}
 \begin{tabularx}{\linewidth}{@{}XXX@{}}
 	\begin{equation}
@@ -215,7 +219,7 @@ The linear system in Section \ref{sec:linear_sys} is fully represented by parame
 	\end{tabular}
 \caption{Parameters  ( ''-'' stands for unavailable parameter)}
 \end{table}
-The meaning of each parameter is depicted in Figure \ref{fig:theplant1}, except for the  \textit{voltage-to-force} coefficient. Such coefficient $g_v$ is the factor which converts the voltage of the signal sent to the motor in the force exerted on the rack. It is the product of several physical gains as shown in Equation \ref{eq:g_v}.
+The meaning of each parameter is depicted in Figure \ref{fig:theplant1}, except for the  \textit{voltage-to-force} coefficient. Such coefficient $g_v$ is the factor which converts the voltage of the signal sent to the motor in the force exerted on the rack. It is the product of several physical gains as shown in Equation \eqref{eq:g_v}.
 \begin{equation}
 f = (k_a\cdot k_t \cdot k_{mp})v(t) = g_v v(t).
 \label{eq:g_v}
@@ -254,7 +258,7 @@ In order to generate the system of equations, the static gain vector $g_{dc}$ of
 \label{eq:cab}
 	\bm{g_{dc}} =	\bm{CA^{-1}B}.
 \end{equation}
-which is the transfer function at $s = 0$. Since equation \ref{eq:cab} implies the inverse of the $6 \times 6$ matrix $\bm A$, another computation is performed. Using the formulation in Equation \ref{eq:Mtot}, the following limits are performed:
+which is the transfer function at $s = 0$. Since equation \eqref{eq:cab} implies the inverse of the $6 \times 6$ matrix $\bm A$, another computation is performed. Using the formulation in Equation \eqref{eq:Mtot}, the following limits are performed:
 \begin{equation}
 	\begin{sistema}
 	\lim_{t \to + \infty}{\dot{x}}  = 0  \\
@@ -262,7 +266,7 @@ which is the transfer function at $s = 0$. Since equation \ref{eq:cab} implies t
 	\end{sistema}
 	\label{eq:dot_limits}
 \end{equation}
-The substitution \ref{eq:dot_limits} in \ref{eq:eqm:tot} yields:
+The substitution \eqref{eq:dot_limits} in \eqref{eq:eqm:tot} yields:
 \begin{equation}
 \bm K x = \bm b
 \label{eq:dot0}
@@ -280,18 +284,18 @@ The substitution \ref{eq:dot_limits} in \ref{eq:eqm:tot} yields:
 	\label{eq:g_dc}
 \end{equation}
 \begin{comment}
-Apply \ref{eq:dot_limits} to equation \ref{eq:eqm:tot} is equivalent to apply the Laplace tranform to the equation
-\ref{eq:eqm:tot} and apply the final value theorem to it
+Apply \eqref{eq:dot_limits} to equation \eqref{eq:eqm:tot} is equivalent to apply the Laplace tranform to the equation
+\eqref{eq:eqm:tot} and apply the final value theorem to it
 \end{comment}
 \begin{comment}
-Looking at the Equation \ref{eq:g_dc} is evident the series connection of the springs.
+Looking at the Equation \eqref{eq:g_dc} is evident the series connection of the springs.
 \end{comment}\vspace{0.2 cm}
-\noindent The steady state value of the three output are available. Some other computations has to be made to make equation \ref{eq:g_dc} suitable for the check on the stiffnesses ratios and the new estimation of $g_v$. The equation for the steady state values is:
+\noindent The steady state value of the three output are available. Some other computations has to be made to make equation \eqref{eq:g_dc} suitable for the check on the stiffnesses ratios and the new estimation of $g_v$. The equation for the steady state values is:
 \begin{equation}
 	\bm{C}\bm{x}_\infty = \bm{g_{dc}}v_\infty  
 	\label{eq:stst1}
 \end{equation}
-Where the $\infty$ denotes the steady state value of the quantity ($\lim_{t \to \infty}{f(t)}$). The Equation \ref{eq:stst1} is now expressed in terms of stiffnesses ratio: $k_3$ is fixed to the nominal value and two ratio are defined as following.\\
+Where the $\infty$ denotes the steady state value of the quantity ($\lim_{t \to \infty}{f(t)}$). The Equation \eqref{eq:stst1} is now expressed in terms of stiffnesses ratio: $k_3$ is fixed to the nominal value and two ratio are defined as following.\\
 \begin{subequations}
 	\centering
 	\begin{tabularx}{\linewidth}{X X}
@@ -303,7 +307,7 @@ Where the $\infty$ denotes the steady state value of the quantity ($\lim_{t \to 
 		\end{equation}
 	\end{tabularx}
 \end{subequations}
-This operations are made in order to make the system easy to solve, and uncoupling the nonlinear factor $g_v$. This allows to solve the system in a cascade fashion from $g_v$ to $R_{13}$. The equation \ref{eq:stst1} is now expressed in the following form:
+This operations are made in order to make the system easy to solve, and uncoupling the nonlinear factor $g_v$. This allows to solve the system in a cascade fashion from $g_v$ to $R_{13}$. The equation \eqref{eq:stst1} is now expressed in the following form:
 \begin{equation}
 	\label{eq:stst2} 
 	k_3 \left [\begin{array}{c}
@@ -332,7 +336,7 @@ The value of steady state response are picked from the data directly, as shown i
 	\label{fig:step_input}
 \end{figure}
 \noindent
-The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R31$,$R32$) is estimated by the \textbf{arithmetic average}. Given ($ \bm x_{\infty}$) averaged from the data, Equation \ref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data \ value}{nominal}$
+The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R31$,$R32$) is estimated by the \textbf{arithmetic average}. Given ($ \bm x_{\infty}$) averaged from the data, Equation \eqref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data \ value}{nominal}$
 %TODO< write the mambo jambo
 \begin{table}[H]
 	\centering
@@ -391,7 +395,7 @@ signal is shown in Figure \ref{fig:pulse_input}.
 
 
 \subsubsection{Free damping case}
-The first estimation is performed using the model in Equations \ref{eq:ss}.
+The first estimation is performed using the model in Equations \eqref{eq:ss}.
 
 %TODO first guesses
 
@@ -417,15 +421,15 @@ A plot with the comparison of the models is provided in Figure \ref{fig:compare_
 	\includegraphics[width=\linewidth]{img/compare_f}
 	\label{fig:compare_f}
 \end{figure}
-\subsection{Proportinal damping case}
-The procedure is exactly the same as the case of the free damping. The parameters to estimate now are 6 instead of 9. The damping now is represented by only 2 parameters, as shown in Equation \ref{eq:prop_C}.
+\subsubsection{Proportinal damping case}
+The procedure is exactly the same as the case of the free damping. The parameters to estimate now are 6 instead of 9. The damping now is represented by only 2 parameters, as shown in Equation \eqref{eq:prop_C}.
 \begin{equation}
 	\label{eq:prop_C}
 	\bm{C} = c_a\bm{M} + c_b\bm{K}
 \end{equation}
 \begin{table}[H]
 	\centering
-	\label{tab:est_full_results}
+	\label{tab:est_prop_results}
 	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
 		\hline
 		Name & $g_v$ &  $m_1$ & $m_2$ & $m_3$  &  $c_a$ & $c_b$  \\
@@ -444,7 +448,11 @@ The procedure is exactly the same as the case of the free damping. The parameter
 	\label{fig:compare_p}
 \end{figure}
 
-\subsection{Conclusion}
+\subsection{Conclusions}
+%TODO friction
+%TODO statistics
+%TODO good estimation non liner stuff 20% (friction)
+
 \begin{table}[]
 	\centering
 	\caption{NRMSE for the outputs}
@@ -461,8 +469,78 @@ The procedure is exactly the same as the case of the free damping. The parameter
 \section{modal analysis}
 \subsection{Eigenvalue problem}
 \label{sec:eigenvalueproblem}
-\subsection{Undamped case}
-\subsubsection{Raileight quotient}
+Define a system expressed by the following equation:
+\begin{equation}
+\bm M \ddot{x}(t) + \bm K x(t) = \bm bv(t)
+\label{eq:eqm:und}
+\end{equation} 
+this system is the \textbf{undamped} version of system \eqref{eq:Mtot}.
+The natural frequencies of the system in Equation \eqref{eq:Mtot} (the same as equation \ref{eq:eqm:und}) can be derived solving an eigenvalue problem stated as follows:
+\begin{scatola}{The natural frequencies , modal shape vectors and eigenvalue problem}
+	\label{box:eig_prob}
+	 \\
+			Given the system expressed in \eqref{eq:Mtot} define a natural frequency an $\omega > 0$ with $x_e \neq 0_v \in \Re^3 $ such that :
+		\begin{equation}
+		\label{eq:eigenproblem}
+			\left( \bm{K} -\omega^{2}\bm{M} \right )x = 0_v 
+		\end{equation}
+		Equation \eqref{eq:eigenproblem} is equivalent to Equation \eqref{eq:ker_det}.
+		\begin{equation}
+		\label{eq:ker_det}
+			Ker\left( \bm{K} -\omega^{2}\bm{M} \right ) \neq 0_v \quad \Leftrightarrow  \quad det\left( \bm{K} -\omega^{2}\bm{M} \right ) = 0
+		\end{equation}
+	The quantities $\omega$ are the \textbf{natural frequencies} of the system, and the eigenvectors $x_e$ are the \textbf{modal shape vectors} of the system. Associate a frequency $\omega$ with its square $\omega^2$ which is an eigenvalue of \eqref{eq:eigenproblem}, take the corresponding eigenvector and define the pairs:
+	\begin{equation}
+		(u_i,\omega_i) \quad i \in \left \lbrace 1,2,3\right \rbrace
+	\end{equation}
+	Define the \textbf{Modal shape matrix}, the matrix of column vector $u_i$ sorted by increasing frequency.
+	\begin{equation}
+		\bm{U} = \left [\begin{array}{ccc}
+		u_1 & u_2 & u_3
+		\end{array} \right ]
+	\end{equation}
+\end{scatola}
+\begin{comment}
+solving the problem in the Box \ref{box:eig_prob}, is equivalent to find the poles of the transfer function between the input and the output of the undamped system \ref{eq:eqm:und}. the poles are $\pm i\omega$.\\
+\end{comment}
+To solve proble in Box \ref{box:eig_prob} MATLAB provides a function \texttt{eig}, which receives in input the two matrices ($\bm{K}$ and $\bm{M}$) and returns the eigenvalues and the eigenvectors in a matrix. Taking the square root of the ladders the $\omega$ are obtained, the Modal shape matrix is directly provided by the function.
+The modal shape vectors are orthogonal each other and this is a property which can be verified.
+\subsection{Results}
+The procedure shown in the previous Section \ref{sec:eigenvalueproblem} is the same for both the case of Free damping and proportional damping. The difference leads in the different value estimated. They are shown in table \ref{tab:est_full_results} and \ref{tab:est_prop_results}.
+The value obtained from the eigenvalue problem are shown in table \ref{tab:eig_results}.
+
+
+% Please add the following required packages to your document preamble:
+% \usepackage{multirow}
+\begin{table}[H]
+	\centering
+	\caption{Values of frequencies and modal shapes vector obtain solving the eigenvalue problem}
+	\label{tab:eig_results}
+	\begin{tabular}{|l|lll|lll|}
+		\hline
+		& \multicolumn{3}{l|}{Free damping}                                                           & \multicolumn{3}{l|}{proportional damping}                                                   \\ \hline
+		$\omega$                 & \multicolumn{1}{l|}{\rs{w_f_1}} & \multicolumn{1}{l|}{\rs{w_f_2}} & \rs{w_f_3}  & \multicolumn{1}{l|}{\rs{w_p_1}} & \multicolumn{1}{l|}{\rs{w_p_2}} & \rs{w_p_3}  \\ \hline
+		\multirow{3}{*}{$\bm U$} & \rs{U_f_11}                     & \rs{U_f_12}                     & \rs{U_f_13} & \rs{U_p_11}                     & \rs{U_p_12}                     & \rs{U_p_13} \\
+		& \rs{U_f_21}                     & \rs{U_f_22}                     & \rs{U_f_23} & \rs{U_p_21}                     & \rs{U_p_22}                     & \rs{U_p_23} \\
+		& \rs{U_f_31}                     & \rs{U_f_32}                     & \rs{U_f_33} & \rs{U_p_31}                     & \rs{U_p_32}                     & \rs{U_p_33} \\ \hline
+	\end{tabular}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Raileight quotient}
 	The Rayleight quotient is 
 	\begin{equation}
 		R_q(\bm x) = \dfrac{\bm x\tr \bm K \bm x}{\bm x\tr \bm M \bm x} 
@@ -499,10 +577,11 @@ given the modal shape vectors matrix $U$ obtained from the eigenvalue problem \r
  Which is basically a projection of the coordinate on the modal shapes vector (scalar products).
  The matrices $M$, $K$ and $C$ becomes... %TODO input files
 %\input{result/M_s_matrix_tex.txt}
-
 %TODO scrivi che c'è un offset a steady state e lo si vede anche in g_v ogni volta diverso. Colpa attrito secco
 
 %TODO metti in simulink lo state space con attrito (chiudi loop ed aggiungi a B la possibilità di attrito)
+
+%TODO studia che succede in mult dof viscosi alle freq naturali
 
 %TODO tabella al 
 %TODO AGGIUNGI (t) alle variabili e lista dei simboli!

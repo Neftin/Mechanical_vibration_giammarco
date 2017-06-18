@@ -169,7 +169,7 @@ pp_estimation
 
     for i=1:3
         U_eig_f(1:3,i) = U_eig_f(1:3,i)./U_eig_f(1,i);
-        omega_eig_f(i) = omega2_eig_matrix_f(i,i)^(1/2);
+        w_f(i) = omega2_eig_matrix_f(i,i)^(1/2);
     end
 
 clear omega2_eig_matrix_f
@@ -182,10 +182,12 @@ clear omega2_eig_matrix_f
 
     for i=1:3
         U_eig_p(1:3,i) = U_eig_p(1:3,i)./U_eig_p(1,i);
-        omega_eig_p(i) = omega2_eig_matrix_p(i,i)^(1/2);
+        w_p(i) = omega2_eig_matrix_p(i,i)^(1/2);
     end
 
 clear omega2_eig_matrix_p
+
+pp_eig
 
 %% MODAL ANALYSIS - RAILEIGHT - full il fallimento [NON FUNZIONA]
 % 

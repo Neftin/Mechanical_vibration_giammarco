@@ -1,0 +1,6 @@
+\begin{tabular}{|l|l|l|}
+\hline
+1&1&1\\\hline
+0.86137&-0.51826&-2.5368\\\hline
+0.60992&-1.3058&2.3301\\\hline
+\end{tabular}
