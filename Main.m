@@ -1,5 +1,6 @@
 
 clear all
+close all
 
 %% SS ANAL
 
@@ -95,12 +96,11 @@ M_f = [m1_f 0 0;
  C_f = [I Z];             %multiple output
  D_f = Z(:,1);
 
-%%
+%% COMPARISON AND NRMSE
 
 sys_guess_full = ss(A_f,B_f,C_f,D_f);
 
-figure(1);
-compare(comparison_data,sys_guess_full)
+
 
 %% lsq non lin proportional damping
 
@@ -160,8 +160,7 @@ sys_guess_prop = ss(A_p,B_p,C_p,D_p);
 figure(2);
 compare(comparison_data,sys_guess_prop)
 
-pp_impulse
-
+pp_estimation
 %% MODAL ANALYSIS - eigenvalues - full
 
 %find eigenvalues as diagonal matrix and eigenvectors
