@@ -410,15 +410,35 @@ The results of this optimization are shown in table \ref{tab:est_full_results}
 \end{tabular}
 \caption{Estimation results (model with free damping)}
 \end{table}
-A plot with the comparison of the models are provided in Figure \ref{fig:compare_f}
+A plot with the comparison of the models is provided in Figure \ref{fig:compare_f}. The normalized root means square errors are provided for each DOF in table \ref{tab:fit_all}
 \begin{figure}[H]
 	\centering
 		\caption{Comparison between the response of the model and the response of the system}
-	\includegraphics[width=\linewidth]{img/compare_3}
-
-	\label{fig:comparef}
+	\includegraphics[width=\linewidth]{img/compare_f}
+	\label{fig:compare_f}
 \end{figure}
+\subsection{Proportinal damping case}
 
+\begin{figure}[H]
+	\centering
+	\caption{Comparison between the response of the model and the response of the system - proportional damping case}
+	\includegraphics[width=\linewidth]{img/compare_p}
+	\label{fig:compare_p}
+\end{figure}
+\subsection{Conclusion}
+\begin{table}[]
+	\centering
+	\caption{NRMSE for the outputs}
+	\label{tab:fit_all}
+	\begin{tabular}{l|l|l|}
+		\cline{2-3}
+		& Free damping  & Proportional damping \\ \hline
+		\multicolumn{1}{|l|}{$x_1$ \texttt{NRMSE} } & \input{result/fit_f1.txt} \%        &         \input{result/fit_p1.txt} \%             \\ \hline
+		\multicolumn{1}{|l|}{$x_2$ \texttt{NRMSE} } &  \input{result/fit_f2.txt} \%             &       \input{result/fit_p2.txt} \%           \\ \hline
+		\multicolumn{1}{|l|}{$x_3$ \texttt{NRMSE} } &   \input{result/fit_f3.txt} \%  &
+		\input{result/fit_p3.txt} \%                              \\ \hline
+	\end{tabular}
+\end{table}
 \section{modal analysis}
 \subsection{Eigenvalue problem}
 \label{sec:eigenvalueproblem}
