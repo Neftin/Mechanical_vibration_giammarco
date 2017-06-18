@@ -585,7 +585,7 @@ The procedure is implemented in MATLAB with the following steps.
 	\end{equation}
 	\item Since $R_q(\alpha,\beta)$ is a surface. A contour plot is provided to verify the points. Property 3 and 4 are used to check the last and the first frequencies, which have to be respectvely a maximum and a minimum. The contour plot is shown in Figures \ref{fig:contour_f} and \ref{fig:contour_p}, for the cases of free damping and proportional damping respectively.
 	\item The orthogonality oft he modal shape vectors is check performing scalar product between them. The expected result has to be zero or very small because of the numerical approximation ($\div 10^{-16}$).
-	
+\end{itemize}
 \begin{table}[H]
 	\centering
 	\caption{Values of frequencies and modal shapes vector obtained using the Raileight}
@@ -600,67 +600,21 @@ The procedure is implemented in MATLAB with the following steps.
 	\end{tabular}
 \end{table}
 	
-	
-	
-	
-	
-	
-	
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{img/contour_f}
-	\caption{Controur plot of the Raileight quotient in case of free damping, with stationary points}
-	\label{fig:contour_f}
-\end{figure}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=\linewidth]{img/contour_p}
-	\caption{Controur plot of the Raileight quotient in case of proportional damping, with stationary points}
-	\label{fig:contour_p}
-\end{figure}
-
-	
-\end{itemize}
-	
-%	 The first stationary point it's easy to find, but the other two are not. In order to find the other stationary points, the property of orthogonality of the modal shapes vector is used. The basic idea is to reduce a degree of freedom every frequency using this property. The procedure is the following:
-%	\begin{itemize}
-%		\item Provide an initial guess, the convergence to the first minima is quite robust to the first guess. Vector $[\ 1 \ 1 \ 1 \ ]\tr$ is used.
-%		\item Use Matlab function \texttt{fminunc} to find the minima and the value of $x$, varying only two parameters of the vector ($x = [\ 1 \ \alpha \  \beta\ ]\tr$) 
-%		\item Check if the minimum is the lowest frequency with a contour plot or performing the next steps. Define the first modal shape vector $u_{1R}$.  
-%		\item Compute the null space of the first modal shape vector $Ker(u_{1R}\tr) $
-%		\item find the minimum of
-%		\begin{equation}
-%			R_{q2} = \dfrac{[ \ 1 \ \alpha \ ] B_k\tr \bm K B_k [ \ 1 \ \alpha \ ]\tr}{[ \ 1 \ \alpha \ ] B_k\tr \bm M B_k [ \ 1 \ \alpha \ ]\tr}
-%		\label{eq:rq2}
-%		\end{equation}
-%		where $img(B_k) = Ker(u_{1R}\tr)$ is a base of the Kernel of the first modal shape vector, the value of the function is another resonance frequency.
-%		\item The last modal shape vector and the last resonance frequency can be computed respectively as a base of the Kernel of the two other modal shape vectors and evaluating $R_q$ at the last modal shape vector.
-%		\begin{equation}
-%			u_{3R} \in Ker(\left [
-%			\begin{array}{cc}
-%			u_{1R} &  u_{2R}
-%			\end{array} \right ]\tr)
-%		\end{equation}
-%	\end{itemize}
-%The results are shown in Table \ref{tab:modalResults} and the contour plot of the Raileight coefficient is shown in Figure \ref{fig:Rcontour}
-
-\subsection{Matrix Iteration Method}
-	Another method to find the eigenpairs is the Matrix Iteration Method. This method, as the name suggest, is an iterative method.
-	Define the dynamic matrix:
-	\begin{equation}
-	    \label{eq:d_matrix}
-		\bm{D} = \bm{K^{-1}}\bm{M}
-	\end{equation}
+	 
 	The algorithm
-	\begin{itemize}
+	\begin{enumerate}
 		\item Define the first matrix $\bm{D}$ from Equation \eqref{eq:d_matrix}.
 		\item Define a first guess of the vector $x$.
 		\item Premultiply times the matrix $D$ the vector $x$ obtaining a new vector $x^+$.
 		\begin{equation}
 			x^+ = \bm{D}x
 		\end{equation}
-		\item 
-	\end{itemize}
+		\item Normalize the obtained vector on the first term
+		\begin{equation}
+			x^+ = \dfrac{x}{x(1)}
+		\end{equation}
+		\item Repeat step 3.and 4. N times. The number of iterations it's related to the degree of accuracy. Since the computation is not heavy, \textbf{N=15} is chosen. 
+	\end{enumerate}
 	A block diagram which resumes the implemented method is shown in Figure \ref{fig:mim}.
 	
 	
