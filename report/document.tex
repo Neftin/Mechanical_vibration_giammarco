@@ -1,7 +1,7 @@
 \documentclass[twosided,a4paper]{article}           %type
 \usepackage[top=2cm,bottom=2cm,inner=1.5cm,outer=1.5cm]{geometry}       %geometry
 \renewcommand{\familydefault}{\sfdefault}
-
+\usepackage[sfdefault, light]{roboto}
 
 %\usepackage[italian]{babel}                %font/language
 \usepackage[T1]{fontenc}
@@ -643,6 +643,39 @@ The procedure is implemented in MATLAB with the following steps.
 %		\end{equation}
 %	\end{itemize}
 %The results are shown in Table \ref{tab:modalResults} and the contour plot of the Raileight coefficient is shown in Figure \ref{fig:Rcontour}
+
+\subsection{Matrix Iteration Method}
+	Another method to find the eigenpairs is the Matrix Iteration Method. This method, as the name suggest, is an iterative method.
+	Define the dynamic matrix:
+	\begin{equation}
+	    \label{eq:d_matrix}
+		\bm{D} = \bm{K^{-1}}\bm{M}
+	\end{equation}
+	The algorithm
+	\begin{itemize}
+		\item Define the first matrix $\bm{D}$ from Equation \eqref{eq:d_matrix}.
+		\item Define a first guess of the vector $x$.
+		\item Premultiply times the matrix $D$ the vector $x$ obtaining a new vector $x^+$.
+		\begin{equation}
+			x^+ = \bm{D}x
+		\end{equation}
+		\item 
+	\end{itemize}
+	A block diagram which resumes the implemented method is shown in Figure \ref{fig:mim}.
+	
+	
+	
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\linewidth]{img/mim}
+		\caption{the Matrix Iteration Method}
+		\label{fig:mim}
+	\end{figure}
+	
+	\subsubsection{implementazione}
+
+
+
 
 \begin{equation}
 	\tilde{x} = U\tr x 

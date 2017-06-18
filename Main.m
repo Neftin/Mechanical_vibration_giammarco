@@ -45,8 +45,6 @@ P = [1.5 1.4 1.2 0.01 0.001 3 2 2 6.3];
 % 
  lb = zeros(1,9).';
  ub = [2.1 2.1 2.1 10 10 10 10 10 7];
-
- 
  
 %% lsq non lin full damping
 
@@ -363,6 +361,8 @@ end
 
 U_MIM_f = U_MIM
 [U_MIM_f U_eig_f]
+
+wm_f = sqrt(1./eig_D_MIM)
 
 %% MODAL ANALYSIS - Matrix iteration method - prop
 
