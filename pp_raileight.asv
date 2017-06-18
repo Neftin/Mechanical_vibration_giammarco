@@ -48,7 +48,7 @@ hold off;
 for i = 1:3
     print2file(wr_f(i),'report\result\','%3.4f','\n','txt',['wr_f_' num2str(i,1)])
         for j = 1:3
-            print2file(U_Rail_f(j,i),'report\result\','%3.4f','\n','txt',['Ur_f_' num2str(j,1) num2str(i,1)])
+            print2file(U_eig_f(j,i),'report\result\','%3.4f','\n','txt',['Ur_f_' num2str(j,1) num2str(i,1)])
         end
 end
 
@@ -58,6 +58,6 @@ end
 for i = 1:3
     print2file(wr_p(i),'report\result\','%3.4f','\n','txt',['wr_p_' num2str(i,1)])
             for j = 1:3
-            print2file(U_Rail_p(j,i),'report\result\','%3.4f','\n','txt',['Ur_p_' num2str(j,1) num2str(i,1)])
+            print2file(U_eig_p(j,i),'report\result\','%3.4f','\n','txt',['Ur_p_' num2str(j,1) num2str(i,1)])
             end
 end

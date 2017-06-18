@@ -295,6 +295,12 @@ U_Rail_f = double([ [1 pocheBriciole.ur1(1) pocheBriciole.ur2(1) ].' ...
                     [1 pocheBriciole.ur1(2) pocheBriciole.ur2(2) ].' ...
                     [1 pocheBriciole.ur1(3) pocheBriciole.ur2(3) ].']);
 
+fun_R_q_f = @(aaa,bbb) ( [1; aaa; bbb].' * K_f * [1; aaa; bbb] )  /  ( [1; aaa; bbb].' * M_f * [1; aaa; bbb] ) ;
+
+for i = 1:3
+    wr_f(i)     = sqrt(fun_R_q_f(U_Rail_f(2,i),U_Rail_f(3,i))      )  ;        
+end
+
 %% MODAL ANALYSIS - RAILEIGHT - the new hope (direct method)
 syms ur1 ur2
 
@@ -310,6 +316,14 @@ pocheBriciole = vpasolve([ D1R_q_p == 0, D2R_q_p==0],[ur1 ur2]);
 U_Rail_p = double([ [1 pocheBriciole.ur1(1) pocheBriciole.ur2(1) ].' ...
                     [1 pocheBriciole.ur1(2) pocheBriciole.ur2(2) ].' ...
                     [1 pocheBriciole.ur1(3) pocheBriciole.ur2(3) ].'])
+                
+fun_R_q_p = @(aaa,bbb) ( [1; aaa; bbb].' * K_p * [1; aaa; bbb] )  /  ( [1; aaa; bbb].' * M_p * [1; aaa; bbb] ) ;
+
+for i = 1:3
+    wr_p(i)     = sqrt(fun_R_q_p(U_Rail_p(2,i),U_Rail_p(3,i))      )  ;        
+end
+
+pp_raileight
 
 %% MODAL ANALYSIS - Matrix iteration method - full
 

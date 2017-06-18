@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  18 JUN 2017 14:45
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  18 JUN 2017 18:26
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -802,7 +802,11 @@ Package: listings 2015/06/04 1.6 (Carsten Heinz)
 LaTeX Warning: Unused global option(s):
     [twosided].
 
-(./document.aux)
+(./document.aux
+
+LaTeX Warning: Label `tab:eig_results' multiply defined.
+
+)
 \openout1 = `document.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 62.
@@ -1057,24 +1061,72 @@ Underfull \hbox (badness 10000) in paragraph at lines 504--505
 (./result/U_p_21.txt) (./result/U_p_22.txt) (./result/U_p_23.txt)
 (./result/U_f_31.txt) (./result/U_f_32.txt) (./result/U_f_33.txt)
 (./result/U_p_31.txt) (./result/U_p_32.txt) (./result/U_p_33.txt) [10]
+Underfull \hbox (badness 10000) in paragraph at lines 552--553
 
-LaTeX Warning: Reference `tab:modalResults' on page 11 undefined on input line 
-568.
-
-
-LaTeX Warning: Reference `fig:Rcontour' on page 11 undefined on input line 568.
+ []
 
 
-[11] (./document.aux)
+LaTeX Warning: Reference `tab:rai_results' on page 11 undefined on input line 5
+78.
+
+(./result/wr_f_1.txt) (./result/wr_f_2.txt) (./result/wr_f_3.txt)
+(./result/wr_p_1.txt) (./result/wr_p_2.txt) (./result/wr_p_3.txt)
+(./result/Ur_f_11.txt) (./result/Ur_f_12.txt) (./result/Ur_f_13.txt)
+(./result/Ur_p_11.txt) (./result/Ur_p_12.txt) (./result/Ur_p_13.txt)
+(./result/Ur_f_21.txt) (./result/Ur_f_22.txt) (./result/Ur_f_23.txt)
+(./result/Ur_p_21.txt) (./result/Ur_p_22.txt) (./result/Ur_p_23.txt)
+(./result/Ur_f_31.txt) (./result/Ur_f_32.txt) (./result/Ur_f_33.txt)
+(./result/Ur_p_31.txt) (./result/Ur_p_32.txt) (./result/Ur_p_33.txt)
+Package epstopdf Info: Source file: <img/contour_f.eps>
+(epstopdf)                    date: 2017-06-18 17:08:03
+(epstopdf)                    size: 111494 bytes
+(epstopdf)             Output file: <img/contour_f-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-06-18 17:08:14
+(epstopdf)                    size: 32050 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/contour_f-eps-converte
+d-to.pdf img/contour_f.eps>
+(epstopdf)             \includegraphics on input line 611.
+Package epstopdf Info: Output file is already uptodate.
+
+<img/contour_f-eps-converted-to.pdf, id=104, 436.63126pt x 277.035pt>
+File: img/contour_f-eps-converted-to.pdf Graphic file (type pdf)
+
+<use img/contour_f-eps-converted-to.pdf>
+Package pdftex.def Info: img/contour_f-eps-converted-to.pdf used on input line 
+611.
+(pdftex.def)             Requested size: 512.14963pt x 324.95395pt.
+Package epstopdf Info: Source file: <img/contour_p.eps>
+(epstopdf)                    date: 2017-06-18 17:08:04
+(epstopdf)                    size: 111676 bytes
+(epstopdf)             Output file: <img/contour_p-eps-converted-to.pdf>
+(epstopdf)                    date: 2017-06-18 17:08:16
+(epstopdf)                    size: 32043 bytes
+(epstopdf)             Command: <repstopdf --outfile=img/contour_p-eps-converte
+d-to.pdf img/contour_p.eps>
+(epstopdf)             \includegraphics on input line 617.
+Package epstopdf Info: Output file is already uptodate.
+
+<img/contour_p-eps-converted-to.pdf, id=105, 436.63126pt x 277.035pt>
+File: img/contour_p-eps-converted-to.pdf Graphic file (type pdf)
+
+<use img/contour_p-eps-converted-to.pdf>
+Package pdftex.def Info: img/contour_p-eps-converted-to.pdf used on input line 
+617.
+(pdftex.def)             Requested size: 512.14963pt x 324.95395pt.
+ [11] [12 <./img/contour_f-eps-converted-to.pdf> <./img/contour_p-eps-converted
+-to.pdf>] [13] (./document.aux)
 
 LaTeX Warning: There were undefined references.
 
+
+LaTeX Warning: There were multiply-defined labels.
+
  ) 
 Here is how much of TeX's memory you used:
- 6632 strings out of 493013
- 87781 string characters out of 6136993
- 163565 words of memory out of 5000000
- 9823 multiletter control sequences out of 15000+600000
+ 6716 strings out of 493013
+ 89213 string characters out of 6136993
+ 163632 words of memory out of 5000000
+ 9833 multiletter control sequences out of 15000+600000
  28523 words of font info for 83 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  42i,21n,35p,598b,362s stack positions out of 5000i,500n,10000p,200000b,80000s
@@ -1102,10 +1154,10 @@ blic/cm-super/sfss1728.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-su
 per/sfsx1000.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx12
 00.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-super/sfsx1440.pfb><c:
 /texlive/2016/texmf-dist/fonts/type1/public/cm-super/sftt1000.pfb>
-Output written on document.pdf (11 pages, 1305330 bytes).
+Output written on document.pdf (13 pages, 1365357 bytes).
 PDF statistics:
- 189 PDF objects out of 1000 (max. 8388607)
- 136 compressed objects within 2 object streams
+ 208 PDF objects out of 1000 (max. 8388607)
+ 149 compressed objects within 2 object streams
  0 named destinations out of 1000 (max. 500000)
- 36 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 46 words of extra memory for PDF output out of 10000 (max. 10000000)
 

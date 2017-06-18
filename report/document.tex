@@ -505,7 +505,7 @@ solving the problem in the Box \ref{box:eig_prob}, is equivalent to find the pol
 \end{comment}
 To solve proble in Box \ref{box:eig_prob} MATLAB provides a function \texttt{eig}, which receives in input the two matrices ($\bm{K}$ and $\bm{M}$) and returns the eigenvalues and the eigenvectors in a matrix. Taking the square root of the ladders the $\omega$ are obtained, the Modal shape matrix is directly provided by the function.
 The modal shape vectors are orthogonal each other and this is a property which can be verified.
-\subsection{Results}
+\subsubsection{Results}
 The procedure shown in the previous Section \ref{sec:eigenvalueproblem} is the same for both the case of Free damping and proportional damping. The difference leads in the different value estimated. They are shown in table \ref{tab:est_full_results} and \ref{tab:est_prop_results}.
 The value obtained from the eigenvalue problem are shown in table \ref{tab:eig_results}.
 
@@ -519,7 +519,7 @@ The value obtained from the eigenvalue problem are shown in table \ref{tab:eig_r
 	\begin{tabular}{|l|lll|lll|}
 		\hline
 		& \multicolumn{3}{l|}{Free damping}                                                           & \multicolumn{3}{l|}{proportional damping}                                                   \\ \hline
-		$\omega$                 & \multicolumn{1}{l|}{\rs{w_f_1}} & \multicolumn{1}{l|}{\rs{w_f_2}} & \rs{w_f_3}  & \multicolumn{1}{l|}{\rs{w_p_1}} & \multicolumn{1}{l|}{\rs{w_p_2}} & \rs{w_p_3}  \\ \hline
+		$\omega$  [rad/s]               & \multicolumn{1}{l|}{\rs{w_f_1}} & \multicolumn{1}{l|}{\rs{w_f_2}} & \rs{w_f_3}  & \multicolumn{1}{l|}{\rs{w_p_1}} & \multicolumn{1}{l|}{\rs{w_p_2}} & \rs{w_p_3}  \\ \hline
 		\multirow{3}{*}{$\bm U$} & \rs{U_f_11}                     & \rs{U_f_12}                     & \rs{U_f_13} & \rs{U_p_11}                     & \rs{U_p_12}                     & \rs{U_p_13} \\
 		& \rs{U_f_21}                     & \rs{U_f_22}                     & \rs{U_f_23} & \rs{U_p_21}                     & \rs{U_p_22}                     & \rs{U_p_23} \\
 		& \rs{U_f_31}                     & \rs{U_f_32}                     & \rs{U_f_33} & \rs{U_p_31}                     & \rs{U_p_32}                     & \rs{U_p_33} \\ \hline
@@ -540,36 +540,109 @@ The value obtained from the eigenvalue problem are shown in table \ref{tab:eig_r
 
 
 
-\subsection{Raileight quotient}
-	The Rayleight quotient is 
+\subsection{Raileight method}
+The Raileight method is a method to find simultaneously the natural frequencies and the modal shapes vector. Ths method is based on the search of stationary point in a function, the Raileight quotient.
+The Rayleight quotient is 
 	\begin{equation}
-		R_q(\bm x) = \dfrac{\bm x\tr \bm K \bm x}{\bm x\tr \bm M \bm x} 
+		R_q(\bm x) = \dfrac{\bm x\tr \bm K \bm x}{\bm x\tr \bm M \bm x} .
 	\end{equation}
-	where x is the vector of the positions, $R_q$ as a function of the ladder, presents stationary points in the neigborhood of the modal shapes, and the value corresponds to the respective eigenfrequency. The first stationary point it's easy to find, but the other two are not. In order to find the other stationary points, the property of orthogonality of the modal shapes vector is used. The basic idea is to reduce a degree of freedom every frequency using this property. The procedure is the following:
-	\begin{itemize}
-		\item Provide an initial guess, the convergence to the first minima is quite robust to the first guess. Vector $[\ 1 \ 1 \ 1 \ ]\tr$ is used.
-		\item Use Matlab function \texttt{fminunc} to find the minima and the value of $x$, varying only two parameters of the vector ($x = [\ 1 \ \alpha \  \beta\ ]\tr$) 
-		\item Check if the minimum is the lowest frequency with a contour plot or performing the next steps. Define the first modal shape vector $u_{1R}$.  
-		\item Compute the null space of the first modal shape vector $Ker(u_{1R}\tr) $
-		\item find the minimum of
-		\begin{equation}
-			R_{q2} = \dfrac{[ \ 1 \ \alpha \ ] B_k\tr \bm K B_k [ \ 1 \ \alpha \ ]\tr}{[ \ 1 \ \alpha \ ] B_k\tr \bm M B_k [ \ 1 \ \alpha \ ]\tr}
-		\label{eq:rq2}
-		\end{equation}
-		where $img(B_k) = Ker(u_{1R}\tr)$ is a base of the Kernel of the first modal shape vector, the value of the function is another resonance frequency.
-		\item The last modal shape vector and the last resonance frequency can be computed respectively as a base of the Kernel of the two other modal shape vectors and evaluating $R_q$ at the last modal shape vector.
-		\begin{equation}
-			u_{3R} \in Ker(\left [
-			\begin{array}{cc}
-			u_{1R} &  u_{2R}
-			\end{array} \right ]\tr)
-		\end{equation}
-	\end{itemize}
-The results are shown in Table \ref{tab:modalResults} and the contour plot of the Raileight coefficient is shown in Figure \ref{fig:Rcontour}
-\subsection{Proportional damping case}
- (BIBLIO RAO PAG 914).
+The Raileight quotient manifests two properties which make it suitable to do so:
+\begin{enumerate}
+	\item Given an eigenvector (modal shape vector) $R_q(U_i)$ = $\omega_i^2$
+	\item $R_q(x)$ Presents a stationary point in the neighborhood of $x = U_i$\\
 
-given the modal shape vectors matrix $U$ obtained from the eigenvalue problem \ref{sec:eigenvalueproblem} with the masses from the proportional damping estimation, the modal coordinates w.r.t the previous coordinates are the following:
+Additional properties are:
+
+	\item The first frequency (the lowest) the first mode corresponds to a minimum of $R_q(x)$
+	\item The last frequency (the largest) the last mode corresponds to a maximum of $R_q(x)$.
+\end{enumerate}
+The Raileight method consists in find the stationary values of $R_q(x)$.
+\subsubsection{Implementation}
+The procedure is implemented in MATLAB with the following steps.
+\begin{itemize}
+	\item The Raileight quotient is defined as a function of $x$, conserving only two degree of freedom of the vector $x$, the function to minimize is then:
+	\begin{equation}
+		R_q(\alpha,\beta) = \dfrac{\begin{bmatrix} 1 & \alpha & \beta \end{bmatrix}   \bm{K}
+		                    \begin{bmatrix} 1 & \alpha & \beta \end{bmatrix} \tr}{\begin{bmatrix} 1 & \alpha & \beta \end{bmatrix} \bm{M}
+		                    \begin{bmatrix} 1 & \alpha & \beta \end{bmatrix} \tr}
+	\end{equation}
+	\item The gradient in $\alpha$ and $\beta$ of $R_q(\alpha,\beta)$ is computed analytically (it is not reported here)  (this is convenient since there are 3 DOF).
+	\begin{equation}
+		\nabla R_q = \left [ \dfrac{\partial R_q}{\partial \alpha} \ \dfrac{\partial R_q}{\partial \beta} \right ]
+	\end{equation}
+	\item The equation \eqref{eq:nabla_null} (null gradient) is solved. Where the solution are $\alpha_i$ and $\beta_i$ with $i \in 1,2,3$. 
+	\begin{equation}
+	\label{eq:nabla_null}
+		\nabla R_q = 0_{1 \times 2}
+	\end{equation}
+	\item The quantities are computed as shown in Equation \eqref{eq:rai_qty}, the results are shown in Table \ref{tab:rai_results}.
+	\begin{equation}
+	\label{eq:rai_qty}
+		\begin{sistema}
+		U_i = \left [ \ 1 \ \alpha_i \ \beta_i \ \right ]\\
+		\omega_i = R_q(\alpha_i, \ \beta_i)
+		\end{sistema}
+	\end{equation}
+	\item Since $R_q(\alpha,\beta)$ is a surface. A contour plot is provided to verify the points. Property 3 and 4 are used to check the last and the first frequencies, which have to be respectvely a maximum and a minimum. The contour plot is shown in Figures \ref{fig:contour_f} and \ref{fig:contour_p}, for the cases of free damping and proportional damping respectively.
+	\item The orthogonality oft he modal shape vectors is check performing scalar product between them. The expected result has to be zero or very small because of the numerical approximation ($\div 10^{-16}$).
+	
+\begin{table}[H]
+	\centering
+	\caption{Values of frequencies and modal shapes vector obtained using the Raileight}
+	\label{tab:eig_results}
+	\begin{tabular}{|l|lll|lll|}
+		\hline
+		& \multicolumn{3}{l|}{Free damping}                                                           & \multicolumn{3}{l|}{proportional damping}                                                   \\ \hline
+		$\omega$  [rad/s]               & \multicolumn{1}{l|}{\rs{wr_f_1}} & \multicolumn{1}{l|}{\rs{wr_f_2}} & \rs{wr_f_3}  & \multicolumn{1}{l|}{\rs{wr_p_1}} & \multicolumn{1}{l|}{\rs{wr_p_2}} & \rs{wr_p_3}  \\ \hline
+		\multirow{3}{*}{$\bm U$} & \rs{Ur_f_11}                     & \rs{Ur_f_12}                     & \rs{Ur_f_13} & \rs{Ur_p_11}                     & \rs{Ur_p_12}                     & \rs{Ur_p_13} \\
+		& \rs{Ur_f_21}                     & \rs{Ur_f_22}                     & \rs{Ur_f_23} & \rs{Ur_p_21}                     & \rs{Ur_p_22}                     & \rs{Ur_p_23} \\
+		& \rs{Ur_f_31}                     & \rs{Ur_f_32}                     & \rs{Ur_f_33} & \rs{Ur_p_31}                     & \rs{Ur_p_32}                     & \rs{Ur_p_33} \\ \hline
+	\end{tabular}
+\end{table}
+	
+	
+	
+	
+	
+	
+	
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/contour_f}
+	\caption{Controur plot of the Raileight quotient in case of free damping, with stationary points}
+	\label{fig:contour_f}
+\end{figure}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/contour_p}
+	\caption{Controur plot of the Raileight quotient in case of proportional damping, with stationary points}
+	\label{fig:contour_p}
+\end{figure}
+
+	
+\end{itemize}
+	
+%	 The first stationary point it's easy to find, but the other two are not. In order to find the other stationary points, the property of orthogonality of the modal shapes vector is used. The basic idea is to reduce a degree of freedom every frequency using this property. The procedure is the following:
+%	\begin{itemize}
+%		\item Provide an initial guess, the convergence to the first minima is quite robust to the first guess. Vector $[\ 1 \ 1 \ 1 \ ]\tr$ is used.
+%		\item Use Matlab function \texttt{fminunc} to find the minima and the value of $x$, varying only two parameters of the vector ($x = [\ 1 \ \alpha \  \beta\ ]\tr$) 
+%		\item Check if the minimum is the lowest frequency with a contour plot or performing the next steps. Define the first modal shape vector $u_{1R}$.  
+%		\item Compute the null space of the first modal shape vector $Ker(u_{1R}\tr) $
+%		\item find the minimum of
+%		\begin{equation}
+%			R_{q2} = \dfrac{[ \ 1 \ \alpha \ ] B_k\tr \bm K B_k [ \ 1 \ \alpha \ ]\tr}{[ \ 1 \ \alpha \ ] B_k\tr \bm M B_k [ \ 1 \ \alpha \ ]\tr}
+%		\label{eq:rq2}
+%		\end{equation}
+%		where $img(B_k) = Ker(u_{1R}\tr)$ is a base of the Kernel of the first modal shape vector, the value of the function is another resonance frequency.
+%		\item The last modal shape vector and the last resonance frequency can be computed respectively as a base of the Kernel of the two other modal shape vectors and evaluating $R_q$ at the last modal shape vector.
+%		\begin{equation}
+%			u_{3R} \in Ker(\left [
+%			\begin{array}{cc}
+%			u_{1R} &  u_{2R}
+%			\end{array} \right ]\tr)
+%		\end{equation}
+%	\end{itemize}
+%The results are shown in Table \ref{tab:modalResults} and the contour plot of the Raileight coefficient is shown in Figure \ref{fig:Rcontour}
 
 \begin{equation}
 	\tilde{x} = U\tr x 
@@ -577,6 +650,9 @@ given the modal shape vectors matrix $U$ obtained from the eigenvalue problem \r
  Which is basically a projection of the coordinate on the modal shapes vector (scalar products).
  The matrices $M$, $K$ and $C$ becomes... %TODO input files
 %\input{result/M_s_matrix_tex.txt}
+
+%TODO metti la normalizzazione dei modi perfavore
+
 %TODO scrivi che c'è un offset a steady state e lo si vede anche in g_v ogni volta diverso. Colpa attrito secco
 
 %TODO metti in simulink lo state space con attrito (chiudi loop ed aggiungi a B la possibilità di attrito)
