@@ -652,15 +652,21 @@ The procedure is implemented in MATLAB with the following steps.
 		\bm{D} = \bm{K^{-1}}\bm{M}
 	\end{equation}
 	The algorithm
-	\begin{itemize}
+	\begin{enumerate}
 		\item Define the first matrix $\bm{D}$ from Equation \eqref{eq:d_matrix}.
 		\item Define a first guess of the vector $x$.
 		\item Premultiply times the matrix $D$ the vector $x$ obtaining a new vector $x^+$.
 		\begin{equation}
 			x^+ = \bm{D}x
 		\end{equation}
-		\item 
-	\end{itemize}
+		\item Normalize the vector $x$ on the forst element.
+		\begin{equation}
+			x^+ = \dfrac{x}{x(1)}
+		\end{equation}
+		\item Repeat steps 3. and 4. on the new $x$.
+		\item Repeat steps 3. 4. 5. N times. The greater the number of iteration N the greater the accuracy. In this case N=15 is chosen since the computation is not heavy.
+		...
+	\end{enumerate}
 	A block diagram which resumes the implemented method is shown in Figure \ref{fig:mim}.
 	
 	
