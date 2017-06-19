@@ -34,6 +34,8 @@
 \newunicodechar{⚠}{\Warning}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+\newcommand{\norm}[1]{\left \lvert \left \lvert #1 \right \rvert \right  \rvert}
+
 %rapid file input
 \newcommand{\rs}[1]{\input{result/#1.txt}}
 
@@ -117,7 +119,7 @@ The chosen model is a linear plant consisting of 3 lumped masses, 3 lumped sprin
 	\includegraphics[width=\linewidth]{img/theplant1}
 	\caption[The linear plant]{The chosen plant, in red the unknown parameters}
 	\label{fig:theplant1}
-\end{figure} %TODO figure with displacements x
+\end{figure} 
 \subsection{equation of motion}
 \begin{equation}
 	\begin{sistema}
@@ -373,7 +375,7 @@ The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value o
 \end{table}
 The \textit{voltage-to-force} estimation is shown in table \ref{tab:ratios}.
 \subsection{Parameters estimation}
-To estimate the parameters the impulse response is used. The \textit{voltage-to-force} coefficient $g_v$ is one of the parameters to be estimate in order to include the possibility to cross-check the result with the step response result.
+To estimate the parameters the \textbf{impulse response} is used. The \textit{voltage-to-force} coefficient $g_v$ is one of the parameters to be estimate in order to include the possibility to cross-check the result with the step response results.
 The parameters to estimate are shown in table \ref{tab:parameters}.
 \subsubsection{Estimation strategy}
 	\label{sec:est_strat}
@@ -389,7 +391,7 @@ The parameters to estimate are shown in table \ref{tab:parameters}.
 	 \item Tune the parameters iterativly to minimize this quantity
  \end{enumerate}
 \end{scatola}
-The implementation of the strategy in Box \ref{box:est_stra} is possible creating a MATLAB function which presents in input the parameters and in output the sum of the squares of the residuals. This is performed with a simulation of the system executed inside the function, the data of the real system are available as a global variable, and the only output is the sum of square to minimize. The strategy and the function to minimize (orange box) is shown in Figure \ref{fig:eststrategy}.
+The implementation of the strategy in Box \ref{box:est_stra} is implemented creating a MATLAB function which presents in input the parameters and in output the sum of the squares of the residuals. This is performed with a simulation of the system in \eqref{eq:ss} executed inside the function, the data of the real system (output and input) are available as a global variable, the inputs are the parameters to tune, the only output of the function is the sum of square to minimize. The strategy and the function to minimize (orange box) is shown in Figure \ref{fig:eststrategy}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/est_strategy}
@@ -410,14 +412,12 @@ signal is shown in Figure \ref{fig:pulse_input}.
 
 
 \subsubsection{Free damping case}
-The first estimation is performed using the model in Equations \eqref{eq:ss}.
-
-%TODO first guesses
+The first estimation is performed using the model in Equations \eqref{eq:ss}, the parameters to estimate are 9.
 
 The results of this optimization are shown in table \ref{tab:est_full_results}
 \begin{table}[H]
+	
 	\centering
-	\label{tab:est_full_results}
 	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
 		\hline
 		Name & $g_v$ &  $m_1$ & $m_2$ & $m_3$  &  $c_1$ & $c_2$ & $c_3$  & $c_{12}$ & $c_{23}$ \\
@@ -428,23 +428,42 @@ The results of this optimization are shown in table \ref{tab:est_full_results}
 		\hline
 \end{tabular}
 \caption{Estimation results (model with free damping)}
+\label{tab:est_full_results}
 \end{table}
 A plot with the comparison of the models is provided in Figure \ref{fig:compare_f}. The normalized root means square errors are provided for each DOF in table \ref{tab:fit_all}
+\subsection{Conclusion and considerations}
+\begin{description}
+	\item[First guesses] The procedure in box \ref{box:est_stra} requires a first guess. The bounds of the masses and the damping coefficients were known. Values within the bound were chosen as first guesses. No significant changes are detected. ($10^{-4}$ $K_g$ on masses for example).
+	\item[Spring damping] As evident in table \ref{tab:est_full_results}, the damping between the masses seems negligible. This is also manifested in the prevalence of $c_a\bm{M}_p$ w.r.t of $c_b\bm{K}_p$ in the proportional damping system model. indeed:
+	\begin{equation}
+	c_a	\norm{\bm{M_p}} = \rs{c_a_m} \quad c_b	\norm{\bm{K_p}} = \rs{c_b_k}
+	\end{equation}
+	where $p$-pedix indicates the parameters estimated in the proportional damping case.
+	\item[Proportional damping] The proportional damping model provides very similar results, it means a modal decomposition will be possible witouth approximating to much the damping matrix.
+	\item[Dry friction] A nonlinearity in the model may be the dry friction between bodies and carriers. The static friction in particular is evident in the final transient. See Figure \ref{fig:dryfric}.
+\end{description}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\linewidth]{img/dry_fric}
+	\caption{Sudden stop of the motion because of the static friction, difference in equilibrium positions denotes the presence of a stick set.}
+	\label{fig:dryfric}
+\end{figure}
+
+
 \begin{figure}[H]
 	\centering
 		\caption{Comparison between the response of the model and the response of the system}
 	\includegraphics[width=\linewidth]{img/compare_f}
 	\label{fig:compare_f}
-\end{figure}
+\end{figure} %TODO tutti i riferimento delle tabelle sopra le captions
 \subsubsection{Proportional damping case}
-The procedure is exactly the same as the case of the free damping. The parameters to estimate now are 6 instead of 9. The damping now is represented by only 2 parameters, as shown in Equation \eqref{eq:prop_C}.
+The procedure is exactly the same as the case of the free damping. The parameters to estimate now are 6 instead of 9. The damping now is represented by only 2 parameters, as shown in Equation \eqref{eq:prop_C}. The interesting property of this representation is the possibility to perform the modal decomposition on the system. This property will be exploited in Section \ref{sec:modal}
 \begin{equation}
 	\label{eq:prop_C}
 	\bm{C} = c_a\bm{M} + c_b\bm{K}
 \end{equation}
 \begin{table}[H]
 	\centering
-	\label{tab:est_prop_results}
 	\begin{tabular}{|l|l|l|l|l|l|l|l|l|l|}
 		\hline
 		Name & $g_v$ &  $m_1$ & $m_2$ & $m_3$  &  $c_a$ & $c_b$  \\
@@ -455,6 +474,7 @@ The procedure is exactly the same as the case of the free damping. The parameter
 		\hline
 	\end{tabular}
 	\caption{Estimation results (model with proportional damping)}
+	\label{tab:est_prop_results}
 \end{table}
 \begin{figure}[H]
 	\centering
@@ -538,17 +558,6 @@ The value obtained from the eigenvalue problem are shown in table \ref{tab:eig_r
 		& \rs{U_f_31}                     & \rs{U_f_32}                     & \rs{U_f_33} & \rs{U_p_31}                     & \rs{U_p_32}                     & \rs{U_p_33} \\ \hline
 	\end{tabular}
 \end{table}
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -734,12 +743,17 @@ The whole procedure is performed for the case of free damping and the case of pr
 
 
 \subsubsection{Modal decomposition}
+\label{sec:modal}
 In the proportional damping case only the modal decomposition can be performed. Using the modal shape matrix $U$, definittively the one from the proprtional damping parameters. The new coordinates are:
 \begin{subequations}
 	\label{eq:modal_transf}
 \begin{equation}
 \label{eq:modal_coo}
 	\tilde{x} = \bm{U\tr} x 
+\end{equation}
+Also the vector of the inputs has to be projected:
+\begin{equation}
+	\tilde{b} = \bm{U}\tr b
 \end{equation}
 The matrices becomes diagonal and they can be computed as shown below:
 \par
@@ -787,10 +801,47 @@ Equation \eqref{eq:C_modal} comes from the fact that $c_b$ and $c_a$ are scalars
 
 This decomposition uncouples the degree of freedom. It means each row of the matrix equation:
 \begin{equation}
-\bm{\tilde{M}} \ddot{\tilde{x}} + \bm{\tilde{C}} \dot{\tilde{x}} + \bm{\tilde{K}} \tilde{x} = \bm b
+\bm{\tilde{M}} \ddot{\tilde{x}} + \bm{\tilde{C}} \dot{\tilde{x}} + \bm{\tilde{K}} \tilde{x} = \tilde{b}v
 \label{eq:eqm:modal}
 \end{equation}
 can be treated as a single degree of freedom system.
+\subsubsection{Modal damping}
+Since the system is now uncoupled, it can be expresse in the form of 3 independent equations.
+\begin{equation}
+	\tilde{\bm{M}}_{ii}\ddot{\tilde{x}}_i + \tilde{\bm{C}}_{ii}\dot{\tilde{x}}_i + \tilde{\bm{K}}_{ii}\tilde{x}_i = \tilde{b}_iv \quad i \in 1,2,3
+\end{equation}
+Natural frequencies can be derived. \danger They are not the resonant frequencies, but the frequencies at which the \textbf{damped} system will oscillate in the impulse response. They are shown in \eqref{eq:modal_omega} and the values in table \ref{tab:modal}\\
+
+\begin{subequations}
+\begin{tabularx}{\linewidth}{@{}XX@{}}
+\begin{equation}
+\zeta_{i} = \dfrac{c_a + c_b\omega_i^2}{2\omega_i}
+\end{equation}&
+\begin{equation}
+	\omega_{ni} = \omega_i\sqrt{1-\zeta_i}
+\end{equation}
+\end{tabularx}
+\label{eq:modal_omega}
+\end{subequations}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{|l|l|l|}
+	 \hline
+	 modal coordinate &  $\zeta_i$ & $\omega_{ni}$ [rad/s] \\
+	 \hline
+     $\tilde{x}_1$    &  \rs{zeta_n1} & \rs{omega_n1}\\
+     \hline
+     $\tilde{x}_2$    &  \rs{zeta_n2} & \rs{omega_n2}\\
+     \hline
+     $\tilde{x}_3$    &  \rs{zeta_n3} & \rs{omega_n3}\\
+	\hline
+\end{tabular}
+\caption{Damping quantities (frequency and damping coefficient)}
+\label{tab:modal}
+\end{table}
+
+
 
 \section{Transfer functions plots}
 The transfer functions are converted from the state space form (Equation \eqref{eq:ss}) through the formula \eqref{eq:ss2tf}. The input is the voltage $v$.

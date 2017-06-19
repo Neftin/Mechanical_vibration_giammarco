@@ -156,7 +156,8 @@ M_p = [m1_p 0 0;
 sys_guess_prop = ss(A_p,B_p,C_p,D_p);
 
 figure(2);
-compare(comparison_data,sys_guess_prop)
+compare(comparison_data,sys_guess_prop);
+
 
 pp_estimation
 %% MODAL ANALYSIS - eigenvalues - full
