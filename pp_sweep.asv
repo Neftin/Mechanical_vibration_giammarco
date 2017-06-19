@@ -1,0 +1,28 @@
+
+%pp_ssweep
+
+%plot sine sweep data
+figure(8)
+
+subplot(2,1,1)
+x = [0:0.1:2*pi].*(1/(2*pi*Ts_sss));
+y = vsss;
+z = fft(y);
+z = fftshift(z);
+N = length(y);
+f = [-N/2:N/2-1]/N;
+plot(f,abs(z))
+grid minor;
+
+figure(8)
+
+subplot(2,1,2)
+
+x = [0:0.1:2*pi];
+y = vssf;
+z = fft(y);
+z = fftshift(z);
+N = length(y);
+f = [-N/2:N/2-1]/N;
+plot(f,abs(z))
+grid minor;

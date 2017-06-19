@@ -19,6 +19,21 @@
 \usepackage{tabularx}
 \usepackage{multirow}
 
+%  EXOTIC STUFF %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand*{\TakeFourierOrnament}[1]{{%                         %
+		\fontencoding{U}\fontfamily{futs}\selectfont\char#1}}    %
+\newcommand*{\danger}{\TakeFourierOrnament{66}}                  %          
+                                                                 %
+\usepackage{newunicodechar}
+
+\newcommand\Warning{%
+	\makebox[1.4em][c]{%
+		\makebox[0pt][c]{\raisebox{.1em}{\small!}}%
+		\makebox[0pt][c]{\color{red}\Large$\bigtriangleup$}}}
+
+\newunicodechar{⚠}{\Warning}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 %rapid file input
 \newcommand{\rs}[1]{\input{result/#1.txt}}
 
@@ -588,8 +603,8 @@ The procedure is implemented in MATLAB with the following steps.
 	
 \begin{table}[H]
 	\centering
-	\caption{Values of frequencies and modal shapes vector obtained using the Raileight}
-	\label{tab:eig_results}
+	\caption{Values of frequencies and modal shapes vector obtained using the Raileight method}
+	\label{tab:rai_results}
 	\begin{tabular}{|l|lll|lll|}
 		\hline
 		& \multicolumn{3}{l|}{Free damping}                                                           & \multicolumn{3}{l|}{proportional damping}                                                   \\ \hline
@@ -665,9 +680,36 @@ The procedure is implemented in MATLAB with the following steps.
 		\end{equation}
 		\item Repeat steps 3. and 4. on the new $x$.
 		\item Repeat steps 3. 4. 5. N times. The greater the number of iteration N the greater the accuracy. In this case N=15 is chosen since the computation is not heavy.
-		...
+		\item After the N iterations, the vector x converge to the first eigenvector of $\bm{D}$, the one with the highest eigenvalue (lowest frequency of the undamped system).
+		\item The frequency is computed according to equation \eqref{eq:eig_mim}, the values of the frequency and the eigenvector are stored. The frequency is the square root of the reciprocal of the eigenvalue. The modal shape vectors are the eigenvectors (see comment \ref{com:eig_mim})
+		\begin{equation}
+		\label{eq:eig_mim}
+		\begin{sistema}
+			\omega_i = \left (\dfrac{x\tr D_i x}{x\tr x}\right )^{-\dfrac{1}{2}}\\
+			u_i = x
+		\end{sistema}
+		\end{equation}
+		\\ \\
+	\noindent\textbf{ Matrix deflation}:
+	Since the method can detect only the first eigenvector, to find the ther ones somehow an elimination of the first eigenvalue from the image of the matrix has to be performed. A manipulation can be used to achieve this effect: the matrix deflation. This procedure update the Matrix $D$ without affecting the eigenvectors, but reducing to zero a chosen eigenvalue. (Numerically it means reduce it to small values like $10^{-18}$)
+		\item The matrix $D$ is updated performing the matrix deflation with the last eigenvalue.
+		\begin{equation}
+			\bm{D^+} =\bm{ D} - \dfrac{u_i u_i\tr \bm{M}}{u_i\tr \bm{M} u_i}
+		\end{equation}
+	\item The procedure from steps 3 to 9 is repeated for each additional eigenpair to find.
+		
+ \begin{comment}
+ \label{com:eig_mim}
+ 	Equation \eqref{eq:eig_mim} comes from the standard eigenvalue problem in Box \ref{box:eig_prob}:
+ 	\begin{equation}
+ 	\label{eq:comment_eig_mim}
+ 	\left ( \bm{K}+\omega^2\bm{M}\right )x = 0 \Leftrightarrow \dfrac{x}{\omega^2} = \bm{K^{-1}}\bm{M}x \Leftrightarrow \dfrac{x}{\omega^2} = \bm{D}x
+ 	\end{equation}
+ 	From Equations \eqref{eq:comment_eig_mim} is evident that the eigenvalues of $\bm{D}$ are the reciprocals of the frequencies squared and the eigenvectors are the same as the modal shape vectors.
+ \end{comment}
 	\end{enumerate}
-	A block diagram which resumes the implemented method is shown in Figure \ref{fig:mim}.
+The whole procedure is performed for the case of free damping and the case of proportional damping. The results are shown in table \ref{tab:mim_results}.
+	A block diagram which resumes the implemented method is shown in Figure \ref{fig:mim}. Again a orthogonality check is performed on the modal shape vectors.
 	
 	
 	
@@ -678,19 +720,124 @@ The procedure is implemented in MATLAB with the following steps.
 		\label{fig:mim}
 	\end{figure}
 	
-	\subsubsection{implementazione}
+\begin{table}[H]
+	\centering
+	\caption{Values of frequencies and modal shapes vector obtained using the Matrix Iteration Method}
+	\label{tab:mim_results}
+	\begin{tabular}{|l|lll|lll|}
+		\hline
+		& \multicolumn{3}{l|}{Free damping}                                                           & \multicolumn{3}{l|}{proportional damping}                                                   \\ \hline
+		$\omega$  [rad/s]               & \multicolumn{1}{l|}{\rs{wm_f_1}} & \multicolumn{1}{l|}{\rs{wm_f_2}} & \rs{wm_f_3}  & \multicolumn{1}{l|}{\rs{wm_p_1}} & \multicolumn{1}{l|}{\rs{wm_p_2}} & \rs{wm_p_3}  \\ \hline
+		\multirow{3}{*}{$\bm U$} & \rs{U_f_11}                     & \rs{Um_f_12}                     & \rs{Um_f_13} & \rs{Um_p_11}                     & \rs{Um_p_12}                     & \rs{Um_p_13} \\
+		& \rs{Um_f_21}                     & \rs{Um_f_22}                     & \rs{Um_f_23} & \rs{Um_p_21}                     & \rs{Um_p_22}                     & \rs{Um_p_23} \\
+		& \rs{Um_f_31}                     & \rs{Um_f_32}                     & \rs{Um_f_33} & \rs{Um_p_31}                     & \rs{Um_p_32}                     & \rs{Um_p_33} \\ \hline
+	\end{tabular}
+\end{table}
 
 
-
-
+\subsubsection{Modal decomposition}
+In the proportional damping case only the modal decomposition can be performed. Using the modal shape matrix $U$, definittively the one from the proprtional damping parameters. The new coordinates are:
+\begin{subequations}
+	\label{eq:modal_transf}
 \begin{equation}
-	\tilde{x} = U\tr x 
+\label{eq:modal_coo}
+	\tilde{x} = \bm{U\tr} x 
 \end{equation}
- Which is basically a projection of the coordinate on the modal shapes vector (scalar products).
- The matrices $M$, $K$ and $C$ becomes... %TODO input files
-%\input{result/M_s_matrix_tex.txt}
+The matrices becomes diagonal and they can be computed as shown below:
+\par
+\begin{tabularx}{\linewidth}{ X  X  X }
+	\begin{equation}
+		\bm{\tilde{M}} = \bm{ U\tr M U }
+	\end{equation} &
+	\begin{equation}
+		\bm{\tilde{K}} = \bm{ U\tr K U }
+	\end{equation} &
+	\begin{equation}
+		\bm{\tilde{C}} = \bm{ U\tr C U }
+	\end{equation}
+\end{tabularx}
 
-%TODO metti la normalizzazione dei modi perfavore
+\end{subequations}
+\begin{comment}
+In Equation \eqref{eq:modal_coo} it is possible to use the inverse of $U$ instead of the transpose to get the coordinates. This is due to the orthogonality property of $U$.\\
+\end{comment}
+The matrices are shown below.
+ \begin{equation}
+  \bm{\tilde{M}} = \input{result/M_s_matrix_tex.txt}
+ \end{equation}
+\begin{subequations}
+\begin{equation}
+	\tilde{\bm{K}} =  \left [ \ \tilde{K_1} \ \tilde{K_2} \ \tilde{K_3} \ \right ]
+\end{equation}
+\begin{equation}
+	\tilde{K_1} =	\input{result/K_s_matrix_tex1.txt}
+\end{equation}
+\begin{equation}
+	\tilde{K_2} =	\input{result/K_s_matrix_tex2.txt}
+\end{equation}
+\begin{equation}
+	\tilde{K_3} =	\input{result/K_s_matrix_tex3.txt}
+\end{equation}
+\end{subequations}
+\begin{equation}
+\label{eq:C_modal}
+	\bm{\tilde{C}} = c_a\bm{\tilde{M}} + c_b\bm{\tilde{K}} 
+\end{equation}
+\begin{comment}
+Equation \eqref{eq:C_modal} comes from the fact that $c_b$ and $c_a$ are scalars.
+\end{comment}
+
+This decomposition uncouples the degree of freedom. It means each row of the matrix equation:
+\begin{equation}
+\bm{\tilde{M}} \ddot{\tilde{x}} + \bm{\tilde{C}} \dot{\tilde{x}} + \bm{\tilde{K}} \tilde{x} = \bm b
+\label{eq:eqm:modal}
+\end{equation}
+can be treated as a single degree of freedom system.
+
+\section{Transfer functions plots}
+The transfer functions are converted from the state space form (Equation \eqref{eq:ss}) through the formula \eqref{eq:ss2tf}. The input is the voltage $v$.
+\begin{equation}
+\label{eq:ss2tf}
+	\dfrac{X(s)}{V(s)} = C(sI-A)^{-1}B.
+\end{equation}
+To compute the transfer function between the force and the positions, the voltage-to-foce coefficient gain has to be removed. Given $F(s)$ the Laplace transform of the force signal.
+\begin{equation}
+	\dfrac{X(s)}{F(s)} = \dfrac{1}{g_v}\dfrac{X(s)}{V(s)}.
+\end{equation}
+The transfer function is a column vector with 3 entries, one for each output, they have the same denominator. The bode diagram are shown in Figure \ref{fig:bode_fp}. Both the cases are plotted: the free damping and and the proportional damping case. \\
+\par \noindent
+The two transfer function are barely distinguishable. The resonance peaks are clearly visible (different from the ones of the undamped version of the system).
+%TODO very nice if you plot the comppsite TF and you find the natural frequencies!!!!
+%TODO natural frequencies!!!!!!! 
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/bode_fp}
+	\caption{Bode diagram of the tranfer functions $\dfrac{X(s)}{F(s)}$}
+	\label{fig:bode_fp}
+\end{figure}
+
+\section{Sine sweep analysis}
+The inputs provided are two sine sweep signal with different sample frequencies. $5 ms$ and $10 ms$. The signal is the same, the only different is the sampling frequency.
+To visualize the spectra of the signals, the fft is performed on both the signal. The spectrum is plotted with the real frequencies in \ref{fig:sinesweepspectra}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/sine_sweep_spectra}
+	\caption{Sine sweep spectra, (slow on the left and fast on the right)}
+	\label{fig:sinesweepspectra}
+\end{figure}
+\noindent The two signal has the same frequency content. The difference is only the sampling time. The spectra cover all the resonance peaks of the transfer function.
+
+To estimate the transfer function from this data MATLAB provides several solution,
+\texttt{tfest} is the first option.
+
+
+%TODO spiega proportional damping
+
+%TODO trova gli smorzamenti modali, almeno spiegali
+
+%TODO study the deflation matrix especially why the M matrix
+
+%TODO metti la normalizzazione dei modi perfavore OVUNQUE
 
 %TODO scrivi che c'è un offset a steady state e lo si vede anche in g_v ogni volta diverso. Colpa attrito secco
 

@@ -3,20 +3,33 @@
 PD    = 18;
 RATIO = 2;% for a fortunate coincidence, a page contains ratios figures
 
+%The nondiagonal azzerator
+    for i = 1:3
+        for j = 1:3
+            if(i ~= j)
+                M_s(i,j) = 0;
+                K_s(i,j) = 0;
+                C_s(i,j) = 0;
+            end
+        end
+    end
+
+
+
 M_s_matrix_tex = latex(M_s);
 
 K_s_matrix_tex = {'1','2','3'};
 
 for i = 1:3
     K_s_matrix_tex{i} = latex(K_s(:,i));
-    C_s_matrix_tex{i} = latex(K_s(:,i));
+    C_s_matrix_tex{i} = latex(C_s(:,i));
 end
 
 for i = ['1','2','3']
     for j = ['1','2','3']
-        M_s_matrix_tex= strrep(M_s_matrix_tex,['u' i j ],['u_{' i j '}']);
-        K_s_matrix_tex= strrep(K_s_matrix_tex,['u' i j ],['u_{' i j '}']);
-        C_s_matrix_tex= strrep(C_s_matrix_tex,['u' i j ],['u_{' i j '}']);
+        M_s_matrix_tex= strrep(M_s_matrix_tex,['U' i j ],['U_{' i j '}']);
+        K_s_matrix_tex= strrep(K_s_matrix_tex,['U' i j ],['U_{' i j '}']);
+        C_s_matrix_tex= strrep(C_s_matrix_tex,['U' i j ],['U_{' i j '}']);
     end
 end
 
