@@ -469,43 +469,31 @@ pp_MA_proportionaldamping
 %fast
 
 Ts_ssf         = tssf(1000) - tssf(999);
-[fr_resp, fr_axis] = tfestimate(vssf, [ x1ssf, x2ssf, x3ssf ] ,[],[],[],1/Ts_ssf);
+data_ssf       = iddata( [ x1ssf  ] , vssf, Ts_ssf )
+frosta1 = tfest(data_ssf,[ 6 ],[ 4 ]);
 
-figure(8)
-plot(fr_axis,abs(fr_resp))
-
-%processing: eliminate values over 9 Hz
-
-fr_resp = fr_resp(find(fr_axis<8.7 & fr_axis>0.3 ),:);
-fr_axis = fr_axis(find(fr_axis<8.7 & fr_axis>0.3 ));
-
-figure(9)
-plot(fr_axis,abs(fr_resp))
-
-resp_data1 = frd(fr_resp(:,1), fr_axis, 'FrequencyUnit', 'Hz');
-
-frosta   = tfest(resp_data1,6,4)
-
-
-% sine sweep slow
 Ts_sss         = tsss(1000) - tsss(999);
-[fr_resp_slow, fr_axis_slow] = tfestimate(vsss, [ x1sss, x2sss, x3sss ] ,[],[],[],1/Ts_sss);
+data_sss       = iddata( [ x1sss  ] , vsss, Ts_sss )
+rispensa1 = tfest(data_sss,[6 ],[ 4 ]);
+
+Ts_ssf         = tssf(1000) - tssf(999);
+data_ssf       = iddata( [ x2ssf  ] , vssf, Ts_ssf )
+frosta2 = tfest(data_ssf,[ 6 ],[ 3 ]);
+
+Ts_sss         = tsss(1000) - tsss(999);
+data_sss       = iddata( [ x2sss  ] , vsss, Ts_sss )
+rispensa2 = tfest(data_sss,[6 ],[ 3 ]);
+
+Ts_ssf         = tssf(1000) - tssf(999);
+data_ssf       = iddata( [ x3ssf  ] , vssf, Ts_ssf )
+frosta3 = tfest(data_ssf,[ 6 ],[ 2 ]);
+
+Ts_sss         = tsss(1000) - tsss(999);
+data_sss       = iddata( [ x3sss  ] , vsss, Ts_sss )
+rispensa3 = tfest(data_sss,[6 ],[ 2 ]);
 
 
-
-% approccio fft iddata (rispensa)
-
-resp_data21 = iddata([ x1ssf, x2ssf, x3ssf ],vssf, Ts_ssf)
-
-rispensaFast = tfest(resp_data21,[ 6 ].', [4 3 2].')
-
-resp_data22 = iddata([ x1sss, x2sss, x3sss ],vsss, Ts_sss)
-
-rispensaSlow = tfest(resp_data22,[ 6 ].', [4 3 2].')
-
-pp_sweep
-
-% %fai due considerazioni in croce sulle FFT
+%pp_sweep
 
 %% EXTRAS
 

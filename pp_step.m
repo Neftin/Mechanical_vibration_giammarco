@@ -1,4 +1,4 @@
-
+close all;
 %post processing for step response
 
 PD    = 18;

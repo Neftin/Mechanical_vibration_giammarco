@@ -1,4 +1,4 @@
-
+close all;
 %pp_Raileight
 
 %free damping

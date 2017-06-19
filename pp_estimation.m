@@ -1,5 +1,5 @@
 %post processing estimation
-
+close all;
 
 %% FULL
 

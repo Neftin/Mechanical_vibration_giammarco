@@ -436,7 +436,7 @@ A plot with the comparison of the models is provided in Figure \ref{fig:compare_
 	\includegraphics[width=\linewidth]{img/compare_f}
 	\label{fig:compare_f}
 \end{figure}
-\subsubsection{Proportinal damping case}
+\subsubsection{Proportional damping case}
 The procedure is exactly the same as the case of the free damping. The parameters to estimate now are 6 instead of 9. The damping now is represented by only 2 parameters, as shown in Equation \eqref{eq:prop_C}.
 \begin{equation}
 	\label{eq:prop_C}
@@ -462,8 +462,6 @@ The procedure is exactly the same as the case of the free damping. The parameter
 	\includegraphics[width=\linewidth]{img/compare_p}
 	\label{fig:compare_p}
 \end{figure}
-
-\subsection{Conclusions}
 %TODO friction
 %TODO statistics
 %TODO good estimation non liner stuff 20% (friction)
@@ -825,17 +823,29 @@ To visualize the spectra of the signals, the fft is performed on both the signal
 	\caption{Sine sweep spectra, (slow on the left and fast on the right)}
 	\label{fig:sinesweepspectra}
 \end{figure}
-\noindent The two signal has the same frequency content. The difference is only the sampling time. The spectra cover all the resonance peaks of the transfer function.
+\noindent The two signal has the same frequency content. The difference is only the sampling time. The spectra cover all the resonance peaks of the transfer function. Despite the spectrum, the sine sweep excites each frequency for a limited amount of time (in fact a spectrogram is a more specific tool for the varying-in-time spectrum). From the time plot \ref{fig:sinesweeptime}, it is possible to notice that the third mode is not clearly visible .
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/sine_sweep_time}
+	\caption{Sine sweep outputs of the system, (slow on the left and fast on the right)}
+	\label{fig:sinesweeptime}
+\end{figure}
+To estimate the transfer function from this data MATLAB provides several solution, the chosen one is
+\texttt{tfest}. It is oriented to LSQ instead of some other method like \texttt{tfestimate}  which use the averaged periodogram method, and the signal is not periodic.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\linewidth]{img/ssbode1}
+	\caption{Sine sweep outputs of the system, (slow on the left and fast on the right)}
+	\label{fig:ssbode1}
+\end{figure}
 
-To estimate the transfer function from this data MATLAB provides several solution,
-\texttt{tfest} is the first option.
-
+%TODO CALCOLA FREQUENZE NATURALI E SMORZI
 
 %TODO spiega proportional damping
 
 %TODO trova gli smorzamenti modali, almeno spiegali
 
-%TODO study the deflation matrix especially why the M matrix
+%TODO study the deflation matrix especially why the M matrix!!!
 
 %TODO metti la normalizzazione dei modi perfavore OVUNQUE
 

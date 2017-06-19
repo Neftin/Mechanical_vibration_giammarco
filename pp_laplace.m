@@ -1,5 +1,9 @@
 %pp_laplace
 
+freq_range_bode = logspace(0,2,400);
+
+close all;
+
 figure(5);
 bode((1/(g_v_est_f))*LaPlace_full,freq_range_bode);
 hold on;

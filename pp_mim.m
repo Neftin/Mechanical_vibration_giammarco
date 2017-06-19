@@ -1,4 +1,4 @@
-
+close all;
 %pp_mim
 
 for i = 1:3
