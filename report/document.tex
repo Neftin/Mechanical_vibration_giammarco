@@ -354,7 +354,6 @@ The value of steady state response are picked from the data directly, as shown i
 \end{figure}
 \noindent
 The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R31$,$R32$) is estimated by the \textbf{arithmetic average}. Given ($ \bm x_{\infty}$) averaged from the data, Equation \eqref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data \ value}{nominal}$
-%TODO< write the mambo jambo
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
@@ -476,17 +475,29 @@ The procedure is exactly the same as the case of the free damping. The parameter
 	\caption{Estimation results (model with proportional damping)}
 	\label{tab:est_prop_results}
 \end{table}
+\subsubsection{multiple single DOF system case}
+Since it is possible to detach the springs and to fix the masses on the equilibrium position. A possible strategy for the system identification may be as following (Box \ref{box:singledof}).
+\begin{scatola}{Strategy}
+	Perform a 1 DOF system identification for each mass using the impulse response for the first and initial condition for the others in the following configuration.
+	\begin{description}
+		\item[mass 1] Detach the other springs and use the motor as input
+		\item[mass 2] Detach spring 2 and fix mass1 as the frame. Use initial conditions and work with free response.
+		\item[mass 3] Detach spring 2 and use initial conditions and work with free response.
+	\end{description}
+	\par
+	For the second and the third mass, they can be moved \textbf{manually}. The system identification can be performed using the \textbf{initial conditions}, measuring the velocity and the position after some time and pick them as initial condition.
+	\par
+	If the spring stiffnesses need to be estimate, it is enough to simply use a different spring for each step since they are 3. \danger Note that it is not possible to uncouple the springs damping and the carrier damping in one dof systems. To separate this two conntributions at least two mass are needed.
+	\label{box:singledof}
+\end{scatola}
 \begin{figure}[H]
 	\centering
 	\caption{Comparison between the response of the model and the response of the system - proportional damping case}
 	\includegraphics[width=\linewidth]{img/compare_p}
 	\label{fig:compare_p}
 \end{figure}
-%TODO friction
-%TODO statistics
-%TODO good estimation non liner stuff 20% (friction)
 
-\begin{table}[]
+\begin{table}[H]
 	\centering
 	\caption{NRMSE for the outputs}
 	\label{tab:fit_all}
@@ -821,6 +832,10 @@ Natural frequencies can be derived. \danger They are not the resonant frequencie
 	\omega_{ni} = \omega_i\sqrt{1-\zeta_i}
 \end{equation}
 \end{tabularx}
+Where the equation of the $i^{th}$ mode can be written as
+\begin{equation}
+	\ddot{\tilde{x}}_i + 2\zeta_i \omega_{ni} \dot{\tilde{x}}_i + \omega_{ni}^2 \tilde{x} = \dfrac{\tilde{b_i}}{\bm{M}_{ii}}v
+\end{equation}
 \label{eq:modal_omega}
 \end{subequations}
 
@@ -856,8 +871,6 @@ To compute the transfer function between the force and the positions, the voltag
 The transfer function is a column vector with 3 entries, one for each output, they have the same denominator. The bode diagram are shown in Figure \ref{fig:bode_fp}. Both the cases are plotted: the free damping and and the proportional damping case. \\
 \par \noindent
 The two transfer function are barely distinguishable. The resonance peaks are clearly visible (different from the ones of the undamped version of the system).
-%TODO very nice if you plot the comppsite TF and you find the natural frequencies!!!!
-%TODO natural frequencies!!!!!!! 
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/bode_fp}
@@ -890,23 +903,15 @@ To estimate the transfer function from this data MATLAB provides several solutio
 	\label{fig:ssbode1}
 \end{figure}
 
-%TODO CALCOLA FREQUENZE NATURALI E SMORZI
 
 %TODO spiega proportional damping
-
-%TODO trova gli smorzamenti modali, almeno spiegali
 
 %TODO study the deflation matrix especially why the M matrix!!!
 
 %TODO metti la normalizzazione dei modi perfavore OVUNQUE
 
-%TODO scrivi che c'è un offset a steady state e lo si vede anche in g_v ogni volta diverso. Colpa attrito secco
+%TODO cosa speciale quando blocchi le singole masse.
 
-%TODO metti in simulink lo state space con attrito (chiudi loop ed aggiungi a B la possibilità di attrito)
-
-%TODO studia che succede in mult dof viscosi alle freq naturali
-
-%TODO tabella al 
 %TODO AGGIUNGI (t) alle variabili e lista dei simboli!
 %TODO experimental set up
 \end{document}
