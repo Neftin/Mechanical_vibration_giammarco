@@ -58,6 +58,7 @@
 	\end{center}
  }
 
+\date{21/06/2017}
 
 %\usepackage{hyperref}
 
@@ -78,7 +79,7 @@
 
 \begin{document}
 	
-	\title{\textcolor{MidnightBlue}{Mechanical vibration} - \textcolor{Plum}{System identification and modal analysis of 3-DOF linear system}}
+	\title{\textcolor{Orange}{Mechanical vibration 2015/16} - \textcolor{MidnightBlue}{System identification and modal analysis of 3-DOF linear system}}
 	\author{Giammarco Valenti}
 	\maketitle
 \section{The system}
@@ -168,7 +169,7 @@ g_v \\ 0 \\  0
 	\end{tabularx}
 \label{eq:Mtot}
 \end{subequations}
-\subsection{state-space model}
+\subsection{State-space model}
 	The linear model of the plant, expressed by the equation \eqref{eq:Mtot}, is a SIMO model. A state-space form was chosen to represent this model. The matrices are the follwing:\\
 \begin{subequations}
 \begin{tabularx}{\linewidth}{@{}XXX@{}}
@@ -213,8 +214,8 @@ g_v \\ 0 \\  0
 \label{eq:ss}
 \end{subequations}
 where $\bm I$ is the identity matrix and $\bm Z$ is a matrix with all the entries equal to zero.
-\subsection{experimental setup}
-\subsubsection{data processing}
+\subsection{Experimental setup}
+\subsubsection{Data processing}
 An operation on data must be performed in order to use them. The data on diplacements is provided in \textit{encoder counts}. They are converted in meters with the following convertion factor ($g_x$):
 \begin{equation}
 	g_x = \dfrac{\Delta x}{\Delta \texttt{counts}} = 2 \pi r_e \cdot \dfrac{\Delta \texttt{counts}}{16000\dfrac{\texttt{counts}}{\texttt{encoder revolution}}}.
@@ -260,7 +261,7 @@ Where the physical meanings are:\\
 
 \section{System identification}
 	
-\subsection{steady state analysis}
+\subsection{Steady state analysis}
 \label{sec:step}
 From the \textit{step response analysis} the steady state values of input and output are considered. In this analysis the ''static'' coefficients can be studied, they are:
 \begin{itemize}
@@ -486,7 +487,7 @@ The procedure is exactly the same as the case of the free damping. The parameter
 
 
 
-\subsubsection{multiple single DOF system case}
+\subsubsection{Multiple single DOF system case}
 Since it is possible to detach the springs and to fix the masses on the equilibrium position. A possible strategy for the system identification may be as following (Box \ref{box:singledof}).
 \begin{scatola}{Strategy}
 	Perform a 1 DOF system identification for each mass using the impulse response for the first and initial condition for the others in the following configuration.
@@ -516,7 +517,7 @@ Since it is possible to detach the springs and to fix the masses on the equilibr
 		\input{result/fit_p3.txt} \%                              \\ \hline
 	\end{tabular}
 \end{table}
-\section{modal analysis}
+\section{Modal analysis}
 \subsection{Eigenvalue problem}
 \label{sec:eigenvalueproblem}
 Define a system expressed by the following equation:
@@ -525,11 +526,11 @@ Define a system expressed by the following equation:
 \label{eq:eqm:und}
 \end{equation} 
 this system is the \textbf{undamped} version of system \eqref{eq:Mtot}.
-The resonant frequencies of the system in Equation \eqref{eq:Mtot} (the same as equation \ref{eq:eqm:und}) can be derived solving an eigenvalue problem stated as follows:
-\begin{scatola}{The resonant frequencies , modal shape vectors and eigenvalue problem}
+The resonance frequencies of the system in Equation \eqref{eq:Mtot} (the same as equation \eqref{eq:eqm:und}) can be derived solving an eigenvalue problem stated as follows:
+\begin{scatola}{The resonance frequencies , modal shape vectors and eigenvalue problem}
 	\label{box:eig_prob}
 	 \\
-			Given the system expressed in \eqref{eq:Mtot} define a resonant frequency an $\omega > 0$ with $x_e \neq 0_v \in \Re^3 $ such that :
+			Given the system expressed in \eqref{eq:Mtot} define a resonance frequency an $\omega > 0$ with $x_e \neq 0_v \in \Re^3 $ such that :
 		\begin{equation}
 		\label{eq:eigenproblem}
 			\left( \bm{K} -\omega^{2}\bm{M} \right )x = 0_v 
@@ -556,8 +557,8 @@ solving the problem in the Box \ref{box:eig_prob}, is equivalent to find the pol
 To solve the problem in Box \ref{box:eig_prob} MATLAB provides a function \texttt{eig}, which receives in input the two matrices ($\bm{K}$ and $\bm{M}$) and returns the eigenvalues and the eigenvectors in a matrix. Taking the square root of the ladders the $\omega$ are obtained, the Modal shape matrix is directly provided by the function.
 The modal shape vectors are orthogonal each other and this is a property which can be verified.
 \subsubsection{Results}
-The procedure shown in the previous Section \ref{sec:eigenvalueproblem} is the same for both the case of Free damping and proportional damping. The difference leads in the different value estimated. They are shown in table \ref{tab:est_full_results} and \ref{tab:est_prop_results}.
-The value obtained from the eigenvalue problem are shown in table \ref{tab:eig_results}.
+The procedure shown in the previous Section \ref{sec:eigenvalueproblem} is the same for both the case of Free damping and proportional damping. The difference leads in the different values estimated. They are shown in table \ref{tab:est_full_results} and \ref{tab:est_prop_results}.
+The values obtained from the eigenvalue problem are shown in table \ref{tab:eig_results}.
 
 
 % Please add the following required packages to your document preamble:
@@ -579,13 +580,13 @@ The value obtained from the eigenvalue problem are shown in table \ref{tab:eig_r
 
 
 
-\subsection{Raileight method}
-The Raileight method is a method to find simultaneously the natural frequencies and the modal shapes vector. Ths method is based on the search of stationary point in a function, the Raileight quotient.
+\subsection{Rayleight method}
+The Rayleight method is a method to find simultaneously the resonance frequencies and the modal shapes vector. Ths method is based on the search of stationary point in a function, the Rayleight quotient.
 The Rayleight quotient is 
 	\begin{equation}
 		R_q(\bm x) = \dfrac{\bm x\tr \bm K \bm x}{\bm x\tr \bm M \bm x} .
 	\end{equation}
-The Raileight quotient manifests two properties which make it suitable to do so:
+The Rayleight quotient manifests two properties which make it suitable to do so:
 \begin{enumerate}
 	\item Given an eigenvector (modal shape vector) $R_q(U_i)$ = $\omega_i^2$
 	\item $R_q(x)$ Presents a stationary point in the neighborhood of $x = U_i$\\
@@ -595,11 +596,11 @@ Additional properties are:
 	\item The first frequency (the lowest) the first mode corresponds to a minimum of $R_q(x)$
 	\item The last frequency (the largest) the last mode corresponds to a maximum of $R_q(x)$.
 \end{enumerate}
-The Raileight method consists in find the stationary values of $R_q(x)$.
+The Rayleight method consists in find the stationary values of $R_q(x)$.
 \subsubsection{Implementation}
 The procedure is implemented in MATLAB with the following steps.
 \begin{itemize}
-	\item The Raileight quotient is defined as a function of $x$, conserving only two degree of freedom of the vector $x$, the function to minimize is then:
+	\item The Rayleight quotient is defined as a function of $x$, conserving only two degree of freedom of the vector $x$, the function to minimize is then:
 	\begin{equation}
 		R_q(\alpha,\beta) = \dfrac{\begin{bmatrix} 1 & \alpha & \beta \end{bmatrix}   \bm{K}
 		                    \begin{bmatrix} 1 & \alpha & \beta \end{bmatrix} \tr}{\begin{bmatrix} 1 & \alpha & \beta \end{bmatrix} \bm{M}
@@ -622,12 +623,12 @@ The procedure is implemented in MATLAB with the following steps.
 		\omega_i = R_q(\alpha_i, \ \beta_i)
 		\end{sistema}
 	\end{equation}
-	\item Since $R_q(\alpha,\beta)$ is a surface. A contour plot is provided to verify the points. Property 3 and 4 are used to check the last and the first frequencies, which have to be respectvely a maximum and a minimum. The contour plot is shown in Figures \ref{fig:contour_f} and \ref{fig:contour_p}, for the cases of free damping and proportional damping respectively.
-	\item The orthogonality oft he modal shape vectors is check performing scalar product between them. The expected result has to be zero or very small because of the numerical approximation ($\div 10^{-16}$).
+	\item Since $R_q(\alpha,\beta)$ is a surface. A contour plot is provided to verify the points. Property 3 and 4 are used to check the last and the first frequencies, which have to be respectively a maximum and a minimum. The contour plot is shown in Figures \ref{fig:contour_f} and \ref{fig:contour_p}, for the cases of free damping and proportional damping respectively.
+	\item The orthogonality of the modal shape vectors is check performing scalar product between them. The expected result has to be zero or very small because of the numerical approximation ($\div 10^{-16}$).
 	
 \begin{table}[H]
 	\centering
-	\caption{Values of frequencies and modal shapes vector obtained using the Raileight method}
+	\caption{Values of frequencies and modal shapes vector obtained using the Rayleight method}
 	\label{tab:rai_results}
 	\begin{tabular}{|l|lll|lll|}
 		\hline
@@ -648,13 +649,13 @@ The procedure is implemented in MATLAB with the following steps.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/contour_f}
-	\caption{Controur plot of the Raileight quotient in case of free damping, with stationary points}
+	\caption{Controur plot of the Rayleight quotient in case of free damping, with stationary points}
 	\label{fig:contour_f}
 \end{figure}
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/contour_p}
-	\caption{Controur plot of the Raileight quotient in case of proportional damping, with stationary points}
+	\caption{Controur plot of the Rayleight quotient in case of proportional damping, with stationary points}
 	\label{fig:contour_p}
 \end{figure}
 
@@ -681,7 +682,7 @@ The procedure is implemented in MATLAB with the following steps.
 %			\end{array} \right ]\tr)
 %		\end{equation}
 %	\end{itemize}
-%The results are shown in Table \ref{tab:modalResults} and the contour plot of the Raileight coefficient is shown in Figure \ref{fig:Rcontour}
+%The results are shown in Table \ref{tab:modalResults} and the contour plot of the Rayleight coefficient is shown in Figure \ref{fig:Rcontour}
 
 \subsection{Matrix Iteration Method}
 	Another method to find the eigenpairs is the Matrix Iteration Method. This method, as the name suggest, is an iterative method.
@@ -705,7 +706,7 @@ The procedure is implemented in MATLAB with the following steps.
 		\item Repeat steps 3. and 4. on the new $x$.
 		\item Repeat steps 3. 4. 5. N times. The greater the number of iteration N the greater the accuracy. In this case N=15 is chosen since the computation is not heavy.
 		\item After the N iterations, the vector x converge to the first eigenvector of $\bm{D}$, the one with the highest eigenvalue (lowest frequency of the undamped system).
-		\item The frequency is computed according to equation \eqref{eq:eig_mim}, the values of the frequency and the eigenvector are stored. The frequency is the square root of the reciprocal of the eigenvalue. The modal shape vectors are the eigenvectors (see comment \ref{com:eig_mim})
+		\item The frequency is computed according to equation \eqref{eq:eig_mim}, the values of the frequency and the eigenvector are stored. The frequency is the square root of the reciprocal of the eigenvalue. The modal shape vectors are the eigenvectors (see comment \ref{com:eig_mim}) Actually this step is redundant, because the eigenvalue can be picked also from $x(1)$ before the last step 4.
 		\begin{equation}
 		\label{eq:eig_mim}
 		\begin{sistema}
@@ -761,7 +762,7 @@ The whole procedure is performed for the case of free damping and the case of pr
 
 \subsubsection{Modal decomposition}
 \label{sec:modal}
-In the proportional damping case only the modal decomposition can be performed. Using the modal shape matrix $U$, definittively the one from the proprtional damping parameters. The new coordinates are:
+In the proportional damping case the modal decomposition can be performed. Using the modal shape matrix $U$, definittively the one from the proprtional damping parameters. The new coordinates are:
 \begin{subequations}
 	\label{eq:modal_transf}
 \begin{equation}
@@ -827,7 +828,7 @@ Since the system is now uncoupled, it can be expresse in the form of 3 independe
 \begin{equation}
 	\tilde{\bm{M}}_{ii}\ddot{\tilde{x}}_i + \tilde{\bm{C}}_{ii}\dot{\tilde{x}}_i + \tilde{\bm{K}}_{ii}\tilde{x}_i = \tilde{b}_iv \quad i \in 1,2,3
 \end{equation}
-Natural frequencies can be derived. \danger They are not the resonant frequencies, but the frequencies at which the \textbf{damped} system will oscillate in the impulse response. They are shown in \eqref{eq:modal_omega} and the values in table \ref{tab:modal}\\
+Natural frequencies can be derived. \danger They are not the resonance frequencies, but the frequencies at which the \textbf{damped} system will oscillate in the impulse response. They are shown in \eqref{eq:modal_omega} and the values in table \ref{tab:modal}\\
 
 \begin{subequations}
 \begin{tabularx}{\linewidth}{@{}XX@{}}
@@ -908,7 +909,7 @@ To estimate the transfer function from this data MATLAB provides several solutio
 	\caption{Sine sweep outputs of the system, (slow on the left and fast on the right)}
 	\label{fig:ssbode1}
 \end{figure}
-
+As expected, the first two modes are detected but not the third. To estimate a transfer function a signal with a wider spectrum would be better, or a pseudo random binary sequence.
 
 %TODO spiega proportional damping
 
