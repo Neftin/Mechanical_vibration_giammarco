@@ -81,10 +81,9 @@
 	\title{\textcolor{MidnightBlue}{Mechanical vibration} - \textcolor{Plum}{System identification and modal analysis of 3-DOF linear system}}
 	\author{Giammarco Valenti}
 	\maketitle
-	
-\section{Dynamical system}
+\section{The system}
 \subsection{The system and the experimental setup}
-The system consists of three different bodies on three carriers. The carriers are aligned and the bodies are constrained to slide along the common axis. Between the bodies two springs are located, and a third spring connects the frame and the last body. The first body is rigidly connected trough a rack-pinion gearing with a motor which is controlled in voltage with a PC interface. The position of each body is provided by an encoder. The zeroes of the positions are at the springs rest position. The scheme of the model is depicted in Figure \ref{fig:theplant1}.
+The system consists of three different bodies on three carriers. The carriers are aligned and the bodies are constrained to slide along the common axis. Between the bodies two springs are located, and a third spring connects the frame and the last body. The first body is rigidly connected trough a rack-pinion gearing with a motor which is controlled in voltage with a PC interface. The position of each body is provided by an encoder. The zeroes of the positions are at the springs equilibrium positions. The scheme of the model is depicted in Figure \ref{fig:theplant1}.
 The displacement of the masses in meters is available from the encoder with the following resolution:
 \begin{equation}
 	\Delta x = \dfrac{2 \pi r_e}{16000}.
@@ -93,19 +92,19 @@ The displacement of the masses in meters is available from the encoder with the 
 \subsection{The dynamical model}
 \subsubsection{Assumptions}
 \label{sec:ass}
-To define a model of the system, some assumptions were made:
+To define a linear model of the system, some assumptions were made:
 \begin{description}
 	\item[Rectilinear motion] All the bodies (masses), and the rack of the rack-pinion gearing are supposed to move and exert forces along the same axis, which is the motion axis. Consequently, all the quantities are meant to be projected on this axis.
-	\item[Viscous friction] Only viscous frictions are present
+	\item[Viscous friction] Only viscous frictions are present in the model.
 	\item[Instantaneous electrical dynamics] The model of the electrical dynamics of the motor is only a gain from voltage to force, expressed by the voltage-to-force factor, which is exploited in Section \ref{sec:step}.
 	\item [Motor mechanics merged] Inertia and damping of the motor are merged respectively into $m_1$ and $c_1$ (refer to Figure \ref{fig:theplant1})
 	\begin{equation}
 	\begin{sistema}
-	m_1 = m_{block} + \frac{J_{motor}\vert_{zz}}{r^2}\\
-	c_2 = c_{block} + \frac{c_{motor}}{r^2}
+	m_1 = m_{body} + \frac{J_{motor}\vert_{zz}}{r^2}\\
+	c_1 = c_{body} + \frac{c_{motor}}{r^2}
 	\end{sistema}
 	\end{equation}
-	where $r$ is the radius of the gear-rack coupling (gear wheel), $J_{motor}\vert_{zz}$ is the inertia of the motor , $c_{motor}$ the rotational damping and ''block'' quantities are the ones stricly related to the physical first mass.
+	where $r$ is the radius of the gear-rack coupling (gear wheel), $J_{motor}\vert_{zz}$ is the inertia of the motor , $c_{motor}$ the rotational damping and ''body'' quantities are the ones stricly related to the physical first mass.
 	\item [Last viscosities merged] The term $c_3$ (refer to Figure \ref{fig:theplant1}) contains the viscous friction with the ground and the one due to the spring. In the model those two contributions cannot be quantified separately.
 \end{description}
 \subsubsection{The linear model}
@@ -113,7 +112,7 @@ To define a model of the system, some assumptions were made:
 
 
 
-The chosen model is a linear plant consisting of 3 lumped masses, 3 lumped springs between them (the last to the frame), and 3 dampers between each mass and the ground. The model is shown in Figure \ref{fig:theplant1}.
+The chosen model is a linear plant consisting of 3 lumped masses, 3 lumped springs between them (the last to the frame), and 5 dampers between each mass and the ground. The model is shown in Figure \ref{fig:theplant1}.
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/theplant1}
@@ -131,7 +130,7 @@ The chosen model is a linear plant consisting of 3 lumped masses, 3 lumped sprin
 In the classical matrix form:
 \begin{subequations}
 \begin{equation}
-	\bm M \ddot{x} + \bm C \dot{x} + \bm K x = \bm b
+	\bm M \ddot{x} + \bm C \dot{x} + \bm K x = \bm bv
 	\label{eq:eqm:tot}
 \end{equation}
 where:\\
@@ -216,15 +215,14 @@ g_v \\ 0 \\  0
 where $\bm I$ is the identity matrix and $\bm Z$ is a matrix with all the entries equal to zero.
 \subsection{experimental setup}
 \subsubsection{data processing}
-Few operations on data must be performed in order to use them. At first, the data on diplacements is provided in \textit{encoder counts}. They are converted in meters with the following convertion factor ($g_x$):
+An operation on data must be performed in order to use them. The data on diplacements is provided in \textit{encoder counts}. They are converted in meters with the following convertion factor ($g_x$):
 \begin{equation}
 	g_x = \dfrac{\Delta x}{\Delta \texttt{counts}} = 2 \pi r_e \cdot \dfrac{\Delta \texttt{counts}}{16000\dfrac{\texttt{counts}}{\texttt{encoder revolution}}}.
 \end{equation}
 	\subsection{parameters and data available}
-The linear system in Section \ref{sec:linear_sys} is fully represented by parameters, they are shown in Table \ref{tab:parameters}. Only the stiffnesses of the springs ($k_i$) are known.
+The linear system in Section \ref{sec:linear_sys} is fully represented by 12 parameters, they are shown in Table \ref{tab:parameters}. Only the stiffnesses of the springs ($k_i$) are known.
 \begin{table}[H]
 	\centering
-	\label{tab:parameters}
 	\begin{tabular}{|l||l||l|l|l||l|l|l||l|l|l|l|l||}
 		\hline
 		Name & $g_v$ & $k_1$ & $k_2$ & $k_3$ &  $m_1$ & $m_2$ & $m_3$  &  $c_1$ & $c_2$ & $c_3$  & $c_{12}$ & $c_{23}$ \\
@@ -235,8 +233,9 @@ The linear system in Section \ref{sec:linear_sys} is fully represented by parame
 		Notes &       &       &       &       &       &    &   & \multicolumn{5}{l||}{\small{$c_a$ and $c_b$ if proportional damping}} \\ \hline
 	\end{tabular}
 \caption{Parameters  ( ''-'' stands for unavailable parameter)}
+\label{tab:parameters}
 \end{table}
-The meaning of each parameter is depicted in Figure \ref{fig:theplant1}, except for the  \textit{voltage-to-force} coefficient. Such coefficient $g_v$ is the factor which converts the voltage of the signal sent to the motor in the force exerted on the rack. It is the product of several physical gains as shown in Equation \eqref{eq:g_v}.
+\noindent The meaning of each parameter is depicted in Figure \ref{fig:theplant1}, except for the  \textit{voltage-to-force} coefficient. Such coefficient $g_v$ is the factor which converts the voltage of the signal sent to the motor in the force exerted on the rack. It is the product of several physical gains as shown in Equation \eqref{eq:g_v}.
 \begin{equation}
 f = (k_a\cdot k_t \cdot k_{mp})v(t) = g_v v(t).
 \label{eq:g_v}
@@ -268,12 +267,12 @@ From the \textit{step response analysis} the steady state values of input and ou
 	\item voltage to force $g_v$
 	\item springs' stiffness $k_i$ with $i \in 1,2,3$
 \end{itemize} 
-The goal of this section is to estimate $g_v$ and to verify the ratios between the stiffnesses $k_i$, w.r.t the nomina values. It is not possible to verify directly the $k_i$ values because the steady state values are $3$ as many as the equations of the generated system (linear) while the variables would be $4$.
+The goal of this section is to estimate $g_v$ and to verify the ratios between the stiffnesses $k_i$, w.r.t the nominal values. It is not possible to verify directly the $k_i$ values because the steady state values are $3$ as many as the equations of the generated system of equations, while the variables would be $4$.
 \subsubsection{Calculations}
 In order to generate the system of equations, the static gain vector $g_{dc}$ of the system is computed. A procedure may be to apply the ''CAB'' formula from the state space formulation:
 \begin{equation}
 \label{eq:cab}
-	\bm{g_{dc}} =	\bm{CA^{-1}B}.
+	\bm{g_{dc}} =	\bm{CA^{-1}B}
 \end{equation}
 which is the transfer function at $s = 0$. Since equation \eqref{eq:cab} implies the inverse of the $6 \times 6$ matrix $\bm A$, another computation is performed. Using the formulation in Equation \eqref{eq:Mtot}, the following limits are performed:
 \begin{equation}
@@ -305,7 +304,7 @@ Apply \eqref{eq:dot_limits} to equation \eqref{eq:eqm:tot} is equivalent to appl
 \eqref{eq:eqm:tot} and apply the final value theorem to it
 \end{comment}
 \begin{comment}
-Looking at the Equation \eqref{eq:g_dc} is evident the series connection of the springs.
+Looking at the Equation \eqref{eq:g_dc} is evident the series connections of the springs.
 \end{comment}\vspace{0.2 cm}
 \noindent The steady state value of the three output are available. Some other computations has to be made to make equation \eqref{eq:g_dc} suitable for the check on the stiffnesses ratios and the new estimation of $g_v$. The equation for the steady state values is:
 \begin{equation}
@@ -324,7 +323,7 @@ Where the $\infty$ denotes the steady state value of the quantity ($\lim_{t \to 
 		\end{equation}
 	\end{tabularx}
 \end{subequations}
-This operations are made in order to make the system easy to solve, and uncoupling the nonlinear factor $g_v$. This allows to solve the system in a cascade fashion from $g_v$ to $R_{13}$. The equation \eqref{eq:stst1} is now expressed in the following form:
+This operations are made in order to make the system easy to solve, compute at first the factor $g_v$. This allows to solve the system in a cascade fashion from $g_v$ to $R_{13}$. The equation \eqref{eq:stst1} is now expressed in the following form:
 \begin{equation}
 	\label{eq:stst2} 
 	k_3 \left [\begin{array}{c}
@@ -332,14 +331,15 @@ This operations are made in order to make the system easy to solve, and uncoupli
 	x_2(\infty) \\ 
 	x_3(\infty) \end{array}  \right ] 
 	=
-	u(\infty)\left [\begin{array}{c}
+	v(\infty)\left [\begin{array}{c}
 	g_v + g_v R_{13} + g_v R_{23} \\ 
 	g_v R_{23} \\ 
 	g_v \end{array}  \right ] 
 \end{equation}
 \subsubsection{Steady state value picking}
-Now the next step is to use the measured value of steady state response (input and output), take $g_v$ as new estimated value and verify that $R_{12}$ and $R_{32}$ matches the nominal values. The input is set on $u(\infty) = 0.5$.\\
-The value of steady state response are picked from the data directly, as shown in Figure \ref{fig:stst1}. The input is shown in Figure \ref{fig:step_input}.
+Now the next step is to use the measured value of steady state response (input and output), take $g_v$ as new estimated value and verify that $R_{12}$ and $R_{32}$ matches the nominal values. The input is set on $v(\infty) = 0.5$.\\
+The value of steady state response ($x(\infty)$) are picked from the data directly in a point far from the transient,  as shown in Figure \ref{fig:stst1}. The input waveform is shown in Figure \ref{fig:step_input}.\par
+The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R_{31}$,$R_{32}$) is estimated by the \textbf{arithmetic average}. Given ($ \bm x_{\infty}$) averaged from the data, Equation \eqref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data \ value}{nominal}$
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/stst1}
@@ -353,7 +353,7 @@ The value of steady state response are picked from the data directly, as shown i
 	\label{fig:step_input}
 \end{figure}
 \noindent
-The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R31$,$R32$) is estimated by the \textbf{arithmetic average}. Given ($ \bm x_{\infty}$) averaged from the data, Equation \eqref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data \ value}{nominal}$
+
 \begin{table}[H]
 	\centering
 	\begin{tabular}{|c|c|c|c|}
@@ -373,21 +373,22 @@ The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value o
 	\caption{Stiffnesses ratios and voltage-to-force coefficients results from steady state analysis}
 \end{table}
 The \textit{voltage-to-force} estimation is shown in table \ref{tab:ratios}.
+\newpage
 \subsection{Parameters estimation}
 To estimate the parameters the \textbf{impulse response} is used. The \textit{voltage-to-force} coefficient $g_v$ is one of the parameters to be estimate in order to include the possibility to cross-check the result with the step response results.
 The parameters to estimate are shown in table \ref{tab:parameters}.
 \subsubsection{Estimation strategy}
 	\label{sec:est_strat}
- The strategy to estimate the parameters consists in use the \textbf{linear model} described in \ref{sec:linear_sys}, use the same input as the real model, and compare the output with the real output tuning the parameters to minimize the difference.
-\begin{scatola}{Estimation strategy keypoints}
+ The strategy to estimate the parameters consists in use the \textbf{linear model} described in \ref{sec:linear_sys}, use the same input as the real model, and compare the output with the real output tuning the parameters to minimize the difference in a LSQ sense.
+\begin{scatola}{Estimation strategy key-points}
 	\label{box:est_stra}
  \begin{enumerate}
 	 \item Choose the linear model
 	 \item Provide the same input as the real system (an impulse-like signal)
 	 \item Simulate the output (time domain)
-	 \item Compare the outputs with the real one.
+	 \item Compare the outputs with the real ones.
 	 \item Computing the sum of squares of the residuals
-	 \item Tune the parameters iterativly to minimize this quantity
+	 \item Tune the parameters iteratively to minimize this quantity
  \end{enumerate}
 \end{scatola}
 The implementation of the strategy in Box \ref{box:est_stra} is implemented creating a MATLAB function which presents in input the parameters and in output the sum of the squares of the residuals. This is performed with a simulation of the system in \eqref{eq:ss} executed inside the function, the data of the real system (output and input) are available as a global variable, the inputs are the parameters to tune, the only output of the function is the sum of square to minimize. The strategy and the function to minimize (orange box) is shown in Figure \ref{fig:eststrategy}.
@@ -400,8 +401,8 @@ The implementation of the strategy in Box \ref{box:est_stra} is implemented crea
 \begin{comment}
 	A single evaluation of the function corresponds to a simulation of the linear system, the parameters are updated by the algorithm after the evaluation of the function\\
 \end{comment}
-\noindent The implementaion of the strategy is performed with MATLAB, the function \texttt{\textbf{lsqnonlin}} is used. The input used is a pulse-like waveform which excite the system four times, the 
-signal is shown in Figure \ref{fig:pulse_input}.
+\noindent The implementation of the strategy is performed with MATLAB, the function \texttt{\textbf{lsqnonlin}} is used. The input used is a pulse-like waveform which excite the system four times, the 
+signal is shown in Figure \ref{fig:pulse_input}. The estimation will be performed with two different models: the \textbf{free damping} case (equation \eqref{eq:ss}) and the \textbf{proportional damping} case, it is explained in section \ref{sec:prop_est}.
 \begin{figure}
 	\centering
 	\includegraphics[width=\linewidth]{img/pulse_input}
@@ -430,36 +431,12 @@ The results of this optimization are shown in table \ref{tab:est_full_results}
 \label{tab:est_full_results}
 \end{table}
 A plot with the comparison of the models is provided in Figure \ref{fig:compare_f}. The normalized root means square errors are provided for each DOF in table \ref{tab:fit_all}
-\subsection{Conclusion and considerations}
-\begin{description}
-	\item[First guesses] The procedure in box \ref{box:est_stra} requires a first guess. The bounds of the masses and the damping coefficients were known. Values within the bound were chosen as first guesses. No significant changes are detected. ($10^{-4}$ $K_g$ on masses for example).
-	\item[Spring damping] As evident in table \ref{tab:est_full_results}, the damping between the masses seems negligible. This is also manifested in the prevalence of $c_a\bm{M}_p$ w.r.t of $c_b\bm{K}_p$ in the proportional damping system model. indeed:
-	\begin{equation}
-	c_a	\norm{\bm{M_p}} = \rs{c_a_m} \quad c_b	\norm{\bm{K_p}} = \rs{c_b_k}
-	\end{equation}
-	where $p$-pedix indicates the parameters estimated in the proportional damping case.
-	\item[Proportional damping] The proportional damping model provides very similar results, it means a modal decomposition will be possible witouth approximating to much the damping matrix.
-	\item[Dry friction] A nonlinearity in the model may be the dry friction between bodies and carriers. The static friction in particular is evident in the final transient. See Figure \ref{fig:dryfric}.
-\end{description}
-\begin{figure}[H]
-	\centering
-	\includegraphics[width=.8\linewidth]{img/dry_fric}
-	\caption{Sudden stop of the motion because of the static friction, difference in equilibrium positions denotes the presence of a stick set.}
-	\label{fig:dryfric}
-\end{figure}
-
-
-\begin{figure}[H]
-	\centering
-		\caption{Comparison between the response of the model and the response of the system}
-	\includegraphics[width=\linewidth]{img/compare_f}
-	\label{fig:compare_f}
-\end{figure} %TODO tutti i riferimento delle tabelle sopra le captions
 \subsubsection{Proportional damping case}
-The procedure is exactly the same as the case of the free damping. The parameters to estimate now are 6 instead of 9. The damping now is represented by only 2 parameters, as shown in Equation \eqref{eq:prop_C}. The interesting property of this representation is the possibility to perform the modal decomposition on the system. This property will be exploited in Section \ref{sec:modal}
+\label{sec:prop_est}
+The procedure is exactly the same as the case of the free damping. The parameters to estimate now are 6 instead of 9. The damping now is represented by only 2 parameters since it is a linear combination of the mass matrix and the stiffness matrix, as shown in Equation \eqref{eq:prop_C}. The interesting property of this representation is the possibility to perform the modal decomposition on the system. This property will be exploited in Section \ref{sec:modal}
 \begin{equation}
-	\label{eq:prop_C}
-	\bm{C} = c_a\bm{M} + c_b\bm{K}
+\label{eq:prop_C}
+\bm{C} = c_a\bm{M} + c_b\bm{K}
 \end{equation}
 \begin{table}[H]
 	\centering
@@ -475,13 +452,47 @@ The procedure is exactly the same as the case of the free damping. The parameter
 	\caption{Estimation results (model with proportional damping)}
 	\label{tab:est_prop_results}
 \end{table}
+\newpage
+\begin{figure}[H]
+	\centering
+	\caption{Comparison between the response of the model and the response of the system \textbf{free damping case}}
+	\includegraphics[width=\linewidth]{img/compare_f}
+	\label{fig:compare_f}
+\end{figure} %TODO tutti i riferimento delle tabelle sopra le captions
+\begin{figure}[H]
+	\centering
+	\caption{Comparison between the response of the model and the response of the system - \textbf{proportional damping case}}
+	\includegraphics[width=\linewidth]{img/compare_p}
+	\label{fig:compare_p}
+\end{figure}
+\subsection{Conclusion and considerations}
+\begin{description}
+	\item[First guesses] The procedure in box \ref{box:est_stra} requires a first guess. The bounds of the masses and the damping coefficients were known. Values within the bound were chosen as first guesses. No significant changes are detected. ($10^{-4}$ $K_g$ on masses for example).
+	\item[Spring damping] As evident in table \ref{tab:est_full_results}, the damping between the masses seems negligible. This is also manifested in the prevalence of $c_a\bm{M}_p$ w.r.t of $c_b\bm{K}_p$ in the proportional damping system model. indeed:
+	\begin{equation}
+	c_a	\norm{\bm{M_p}} = \rs{c_a_m} \quad c_b	\norm{\bm{K_p}} = \rs{c_b_k}
+	\end{equation}
+	where $p$-pedix indicates the parameters estimated in the proportional damping case.
+	\item[Proportional damping] The proportional damping model provides very similar results, it means a modal decomposition will be possible witouth approximating to much the damping matrix.
+	\item[Dry friction] A nonlinearity in the model may be the dry friction between bodies and carriers. The static friction in particular is evident in the final transient. See Figure \ref{fig:dryfric}.
+\end{description}
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=.8\linewidth]{img/dry_fric}
+	\caption{Sudden stop of the motion because of the static friction, a difference in equilibrium positions denotes the presence of a stick set.}
+	\label{fig:dryfric}
+\end{figure}
+
+
+
+
 \subsubsection{multiple single DOF system case}
 Since it is possible to detach the springs and to fix the masses on the equilibrium position. A possible strategy for the system identification may be as following (Box \ref{box:singledof}).
 \begin{scatola}{Strategy}
 	Perform a 1 DOF system identification for each mass using the impulse response for the first and initial condition for the others in the following configuration.
 	\begin{description}
 		\item[mass 1] Detach the other springs and use the motor as input
-		\item[mass 2] Detach spring 2 and fix mass1 as the frame. Use initial conditions and work with free response.
+		\item[mass 2] Detach spring 2 and fix mass 1 as the frame. Use initial conditions and work with free response.
 		\item[mass 3] Detach spring 2 and use initial conditions and work with free response.
 	\end{description}
 	\par
@@ -490,12 +501,7 @@ Since it is possible to detach the springs and to fix the masses on the equilibr
 	If the spring stiffnesses need to be estimate, it is enough to simply use a different spring for each step since they are 3. \danger Note that it is not possible to uncouple the springs damping and the carrier damping in one dof systems. To separate this two conntributions at least two mass are needed.
 	\label{box:singledof}
 \end{scatola}
-\begin{figure}[H]
-	\centering
-	\caption{Comparison between the response of the model and the response of the system - proportional damping case}
-	\includegraphics[width=\linewidth]{img/compare_p}
-	\label{fig:compare_p}
-\end{figure}
+
 
 \begin{table}[H]
 	\centering
@@ -519,11 +525,11 @@ Define a system expressed by the following equation:
 \label{eq:eqm:und}
 \end{equation} 
 this system is the \textbf{undamped} version of system \eqref{eq:Mtot}.
-The natural frequencies of the system in Equation \eqref{eq:Mtot} (the same as equation \ref{eq:eqm:und}) can be derived solving an eigenvalue problem stated as follows:
-\begin{scatola}{The natural frequencies , modal shape vectors and eigenvalue problem}
+The resonant frequencies of the system in Equation \eqref{eq:Mtot} (the same as equation \ref{eq:eqm:und}) can be derived solving an eigenvalue problem stated as follows:
+\begin{scatola}{The resonant frequencies , modal shape vectors and eigenvalue problem}
 	\label{box:eig_prob}
 	 \\
-			Given the system expressed in \eqref{eq:Mtot} define a natural frequency an $\omega > 0$ with $x_e \neq 0_v \in \Re^3 $ such that :
+			Given the system expressed in \eqref{eq:Mtot} define a resonant frequency an $\omega > 0$ with $x_e \neq 0_v \in \Re^3 $ such that :
 		\begin{equation}
 		\label{eq:eigenproblem}
 			\left( \bm{K} -\omega^{2}\bm{M} \right )x = 0_v 
@@ -547,7 +553,7 @@ The natural frequencies of the system in Equation \eqref{eq:Mtot} (the same as e
 \begin{comment}
 solving the problem in the Box \ref{box:eig_prob}, is equivalent to find the poles of the transfer function between the input and the output of the undamped system \ref{eq:eqm:und}. the poles are $\pm i\omega$.\\
 \end{comment}
-To solve proble in Box \ref{box:eig_prob} MATLAB provides a function \texttt{eig}, which receives in input the two matrices ($\bm{K}$ and $\bm{M}$) and returns the eigenvalues and the eigenvectors in a matrix. Taking the square root of the ladders the $\omega$ are obtained, the Modal shape matrix is directly provided by the function.
+To solve the problem in Box \ref{box:eig_prob} MATLAB provides a function \texttt{eig}, which receives in input the two matrices ($\bm{K}$ and $\bm{M}$) and returns the eigenvalues and the eigenvectors in a matrix. Taking the square root of the ladders the $\omega$ are obtained, the Modal shape matrix is directly provided by the function.
 The modal shape vectors are orthogonal each other and this is a property which can be verified.
 \subsubsection{Results}
 The procedure shown in the previous Section \ref{sec:eigenvalueproblem} is the same for both the case of Free damping and proportional damping. The difference leads in the different value estimated. They are shown in table \ref{tab:est_full_results} and \ref{tab:est_prop_results}.
