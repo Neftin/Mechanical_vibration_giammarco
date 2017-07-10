@@ -472,7 +472,7 @@ The procedure is exactly the same as the case of the free damping. The parameter
 	\item[Spring damping] As evident in table \ref{tab:est_full_results}, the damping between the masses seems negligible. This is also manifested in the prevalence of $c_a\bm{M}_p$ w.r.t of $c_b\bm{K}_p$ in the proportional damping system model. indeed:
 	\begin{equation}
 	c_a	\norm{\bm{M_p}} = \rs{c_a_m} \quad c_b	\norm{\bm{K_p}} = \rs{c_b_k}
-	\end{equation}
+	\end{equation} \\%TODO cambia qua e vedi per esteso le matrici!
 	where $p$-pedix indicates the parameters estimated in the proportional damping case.
 	\item[Proportional damping] The proportional damping model provides very similar results, it means a modal decomposition will be possible witouth approximating to much the damping matrix.
 	\item[Dry friction] A nonlinearity in the model may be the dry friction between bodies and carriers. The static friction in particular is evident in the final transient. See Figure \ref{fig:dryfric}.
@@ -488,20 +488,63 @@ The procedure is exactly the same as the case of the free damping. The parameter
 
 
 \subsubsection{Multiple single DOF system case}
-Since it is possible to detach the springs and to fix the masses on the equilibrium position. A possible strategy for the system identification may be as following (Box \ref{box:singledof}).
+It is possible to detach the springs and to fix the masses on the equilibrium position. Then the system set-up can be disassembled and reassembled in order to estimate the parameters as a combination of analysis of single DOF systems. To obtain a suitable strategy, some considerations has to be made.\\ For each single DOF system, 3 parameters has to be estimated: $m$ , $k$ and $\zeta$ (or $c$). It is not possible to get all the parameters from the free response of a single DOF system. Looking at the equation \eqref{eq:mmsfree}.
+\begin{equation}
+\label{eq:mmsfree}
+	x(t) = X_o e^{-\zeta \textcolor{Red}{\omega_n} t} \sin{(\textcolor{Red}{\omega_n}\sqrt{1-\zeta^2} t + \phi_o)}
+\end{equation} 
+mass \textit{m} and \textit{k}, appear only into $\textcolor{Red}{\omega_n = \sqrt{k/m}}$.
+Even trying to rearrange the response with $\zeta \omega_n = c/2m$ the three variables appears only in two ratios.
+To make the mass estimation possible with the response in \eqref{eq:mmsfree}, The stiffness k must be estimated with a different experiment (or the mass if it is possible to use a weight-scale).\\
+Once k is known, it is possible to estimate the damping ratio $\zeta$ and then the mass by means of the \textbf{logarithmic decrement}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+A possible strategy for the system identification is then summarized as following (Box \ref{box:singledof}).
 \begin{scatola}{Strategy}
-	Perform a 1 DOF system identification for each mass using the impulse response for the first and initial condition for the others in the following configuration.
-	\begin{description}
-		\item[mass 1] Detach the other springs and use the motor as input
-		\item[mass 2] Detach spring 2 and fix mass 1 as the frame. Use initial conditions and work with free response.
-		\item[mass 3] Detach spring 2 and use initial conditions and work with free response.
-	\end{description}
-	\par
-	For the second and the third mass, they can be moved \textbf{manually}. The system identification can be performed using the \textbf{initial conditions}, measuring the velocity and the position after some time and pick them as initial condition.
-	\par
-	If the spring stiffnesses need to be estimate, it is enough to simply use a different spring for each step since they are 3. \danger Note that it is not possible to uncouple the springs damping and the carrier damping in one dof systems. To separate this two conntributions at least two mass are needed.
+	Measure at first \textbf{all the springs stiffness separately}. It is possible applying a know \textbf{constant force} and fixing the \textbf{second mass}. With the displacement $x_1$ it is possible to compute the stiffness, as shown in figure \ref{fig:sdof1}.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=0.5\linewidth]{img/strategy_onedof1}
+		\caption[masses estimation]{configuration for the estimation of the masses and the daping coefficients}
+		\label{fig:sdof1}
+	\end{figure}
+	For each spring k can be derived as:
+	\begin{equation}
+		k = \dfrac{f_{constant}}{x_{1}(\infty)}
+	\end{equation}
+	where $x(\infty)$ is the steady state value. It can be averaged to decrease the zero-mean noise.
+	Once the stiffness are known, the logarithmic decrement method for the estimation of m and $\zeta$ can be performed, with the configurations shown in figure \ref{fig:sdof2}.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=0.85\linewidth]{img/sdof2.pdf}
+	\caption[masses estimation]{configuration for the estimation of the masses and damping}
+	\label{fig:sdof2}
+\end{figure}
 	\label{box:singledof}
 \end{scatola}
+\begin{center}
+	\begin{tabular}{|p{\linewidth}|}
+		\hline  \\
+	{
+	The masses can be moved \textbf{manually}, since the initial conditions are not required. \danger Note that it is not possible to uncouple the springs damping and the carrier damping in one DOF systems. To separate this two contributions at least two mass are needed.
+	}
+	\\ \hline
+\end{tabular} 
+\end{center}
 
 
 \begin{table}[H]
