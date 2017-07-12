@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  11 JUL 2017 01:42
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  12 JUL 2017 18:59
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -980,28 +980,28 @@ LaTeX Font Info:    Font shape `TS1/Roboto-LF/l/n' will be
 (Font)              scaled to size 10.0pt on input line 268.
  [3]
 Package epstopdf Info: Source file: <img/stst1.eps>
-(epstopdf)                    date: 2017-06-19 23:06:59
+(epstopdf)                    date: 2017-07-12 18:13:04
 (epstopdf)                    size: 439280 bytes
 (epstopdf)             Output file: <img/stst1-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-19 23:26:12
+(epstopdf)                    date: 2017-07-12 18:16:16
 (epstopdf)                    size: 109337 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/stst1-eps-converted-to
 .pdf img/stst1.eps>
 (epstopdf)             \includegraphics on input line 346.
 Package epstopdf Info: Output file is already uptodate.
 
-<img/stst1-eps-converted-to.pdf, id=40, 455.7025pt x 255.95625pt>
+<img/stst1-eps-converted-to.pdf, id=40, 447.6725pt x 255.95625pt>
 File: img/stst1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/stst1-eps-converted-to.pdf>
 Package pdftex.def Info: img/stst1-eps-converted-to.pdf used on input line 346.
 
-(pdftex.def)             Requested size: 512.14963pt x 287.66885pt.
+(pdftex.def)             Requested size: 512.14963pt x 292.84764pt.
 Package epstopdf Info: Source file: <img/step_input.eps>
-(epstopdf)                    date: 2017-06-19 23:06:59
+(epstopdf)                    date: 2017-07-12 18:13:05
 (epstopdf)                    size: 136434 bytes
 (epstopdf)             Output file: <img/step_input-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-19 23:26:14
+(epstopdf)                    date: 2017-07-12 18:16:18
 (epstopdf)                    size: 40137 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/step_input-eps-convert
 ed-to.pdf img/step_input.eps>
@@ -1038,10 +1038,10 @@ Underfull \hbox (badness 10000) in paragraph at lines 403--404
 LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
 (Font)              Font shape `T1/cmtt/m/n' tried instead on input line 405.
 Package epstopdf Info: Source file: <img/pulse_input.eps>
-(epstopdf)                    date: 2017-06-20 00:00:26
+(epstopdf)                    date: 2017-07-12 18:43:41
 (epstopdf)                    size: 177795 bytes
 (epstopdf)             Output file: <img/pulse_input-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-20 00:03:26
+(epstopdf)                    date: 2017-07-12 18:56:38
 (epstopdf)                    size: 40543 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/pulse_input-eps-conver
 ted-to.pdf img/pulse_input.eps>
@@ -1061,11 +1061,11 @@ e 409.
 (./result/m1_f.txt) (./result/m2_f.txt) (./result/m3_f.txt) (./result/ca_p.txt)
 (./result/cb_p.txt) [7 <./img/pulse_input-eps-converted-to.pdf>]
 Package epstopdf Info: Source file: <img/compare_f.eps>
-(epstopdf)                    date: 2017-06-20 00:00:28
-(epstopdf)                    size: 1257783 bytes
+(epstopdf)                    date: 2017-07-12 18:43:43
+(epstopdf)                    size: 1257609 bytes
 (epstopdf)             Output file: <img/compare_f-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-20 00:03:28
-(epstopdf)                    size: 375214 bytes
+(epstopdf)                    date: 2017-07-12 18:56:40
+(epstopdf)                    size: 374988 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/compare_f-eps-converte
 d-to.pdf img/compare_f.eps>
 (epstopdf)             \includegraphics on input line 460.
@@ -1079,11 +1079,11 @@ Package pdftex.def Info: img/compare_f-eps-converted-to.pdf used on input line
 460.
 (pdftex.def)             Requested size: 512.14963pt x 712.20201pt.
 Package epstopdf Info: Source file: <img/compare_p.eps>
-(epstopdf)                    date: 2017-06-20 00:00:31
-(epstopdf)                    size: 1257848 bytes
+(epstopdf)                    date: 2017-07-12 18:43:46
+(epstopdf)                    size: 1257674 bytes
 (epstopdf)             Output file: <img/compare_p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-20 00:03:30
-(epstopdf)                    size: 377242 bytes
+(epstopdf)                    date: 2017-07-12 18:56:42
+(epstopdf)                    size: 377013 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/compare_p-eps-converte
 d-to.pdf img/compare_p.eps>
 (epstopdf)             \includegraphics on input line 466.
@@ -1104,17 +1104,19 @@ Overfull \vbox (13.70966pt too high) has occurred while \output is active []
 Overfull \vbox (13.70966pt too high) has occurred while \output is active []
 
 
-[9 <./img/compare_p-eps-converted-to.pdf>] (./result/c_a_m.txt)
-(./result/c_b_k.txt)
+[9 <./img/compare_p-eps-converted-to.pdf>] (./result/Cdamp11.txt)
+(./result/Cdamp12.txt) (./result/Cdamp13.txt) (./result/Cdamp21.txt)
+(./result/Cdamp22.txt) (./result/Cdamp23.txt) (./result/Cdamp31.txt)
+(./result/Cdamp32.txt) (./result/Cdamp33.txt)
 Package epstopdf Info: Source file: <img/dry_fric.eps>
-(epstopdf)                    date: 2017-06-20 00:03:10
+(epstopdf)                    date: 2017-07-12 18:43:47
 (epstopdf)                    size: 105930 bytes
 (epstopdf)             Output file: <img/dry_fric-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-20 00:07:19
+(epstopdf)                    date: 2017-07-12 18:56:44
 (epstopdf)                    size: 36740 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/dry_fric-eps-converted
 -to.pdf img/dry_fric.eps>
-(epstopdf)             \includegraphics on input line 482.
+(epstopdf)             \includegraphics on input line 487.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/dry_fric-eps-converted-to.pdf, id=96, 431.6125pt x 125.46875pt>
@@ -1122,23 +1124,23 @@ File: img/dry_fric-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/dry_fric-eps-converted-to.pdf>
 Package pdftex.def Info: img/dry_fric-eps-converted-to.pdf used on input line 4
-82.
+87.
 (pdftex.def)             Requested size: 409.72125pt x 119.10846pt.
 
 <img/strategy_onedof1.pdf, id=97, 421.575pt x 300.12125pt>
 File: img/strategy_onedof1.pdf Graphic file (type pdf)
 
 <use img/strategy_onedof1.pdf>
-Package pdftex.def Info: img/strategy_onedof1.pdf used on input line 521.
+Package pdftex.def Info: img/strategy_onedof1.pdf used on input line 526.
 (pdftex.def)             Requested size: 256.07481pt x 182.30434pt.
  <img/sdof2.pdf, id=98, 578.16pt x 434.62375pt>
 File: img/sdof2.pdf Graphic file (type pdf)
 
 <use img/sdof2.pdf>
-Package pdftex.def Info: img/sdof2.pdf used on input line 533.
+Package pdftex.def Info: img/sdof2.pdf used on input line 538.
 (pdftex.def)             Requested size: 435.3303pt x 327.25357pt.
 
-Overfull \hbox (12.79999pt too wide) in paragraph at lines 517--538
+Overfull \hbox (12.79999pt too wide) in paragraph at lines 522--543
  [] 
  []
 
@@ -1147,28 +1149,28 @@ Overfull \vbox (1.47852pt too high) has occurred while \output is active []
 
 
 [11 <./img/strategy_onedof1.pdf> <./img/sdof2.pdf>]
-LaTeX Font Info:    Try loading font information for U+futs on input line 543.
+LaTeX Font Info:    Try loading font information for U+futs on input line 548.
 
 (c:/texlive/2016/texmf-dist/tex/latex/fourier/ufuts.fd
 File: ufuts.fd 2004/03/26 Fontinst v1.926 font definitions for U/futs.
 )
 
 LaTeX Font Warning: Font shape `U/futs/l/n' undefined
-(Font)              using `U/futs/m/n' instead on input line 543.
+(Font)              using `U/futs/m/n' instead on input line 548.
 
 
-Overfull \hbox (12.79999pt too wide) in paragraph at lines 540--547
+Overfull \hbox (12.79999pt too wide) in paragraph at lines 545--552
  [] 
  []
 
 (./result/fit_f1.txt) (./result/fit_p1.txt) (./result/fit_f2.txt)
 (./result/fit_p2.txt) (./result/fit_f3.txt) (./result/fit_p3.txt)
-Overfull \hbox (12.79999pt too wide) in paragraph at lines 573--596
+Overfull \hbox (12.79999pt too wide) in paragraph at lines 578--601
  [] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 598--599
+Underfull \hbox (badness 10000) in paragraph at lines 603--604
 
  []
 
@@ -1180,7 +1182,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 598--599
 (./result/U_p_21.txt) (./result/U_p_22.txt) (./result/U_p_23.txt)
 (./result/U_f_31.txt) (./result/U_f_32.txt) (./result/U_f_33.txt)
 (./result/U_p_31.txt) (./result/U_p_32.txt) (./result/U_p_33.txt) [12]
-Underfull \hbox (badness 10000) in paragraph at lines 635--636
+Underfull \hbox (badness 10000) in paragraph at lines 640--641
 
  []
 
@@ -1193,14 +1195,14 @@ Underfull \hbox (badness 10000) in paragraph at lines 635--636
 (./result/Ur_f_31.txt) (./result/Ur_f_32.txt) (./result/Ur_f_33.txt)
 (./result/Ur_p_31.txt) (./result/Ur_p_32.txt) (./result/Ur_p_33.txt)
 Package epstopdf Info: Source file: <img/contour_f.eps>
-(epstopdf)                    date: 2017-06-19 23:07:21
+(epstopdf)                    date: 2017-07-12 18:13:23
 (epstopdf)                    size: 111494 bytes
 (epstopdf)             Output file: <img/contour_f-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-19 23:26:23
+(epstopdf)                    date: 2017-07-12 18:16:29
 (epstopdf)                    size: 32050 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/contour_f-eps-converte
 d-to.pdf img/contour_f.eps>
-(epstopdf)             \includegraphics on input line 694.
+(epstopdf)             \includegraphics on input line 699.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/contour_f-eps-converted-to.pdf, id=120, 436.63126pt x 277.035pt>
@@ -1208,17 +1210,17 @@ File: img/contour_f-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/contour_f-eps-converted-to.pdf>
 Package pdftex.def Info: img/contour_f-eps-converted-to.pdf used on input line 
-694.
+699.
 (pdftex.def)             Requested size: 512.14963pt x 324.95395pt.
 Package epstopdf Info: Source file: <img/contour_p.eps>
-(epstopdf)                    date: 2017-06-19 23:07:23
+(epstopdf)                    date: 2017-07-12 18:13:24
 (epstopdf)                    size: 111676 bytes
 (epstopdf)             Output file: <img/contour_p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-19 23:26:25
+(epstopdf)                    date: 2017-07-12 18:16:31
 (epstopdf)                    size: 32043 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/contour_p-eps-converte
 d-to.pdf img/contour_p.eps>
-(epstopdf)             \includegraphics on input line 700.
+(epstopdf)             \includegraphics on input line 705.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/contour_p-eps-converted-to.pdf, id=121, 436.63126pt x 277.035pt>
@@ -1226,10 +1228,10 @@ File: img/contour_p-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/contour_p-eps-converted-to.pdf>
 Package pdftex.def Info: img/contour_p-eps-converted-to.pdf used on input line 
-700.
+705.
 (pdftex.def)             Requested size: 512.14963pt x 324.95395pt.
  [13] [14 <./img/contour_f-eps-converted-to.pdf>]
-Underfull \hbox (badness 10000) in paragraph at lines 759--763
+Underfull \hbox (badness 10000) in paragraph at lines 764--768
 
  []
 
@@ -1237,7 +1239,7 @@ Underfull \hbox (badness 10000) in paragraph at lines 759--763
 <img/mim.pdf, id=142, 722.7pt x 579.16376pt>
 File: img/mim.pdf Graphic file (type pdf)
  <use img/mim.pdf>
-Package pdftex.def Info: img/mim.pdf used on input line 786.
+Package pdftex.def Info: img/mim.pdf used on input line 791.
 (pdftex.def)             Requested size: 512.14963pt x 410.43146pt.
 
 (./result/wm_f_1.txt) (./result/wm_f_2.txt) (./result/wm_f_3.txt)
@@ -1249,48 +1251,48 @@ Package pdftex.def Info: img/mim.pdf used on input line 786.
 (./result/Um_f_31.txt) (./result/Um_f_32.txt) (./result/Um_f_33.txt)
 (./result/Um_p_31.txt) (./result/Um_p_32.txt) (./result/Um_p_33.txt) [16 <./img
 /mim.pdf>]
-Overfull \hbox (15.0pt too wide) in paragraph at lines 831--832
+Overfull \hbox (15.0pt too wide) in paragraph at lines 836--837
 [][] 
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 835--836
+Underfull \hbox (badness 10000) in paragraph at lines 840--841
 
  []
 
 (./result/M_s_matrix_tex.txt) (./result/K_s_matrix_tex1.txt)
 (./result/K_s_matrix_tex2.txt) (./result/K_s_matrix_tex3.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 873--875
+Underfull \hbox (badness 10000) in paragraph at lines 878--880
 
  []
 
 
-Overfull \hbox (15.0pt too wide) in paragraph at lines 884--886
+Overfull \hbox (15.0pt too wide) in paragraph at lines 889--891
 [][]
  []
 
 [17] (./result/zeta_n1.txt) (./result/omega_n1.txt) (./result/zeta_n2.txt)
 (./result/omega_n2.txt) (./result/zeta_n3.txt) (./result/omega_n3.txt)
-Underfull \hbox (badness 10000) in paragraph at lines 920--922
+Underfull \hbox (badness 10000) in paragraph at lines 925--927
 
  []
 
 Package epstopdf Info: Source file: <img/bode_fp.eps>
-(epstopdf)                    date: 2017-06-19 23:07:27
-(epstopdf)                    size: 159402 bytes
+(epstopdf)                    date: 2017-07-12 18:13:28
+(epstopdf)                    size: 159255 bytes
 (epstopdf)             Output file: <img/bode_fp-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-06-19 23:26:27
-(epstopdf)                    size: 38807 bytes
+(epstopdf)                    date: 2017-07-12 18:16:33
+(epstopdf)                    size: 38817 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/bode_fp-eps-converted-
 to.pdf img/bode_fp.eps>
-(epstopdf)             \includegraphics on input line 926.
+(epstopdf)             \includegraphics on input line 931.
 Package epstopdf Info: Output file is already uptodate.
 <img/bode_fp-eps-converted-to.pdf, id=153, 447.6725pt x 620.3175pt>
 File: img/bode_fp-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/bode_fp-eps-converted-to.pdf>
-Package pdftex.def Info: img/bode_fp-eps-converted-to.pdf used on input line 92
-6.
+Package pdftex.def Info: img/bode_fp-eps-converted-to.pdf used on input line 93
+1.
 (pdftex.def)             Requested size: 512.14963pt x 709.72493pt.
  [18]
 Overfull \vbox (13.11368pt too high) has occurred while \output is active []
@@ -1306,7 +1308,7 @@ f>
 (epstopdf)                    size: 38954 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/sine_sweep_spectra-eps
 -converted-to.pdf img/sine_sweep_spectra.eps>
-(epstopdf)             \includegraphics on input line 936.
+(epstopdf)             \includegraphics on input line 941.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/sine_sweep_spectra-eps-converted-to.pdf, id=169, 436.63126pt x 192.72pt>
@@ -1314,7 +1316,7 @@ File: img/sine_sweep_spectra-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/sine_sweep_spectra-eps-converted-to.pdf>
 Package pdftex.def Info: img/sine_sweep_spectra-eps-converted-to.pdf used on in
-put line 936.
+put line 941.
 (pdftex.def)             Requested size: 512.14963pt x 226.0549pt.
 Package epstopdf Info: Source file: <img/sine_sweep_time.eps>
 (epstopdf)                    date: 2017-06-19 19:58:44
@@ -1324,7 +1326,7 @@ Package epstopdf Info: Source file: <img/sine_sweep_time.eps>
 (epstopdf)                    size: 256733 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/sine_sweep_time-eps-co
 nverted-to.pdf img/sine_sweep_time.eps>
-(epstopdf)             \includegraphics on input line 943.
+(epstopdf)             \includegraphics on input line 948.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/sine_sweep_time-eps-converted-to.pdf, id=170, 441.65pt x 192.72pt>
@@ -1332,7 +1334,7 @@ File: img/sine_sweep_time-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/sine_sweep_time-eps-converted-to.pdf>
 Package pdftex.def Info: img/sine_sweep_time-eps-converted-to.pdf used on input
- line 943.
+ line 948.
 (pdftex.def)             Requested size: 512.14963pt x 223.49358pt.
 Package epstopdf Info: Source file: <img/ssbode1.eps>
 (epstopdf)                    date: 2017-06-19 19:58:47
@@ -1342,7 +1344,7 @@ Package epstopdf Info: Source file: <img/ssbode1.eps>
 (epstopdf)                    size: 43045 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/ssbode1-eps-converted-
 to.pdf img/ssbode1.eps>
-(epstopdf)             \includegraphics on input line 951.
+(epstopdf)             \includegraphics on input line 956.
 Package epstopdf Info: Output file is already uptodate.
 
 <img/ssbode1-eps-converted-to.pdf, id=171, 725.71124pt x 193.72375pt>
@@ -1350,7 +1352,7 @@ File: img/ssbode1-eps-converted-to.pdf Graphic file (type pdf)
 
 <use img/ssbode1-eps-converted-to.pdf>
 Package pdftex.def Info: img/ssbode1-eps-converted-to.pdf used on input line 95
-1.
+6.
 (pdftex.def)             Requested size: 512.14963pt x 136.71713pt.
  [20 <./img/sine_sweep_spectra-eps-converted-to.pdf> <./img/sine_sweep_time-eps
 -converted-to.pdf>] [21 <./img/ssbode1-eps-converted-to.pdf>] (./document.aux)
@@ -1359,9 +1361,9 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 7524 strings out of 493013
- 104302 string characters out of 6136993
- 174798 words of memory out of 5000000
+ 7545 strings out of 493013
+ 104629 string characters out of 6136993
+ 174794 words of memory out of 5000000
  10491 multiletter control sequences out of 15000+600000
  76815 words of font info for 95 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
@@ -1389,7 +1391,7 @@ t/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publi
 c/fourier/fourier-orns.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-su
 per/sftt1000.pfb>
-Output written on document.pdf (21 pages, 1882838 bytes).
+Output written on document.pdf (21 pages, 1882593 bytes).
 PDF statistics:
  270 PDF objects out of 1000 (max. 8388607)
  191 compressed objects within 2 object streams

@@ -370,8 +370,8 @@ The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value o
 		\hline
 		$g_v$ & \input{result/g_v.txt} & \input{result/gain_v.txt} & \input{result/g_v_per.txt}\% \\\hline
 	\end{tabular} 
-	\label{tab:ratios}
-	\caption{Stiffnesses ratios and voltage-to-force coefficients results from steady state analysis}
+	\caption{Stiffnesses ratios and voltage-to-force coefficients results from steady state analysis $error = \dfrac{value-nominal}{nominal}$}
+		\label{tab:ratios}
 \end{table}
 The \textit{voltage-to-force} estimation is shown in table \ref{tab:ratios}.
 \newpage
@@ -469,10 +469,15 @@ The procedure is exactly the same as the case of the free damping. The parameter
 \subsection{Conclusion and considerations}
 \begin{description}
 	\item[First guesses] The procedure in box \ref{box:est_stra} requires a first guess. The bounds of the masses and the damping coefficients were known. Values within the bound were chosen as first guesses. No significant changes are detected. ($10^{-4}$ $K_g$ on masses for example).
-	\item[Spring damping] As evident in table \ref{tab:est_full_results}, the damping between the masses seems negligible. This is also manifested in the prevalence of $c_a\bm{M}_p$ w.r.t of $c_b\bm{K}_p$ in the proportional damping system model. indeed:
-	\begin{equation}
-	c_a	\norm{\bm{M_p}} = \rs{c_a_m} \quad c_b	\norm{\bm{K_p}} = \rs{c_b_k}
-	\end{equation} \\%TODO cambia qua e vedi per esteso le matrici!
+	\item[Spring damping] As evident in table \ref{tab:est_full_results}, the damping between the masses seems negligible. This is also manifested in the prevalence of the diagonal term in the damping matrix:
+\begin{equation}
+\left [\begin{array}{ccc}
+	\rs{Cdamp11} & \rs{Cdamp12} & \rs{Cdamp13} \\ 
+	\rs{Cdamp21} & \rs{Cdamp22} & \rs{Cdamp23} \\ 
+	\rs{Cdamp31} & \rs{Cdamp32} & \rs{Cdamp33}
+\end{array} \right ] 
+\end{equation}
+
 	where $p$-pedix indicates the parameters estimated in the proportional damping case.
 	\item[Proportional damping] The proportional damping model provides very similar results, it means a modal decomposition will be possible witouth approximating to much the damping matrix.
 	\item[Dry friction] A nonlinearity in the model may be the dry friction between bodies and carriers. The static friction in particular is evident in the final transient. See Figure \ref{fig:dryfric}.

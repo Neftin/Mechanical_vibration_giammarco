@@ -55,8 +55,8 @@ for i = 1:3
     h = plot(t_plot_f,[ yreal_plot_f(:,i) , y_plot_f(:,i), y_resi_plot_f(:,1) ] )
     set(h(1),'color',[0 .3 1]);
     set(h(2),'color',[1 .5 0]);
-    set(h(3),'color',[.5 0 0]);
-    set(h(3),'LineStyle','-.');
+    set(h(3),'color',[.7 .7 .7]);
+%    set(h(3),'LineStyle','-.');
     grid minor;
         xlabel('time [s]','interpreter','latex');
         ylabel(['$x_' num2str(i,1) '$ [m]'],'interpreter','latex');
@@ -105,8 +105,8 @@ for i = 1:3
     h = plot(t_plot_p,[ yreal_plot_p(:,i) , y_plot_p(:,i), y_resi_plot_p(:,1) ] )
     set(h(1),'color',[0 .3 1]);
     set(h(2),'color',[1 .5 0]);
-    set(h(3),'color',[.5 0 0]);
-    set(h(3),'LineStyle','-.');
+    set(h(3),'color',[.7 .7 .7]);
+%    set(h(3),'LineStyle','-.');
     grid minor;
         xlabel('time [s]','interpreter','latex');
         ylabel(['$x_' num2str(i,1) '$ [m]'],'interpreter','latex');
@@ -163,4 +163,10 @@ subplot(1,2,2)
         set(gcf,'PaperUnits','centimeters');
         set(gcf,'PaperPosition',[0 0 PD PD/4]); %A4 has sqrt(2) as ratio!
         print([ 'report\img\dry_fric' ],'-depsc','-cmyk');%legenda: _per è l'errore percentuale!
+%%
         
+for i = 1:3
+    for j = 1:3
+        print2file(Cc_f(i,j),'report\result\','%3.3f','\n','txt',['Cdamp' num2str(i,1) num2str(j,1)]);
+    end
+end
