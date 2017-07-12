@@ -339,8 +339,8 @@ This operations are made in order to make the system easy to solve, compute at f
 \end{equation}
 \subsubsection{Steady state value picking}
 Now the next step is to use the measured value of steady state response (input and output), take $g_v$ as new estimated value and verify that $R_{12}$ and $R_{32}$ matches the nominal values. The input is set on $v(\infty) = 0.5$.\\
-The value of steady state response ($x(\infty)$) are picked from the data directly in a point far from the transient,  as shown in Figure \ref{fig:stst1}. The input waveform is shown in Figure \ref{fig:step_input}.\par
-The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R_{31}$,$R_{32}$) is estimated by the \textbf{arithmetic average}. Given ($ \bm x_{\infty}$) averaged from the data, Equation \eqref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data \ value}{nominal}$
+The value of steady state response ($x(\infty)$) are picked from the data directly in a point far from the transient,  as shown in Figure \ref{fig:stst1}. The input waveform is shown in Figure \ref{fig:step_input}. To reduce the zero-mean noise an \textbf{average with the previous 400 samples} (2 seconds).\par
+The obtained values for each output ($\bm x_{\infty}$) are $4$. The mean value of the ratios ($R_{31}$,$R_{32}$) is estimated by the \textbf{arithmetic average} along the 4 responses. Given ($ \bm x_{\infty}$) averaged from the data, Equation \eqref{eq:stst2} is solved and the results are shown in Table \ref{tab:ratios}. The error is defined as $\texttt{error}\% = 100\dfrac{data \ value}{nominal}$
 \begin{figure}[H]
 	\centering
 	\includegraphics[width=\linewidth]{img/stst1}
@@ -959,14 +959,5 @@ To estimate the transfer function from this data MATLAB provides several solutio
 \end{figure}
 As expected, the first two modes are detected but not the third. To estimate a transfer function a signal with a wider spectrum would be better, or a pseudo random binary sequence.
 
-%TODO spiega proportional damping
 
-%TODO study the deflation matrix especially why the M matrix!!!
-
-%TODO metti la normalizzazione dei modi perfavore OVUNQUE
-
-%TODO cosa speciale quando blocchi le singole masse.
-
-%TODO AGGIUNGI (t) alle variabili e lista dei simboli!
-%TODO experimental set up
 \end{document}

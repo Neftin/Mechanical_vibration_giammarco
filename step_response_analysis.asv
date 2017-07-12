@@ -41,17 +41,17 @@ Measured_coeff = zeros(4,3);
 
 %compute the steady state values
 
-aver_sa = 400;
+average_samples = 100;
 
 %picking four times averaging the last "average_samples" number of samples
 
 for i = 0:3
 
-Measured_coeff(i+1,1) = ( mean(x1s((950 + 2000*i - aver_sa):(950 + 2000*i))  )) * (gain_x);
+Measured_coeff(i+1,1) = ( mean(x1s((950 + 2000*i - 100):(950 + 2000*i))  )) * (gain_x);
 
-Measured_coeff(i+1,2) = ( mean(x2s((950 + 2000*i - aver_sa):(950 + 2000*i))  )) * (gain_x);
+Measured_coeff(i+1,2) = ( x2s((950 + 2000*i - 100):(950 + 2000*i))  ) * (gain_x);
 
-Measured_coeff(i+1,3) = ( mean(x3s((950 + 2000*i - aver_sa):(950 + 2000*i))  )) * (gain_x);
+Measured_coeff(i+1,3) = ( x3s((950 + 2000*i - 100):(950 + 2000*i))  ) * (gain_x);
 
 end
 
