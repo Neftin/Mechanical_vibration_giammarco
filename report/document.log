@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  12 JUL 2017 19:32
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016/W32TeX) (preloaded format=pdflatex 2017.4.28)  15 AUG 2017 09:40
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -983,17 +983,12 @@ Package epstopdf Info: Source file: <img/stst1.eps>
 (epstopdf)                    date: 2017-07-12 19:31:20
 (epstopdf)                    size: 439280 bytes
 (epstopdf)             Output file: <img/stst1-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:24:33
+(epstopdf)                    date: 2017-07-12 19:32:22
 (epstopdf)                    size: 109337 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/stst1-eps-converted-to
 .pdf img/stst1.eps>
 (epstopdf)             \includegraphics on input line 346.
-runsystem(repstopdf --outfile=img/stst1-eps-converted-to.pdf img/stst1.eps)...e
-xecuted safely (allowed).
-
-Package epstopdf Info: Result file: <img/stst1-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:32:22
-(epstopdf)                    size: 109337 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <img/stst1-eps-converted-to.pdf, id=40, 447.6725pt x 255.95625pt>
 File: img/stst1-eps-converted-to.pdf Graphic file (type pdf)
@@ -1006,17 +1001,12 @@ Package epstopdf Info: Source file: <img/step_input.eps>
 (epstopdf)                    date: 2017-07-12 19:31:21
 (epstopdf)                    size: 136434 bytes
 (epstopdf)             Output file: <img/step_input-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:24:35
+(epstopdf)                    date: 2017-07-12 19:32:24
 (epstopdf)                    size: 40137 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/step_input-eps-convert
 ed-to.pdf img/step_input.eps>
 (epstopdf)             \includegraphics on input line 352.
-runsystem(repstopdf --outfile=img/step_input-eps-converted-to.pdf img/step_inpu
-t.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/step_input-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:32:24
-(epstopdf)                    size: 40137 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <img/step_input-eps-converted-to.pdf, id=41, 431.6125pt x 146.5475pt>
 File: img/step_input-eps-converted-to.pdf Graphic file (type pdf)
@@ -1051,17 +1041,12 @@ Package epstopdf Info: Source file: <img/pulse_input.eps>
 (epstopdf)                    date: 2017-07-12 19:31:29
 (epstopdf)                    size: 177795 bytes
 (epstopdf)             Output file: <img/pulse_input-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:19:58
+(epstopdf)                    date: 2017-07-12 19:32:26
 (epstopdf)                    size: 40543 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/pulse_input-eps-conver
 ted-to.pdf img/pulse_input.eps>
 (epstopdf)             \includegraphics on input line 409.
-runsystem(repstopdf --outfile=img/pulse_input-eps-converted-to.pdf img/pulse_in
-put.eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/pulse_input-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:32:26
-(epstopdf)                    size: 40543 bytes.
+Package epstopdf Info: Output file is already uptodate.
 <img/pulse_input-eps-converted-to.pdf, id=62, 458.71375pt x 147.55125pt>
 File: img/pulse_input-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1079,17 +1064,12 @@ Package epstopdf Info: Source file: <img/compare_f.eps>
 (epstopdf)                    date: 2017-07-12 19:31:32
 (epstopdf)                    size: 1257609 bytes
 (epstopdf)             Output file: <img/compare_f-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:20:00
+(epstopdf)                    date: 2017-07-12 19:32:29
 (epstopdf)                    size: 374988 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/compare_f-eps-converte
 d-to.pdf img/compare_f.eps>
 (epstopdf)             \includegraphics on input line 460.
-runsystem(repstopdf --outfile=img/compare_f-eps-converted-to.pdf img/compare_f.
-eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/compare_f-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:32:29
-(epstopdf)                    size: 374988 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <img/compare_f-eps-converted-to.pdf, id=78, 444.66125pt x 618.31pt>
 File: img/compare_f-eps-converted-to.pdf Graphic file (type pdf)
@@ -1102,17 +1082,12 @@ Package epstopdf Info: Source file: <img/compare_p.eps>
 (epstopdf)                    date: 2017-07-12 19:31:35
 (epstopdf)                    size: 1257674 bytes
 (epstopdf)             Output file: <img/compare_p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:20:02
+(epstopdf)                    date: 2017-07-12 19:32:31
 (epstopdf)                    size: 377013 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/compare_p-eps-converte
 d-to.pdf img/compare_p.eps>
 (epstopdf)             \includegraphics on input line 466.
-runsystem(repstopdf --outfile=img/compare_p-eps-converted-to.pdf img/compare_p.
-eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/compare_p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:32:31
-(epstopdf)                    size: 377013 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <img/compare_p-eps-converted-to.pdf, id=79, 444.66125pt x 618.31pt>
 File: img/compare_p-eps-converted-to.pdf Graphic file (type pdf)
@@ -1137,17 +1112,12 @@ Package epstopdf Info: Source file: <img/dry_fric.eps>
 (epstopdf)                    date: 2017-07-12 19:31:36
 (epstopdf)                    size: 105930 bytes
 (epstopdf)             Output file: <img/dry_fric-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:20:04
+(epstopdf)                    date: 2017-07-12 19:32:33
 (epstopdf)                    size: 36740 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/dry_fric-eps-converted
 -to.pdf img/dry_fric.eps>
 (epstopdf)             \includegraphics on input line 487.
-runsystem(repstopdf --outfile=img/dry_fric-eps-converted-to.pdf img/dry_fric.ep
-s)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/dry_fric-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:32:33
-(epstopdf)                    size: 36740 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <img/dry_fric-eps-converted-to.pdf, id=96, 431.6125pt x 125.46875pt>
 File: img/dry_fric-eps-converted-to.pdf Graphic file (type pdf)
@@ -1228,17 +1198,12 @@ Package epstopdf Info: Source file: <img/contour_f.eps>
 (epstopdf)                    date: 2017-07-12 19:31:39
 (epstopdf)                    size: 111494 bytes
 (epstopdf)             Output file: <img/contour_f-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 18:16:29
+(epstopdf)                    date: 2017-07-12 19:32:35
 (epstopdf)                    size: 32050 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/contour_f-eps-converte
 d-to.pdf img/contour_f.eps>
 (epstopdf)             \includegraphics on input line 699.
-runsystem(repstopdf --outfile=img/contour_f-eps-converted-to.pdf img/contour_f.
-eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/contour_f-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:32:35
-(epstopdf)                    size: 32050 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <img/contour_f-eps-converted-to.pdf, id=120, 436.63126pt x 277.035pt>
 File: img/contour_f-eps-converted-to.pdf Graphic file (type pdf)
@@ -1251,17 +1216,12 @@ Package epstopdf Info: Source file: <img/contour_p.eps>
 (epstopdf)                    date: 2017-07-12 19:31:40
 (epstopdf)                    size: 111676 bytes
 (epstopdf)             Output file: <img/contour_p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 18:16:31
+(epstopdf)                    date: 2017-07-12 19:32:37
 (epstopdf)                    size: 32043 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/contour_p-eps-converte
 d-to.pdf img/contour_p.eps>
 (epstopdf)             \includegraphics on input line 705.
-runsystem(repstopdf --outfile=img/contour_p-eps-converted-to.pdf img/contour_p.
-eps)...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/contour_p-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:32:37
-(epstopdf)                    size: 32043 bytes.
+Package epstopdf Info: Output file is already uptodate.
 
 <img/contour_p-eps-converted-to.pdf, id=121, 436.63126pt x 277.035pt>
 File: img/contour_p-eps-converted-to.pdf Graphic file (type pdf)
@@ -1321,17 +1281,12 @@ Package epstopdf Info: Source file: <img/bode_fp.eps>
 (epstopdf)                    date: 2017-07-12 19:31:44
 (epstopdf)                    size: 159724 bytes
 (epstopdf)             Output file: <img/bode_fp-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 18:16:33
-(epstopdf)                    size: 38817 bytes
+(epstopdf)                    date: 2017-07-12 19:32:39
+(epstopdf)                    size: 38935 bytes
 (epstopdf)             Command: <repstopdf --outfile=img/bode_fp-eps-converted-
 to.pdf img/bode_fp.eps>
 (epstopdf)             \includegraphics on input line 931.
-runsystem(repstopdf --outfile=img/bode_fp-eps-converted-to.pdf img/bode_fp.eps)
-...executed safely (allowed).
-
-Package epstopdf Info: Result file: <img/bode_fp-eps-converted-to.pdf>
-(epstopdf)                    date: 2017-07-12 19:32:39
-(epstopdf)                    size: 38935 bytes.
+Package epstopdf Info: Output file is already uptodate.
 <img/bode_fp-eps-converted-to.pdf, id=153, 447.6725pt x 620.3175pt>
 File: img/bode_fp-eps-converted-to.pdf Graphic file (type pdf)
 
@@ -1436,7 +1391,7 @@ t/fonts/type1/public/amsfonts/cm/cmsy10.pfb><c:/texlive/2016/texmf-dist/fonts/t
 ype1/public/amsfonts/cm/cmsy7.pfb><c:/texlive/2016/texmf-dist/fonts/type1/publi
 c/fourier/fourier-orns.pfb><c:/texlive/2016/texmf-dist/fonts/type1/public/cm-su
 per/sftt1000.pfb>
-Output written on document.pdf (21 pages, 1883248 bytes).
+Output written on document.pdf (21 pages, 1883383 bytes).
 PDF statistics:
  270 PDF objects out of 1000 (max. 8388607)
  191 compressed objects within 2 object streams
