@@ -38,13 +38,13 @@ M = [m1 0 0;
  
  b = [g_v_est 0 0].';
  
- A = [Z I; -M\K -M\C];    %left divide for the inverse
- B = [Z(:,1); M\b]; %single input
- C = [I Z];               %multiple output
+ A = [Z I; -M\K -M\C];    % left divide for the inverse
+ B = [Z(:,1); M\b];       % single input
+ C = [I Z];               % multiple output
  D = Z(:,1);
 
-W = ones(length(x1),1)*(1/10); %reducing coefficient for error in static friction
-active_range_samples = 650; %real active part
+W = ones(length(x1),1)*(1/10); % reducing coefficient for error in static friction
+active_range_samples = 650;    % real active part
 
 for i = 0:3
     
@@ -58,9 +58,9 @@ sys = ss(A, B, C, D);
 
 y = lsim(sys, v, t, X0);
 
-%aggiungi una ponderazione dell'errore tutta sulla parte non piatta!
+% aggiungi una ponderazione dell'errore tutta sulla parte non piatta!
 
-%F = [ ( y(:,1) - x1*gain_x ).*W; (y(:,2) - x2*gain_x).*W; (y(:,3) - x3*gain_x).*W ];
+% F = [ ( y(:,1) - x1*gain_x ).*W; (y(:,2) - x2*gain_x).*W; (y(:,3) - x3*gain_x).*W ];
 
 F = [ ( y(:,1) - x1*gain_x ); (y(:,2) - x2*gain_x); (y(:,3) - x3*gain_x) ];
 end

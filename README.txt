@@ -1,1 +1,0 @@
-Mechanical vibration project
